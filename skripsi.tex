@@ -1,0 +1,73 @@
+%==================================================================
+% Ini adalah file utama dari dokumen LaTeX ini
+%==================================================================
+
+%% DILARANG EDIT BAGIAN INI
+\documentclass[12pt, a4paper, onecolumn, oneside, final]{report}
+
+\input{contents/a0-identitas}
+\input{templates/xx-preambles}
+\input{contents/a1-hyphenate}
+
+% Pilih salah satu antara Proposal atau Laporan
+\newcommand{\doctype}{Proposal}
+% \newcommand{\doctype}{Laporan}
+
+\begin{document}
+\ifthenelse{\equal{\doctype}{Proposal}}{
+	\include{templates/xx-sampul-proposal}
+	\pagenumbering{roman}
+	\include{templates/xx-sampuldalam-proposal}
+	\include{templates/xx-persetujuan-proposal}
+
+	\begin{spacing}{1.2}
+		\include{templates/xx-daftar}
+	\end{spacing}
+
+	\pagenumbering{arabic}
+	\begin{spacing}{1.5}
+		\include{contents/b1-bab1}
+		\include{contents/b2-bab2}
+		\include{contents/b3-bab3}
+		% HANYA TUTORIAL HAPUS SAAT PENULISAN
+		% \include{contents/b6-bab6}
+	\end{spacing}
+}{
+	\include{templates/xx-sampul-laporan}
+	\pagenumbering{roman}
+	\include{templates/xx-sampuldalam-laporan}
+
+	\begin{spacing}{1.2}
+		\include{contents/a2-abstrak}
+		\include{contents/a3-abstract}
+	\end{spacing}
+
+	\begin{spacing}{1.5}
+		\include{templates/xx-pernyataan}
+	\end{spacing}
+
+	\include{templates/xx-persetujuan-ujian}
+	\include{templates/xx-pengesahan}
+
+	\begin{spacing}{1.2}
+		\include{contents/a4-persembahan}
+		\include{contents/a5-katapengantar}
+		\include{templates/xx-daftar}
+	\end{spacing}
+
+	\pagenumbering{arabic}
+
+	\begin{spacing}{1.5}
+		\include{contents/b1-bab1}
+		\include{contents/b2-bab2}
+		\include{contents/b3-bab3}
+		\include{contents/b4-bab4}
+		\include{contents/b5-bab5}
+		%HANYA TUTORIAL HAPUS SAAT PENULISAN
+		% \include{contents/b6-bab6}
+	\end{spacing}
+}
+\input{templates/xx-daftarpustaka}
+\input{contents/a8-lampiran}
+\end{document}
+%% DILARANG EDIT BAGIAN INI

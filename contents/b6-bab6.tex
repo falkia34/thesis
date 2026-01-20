@@ -25,7 +25,7 @@ Lingkungan \texttt{packed\_enum} digunakan untuk membuat daftar bernomor dengan 
         \item Langkah keempat adalah melakukan pengujian awal untuk mengevaluasi performa.
     \end{packed_enum}
 \end{lstlisting}
-    
+
 Hasilnya akan tampak seperti berikut:
 \begin{packed_enum}
     \item Langkah pertama adalah mengidentifikasi masalah yang ingin diselesaikan.
@@ -79,15 +79,15 @@ print(factorial(5))  # Output: 120
 
 \subsection{Kode Python dari File Eksternal}
 
-Jika Anda memiliki file kode Python di folder tertentu (misalnya, di \texttt{kode/code\_sample.py}), Anda bisa menyisipkan kode tersebut langsung ke dalam dokumen LaTeX menggunakan perintah \texttt{\textbackslash lstinputlisting}. Berikut \lstref{lst:python-file} dengan format penulisan \texttt{\textbackslash lstinputlisting[language=Python, caption=Contoh Kode Python dari File, label=lst:python-file]\{kode/code\_sample.py\}}, dimana:
+Jika Anda memiliki file kode Python di folder tertentu (misalnya, di \texttt{code/code\_sample.py}), Anda bisa menyisipkan kode tersebut langsung ke dalam dokumen LaTeX menggunakan perintah \texttt{\textbackslash lstinputlisting}. Berikut \lstref{lst:python-file} dengan format penulisan \texttt{\textbackslash lstinputlisting[language=Python, caption=Contoh Kode Python dari File, label=lst:python-file]\{code/code\_sample.py\}}, dimana:
 \begin{packed_item}
     \item \texttt{language=Python}: Mengatur pewarnaan sintaksis untuk Python.
     \item \texttt{caption}: Menambahkan keterangan untuk kode yang diambil dari file.
     \item \texttt{label}: Menambahkan label untuk referensi.
-    \item \texttt{\{kode/code\_sample.py\}}: Menentukan path atau lokasi file Python yang akan disisipkan. Pastikan file berada di dalam folder \texttt{kode} atau path yang sesuai.
+    \item \texttt{\{code/code\_sample.py\}}: Menentukan path atau lokasi file Python yang akan disisipkan. Pastikan file berada di dalam folder \texttt{kode} atau path yang sesuai.
 \end{packed_item}
 
-\lstinputlisting[language=Python, caption=Contoh Kode Python dari File, label=lst:python-file]{kode/code_sample.py}
+\lstinputlisting[language=Python, caption=Contoh Kode Python dari File, label=lst:python-file]{code/code_sample.py}
 
 \section{Menambahkan Gambar}
 Untuk menambahkan gambar hal yang harus dilakukan adalah:
@@ -148,13 +148,13 @@ Tabel dalam LaTeX dapat dibuat menggunakan lingkungan \texttt{table} dan \texttt
         \hline
         \textbf{No} & \textbf{Sensor} & \textbf{Akurasi (\%)} \\
         \hline
-        1 & DHT22 & 95.2 \\
+        1           & DHT22           & 95.2                  \\
         \hline
-        2 & BMP280 & 98.5 \\
+        2           & BMP280          & 98.5                  \\
         \hline
-        3 & MPU6050 & 92.8 \\
+        3           & MPU6050         & 92.8                  \\
         \hline
-        4 & HC-SR04 & 89.7 \\
+        4           & HC-SR04         & 89.7                  \\
         \hline
     \end{tabular}
 \end{table}
@@ -168,17 +168,17 @@ Tabel dalam LaTeX dapat dibuat menggunakan lingkungan \texttt{table} dan \texttt
     \label{tab:perbandingan-metode}
     \begin{tabular}{|l|c|c|c|c|}
         \hline
-        \multirow{2}{*}{\textbf{Metode}} & \multicolumn{2}{c|}{\textbf{Dataset A}} & \multicolumn{2}{c|}{\textbf{Dataset B}} \\
+        \multirow{2}{*}{\textbf{Metode}} & \multicolumn{2}{c|}{\textbf{Dataset A}} & \multicolumn{2}{c|}{\textbf{Dataset B}}                                         \\
         \cline{2-5}
-        & \textbf{Akurasi} & \textbf{Waktu (s)} & \textbf{Akurasi} & \textbf{Waktu (s)} \\
+                                         & \textbf{Akurasi}                        & \textbf{Waktu (s)}                      & \textbf{Akurasi} & \textbf{Waktu (s)} \\
         \hline
-        Random Forest & 94.2\% & 12.5 & 91.8\% & 15.3 \\
+        Random Forest                    & 94.2\%                                  & 12.5                                    & 91.8\%           & 15.3               \\
         \hline
-        SVM & 92.6\% & 8.7 & 89.4\% & 11.2 \\
+        SVM                              & 92.6\%                                  & 8.7                                     & 89.4\%           & 11.2               \\
         \hline
-        Neural Network & 96.1\% & 45.8 & 94.7\% & 52.1 \\
+        Neural Network                   & 96.1\%                                  & 45.8                                    & 94.7\%           & 52.1               \\
         \hline
-        Decision Tree & 88.9\% & 3.2 & 85.6\% & 4.1 \\
+        Decision Tree                    & 88.9\%                                  & 3.2                                     & 85.6\%           & 4.1                \\
         \hline
     \end{tabular}
 \end{table}
@@ -214,7 +214,7 @@ TikZ adalah salah satu paket LaTeX yang sangat powerful untuk membuat diagram, g
         \tikzstyle{process} = [rectangle, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=orange!30]
         \tikzstyle{decision} = [diamond, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=green!30]
         \tikzstyle{arrow} = [thick,->,>=stealth]
-        
+
         % Draw nodes
         \node (start) [startstop] {Start};
         \node (input) [process, below of=start] {Input Data};
@@ -223,7 +223,7 @@ TikZ adalah salah satu paket LaTeX yang sangat powerful untuk membuat diagram, g
         \node (output) [process, below of=decision1, yshift=-0.5cm] {Output Result};
         \node (stop) [startstop, below of=output] {End};
         \node (error) [process, right of=decision1, xshift=2cm] {Show Error};
-        
+
         % Draw arrows
         \draw [arrow] (start) -- (input);
         \draw [arrow] (input) -- (process1);
@@ -244,37 +244,37 @@ TikZ juga dapat digunakan untuk membuat grafik matematika dan plot data. \Figref
     \centering
     \begin{tikzpicture}
         \begin{axis}[
-            title={Grafik Fungsi Trigonometri},
-            xlabel={x},
-            ylabel={y},
-            xmin=-6.28, xmax=6.28,
-            ymin=-1.5, ymax=1.5,
-            xtick={-6.28,-3.14,0,3.14,6.28},
-            xticklabels={$-2\pi$,$-\pi$,0,$\pi$,$2\pi$},
-            ytick={-1,0,1},
-            legend pos=north east,
-            ymajorgrids=true,
-            grid style=dashed,
-        ]
-        
-        \addplot[
-            color=blue,
-            mark=none,
-            samples=100,
-            domain=-6.28:6.28,
-            thick
-        ] {sin(deg(x))};
-        \addlegendentry{$\sin(x)$}
-        
-        \addplot[
-            color=red,
-            mark=none,
-            samples=100,
-            domain=-6.28:6.28,
-            thick
-        ] {cos(deg(x))};
-        \addlegendentry{$\cos(x)$}
-        
+                title={Grafik Fungsi Trigonometri},
+                xlabel={x},
+                ylabel={y},
+                xmin=-6.28, xmax=6.28,
+                ymin=-1.5, ymax=1.5,
+                xtick={-6.28,-3.14,0,3.14,6.28},
+                xticklabels={$-2\pi$,$-\pi$,0,$\pi$,$2\pi$},
+                ytick={-1,0,1},
+                legend pos=north east,
+                ymajorgrids=true,
+                grid style=dashed,
+            ]
+
+            \addplot[
+                color=blue,
+                mark=none,
+                samples=100,
+                domain=-6.28:6.28,
+                thick
+            ] {sin(deg(x))};
+            \addlegendentry{$\sin(x)$}
+
+            \addplot[
+                color=red,
+                mark=none,
+                samples=100,
+                domain=-6.28:6.28,
+                thick
+            ] {cos(deg(x))};
+            \addlegendentry{$\cos(x)$}
+
         \end{axis}
     \end{tikzpicture}
     \caption{Grafik Fungsi Sinus dan Cosinus}
@@ -293,7 +293,7 @@ TikZ juga dapat digunakan untuk membuat grafik matematika dan plot data. \Figref
         \tikzstyle{input} = [coordinate]
         \tikzstyle{output} = [coordinate]
         \tikzstyle{pinstyle} = [pin edge={to-,thin,black}]
-        
+
         % Place nodes
         \node [input, name=input] {};
         \node [sum, right of=input] (sum) {};
@@ -301,7 +301,7 @@ TikZ juga dapat digunakan untuk membuat grafik matematika dan plot data. \Figref
         \node [block, right of=controller, node distance=3cm] (system) {Plant/System};
         \node [output, right of=system] (output) {};
         \node [block, below of=system] (sensor) {Sensor};
-        
+
         % Draw connections
         \draw [->] (input) -- node {$r(t)$} (sum);
         \draw [->] (sum) -- node {$e(t)$} (controller);
@@ -309,7 +309,7 @@ TikZ juga dapat digunakan untuk membuat grafik matematika dan plot data. \Figref
         \draw [->] (system) -- node [name=y] {$y(t)$} (output);
         \draw [->] (y) |- (sensor);
         \draw [->] (sensor) -| node[pos=0.99] {$-$} node [near end] {$y_m(t)$} (sum);
-        
+
         % Labels
         \draw [->] (input) -- node[above] {Reference} +(-1,0);
         \draw [->] (output) -- node[above] {Output} +(1,0);
@@ -324,32 +324,32 @@ TikZ juga dapat digunakan untuk membuat grafik matematika dan plot data. \Figref
 \begin{figure}[H]
     \centering
     \begin{tikzpicture}[
-        node distance=3cm,
-        server/.style={rectangle, draw, fill=yellow!30, minimum width=2cm, minimum height=1cm},
-        client/.style={circle, draw, fill=blue!20, minimum size=1cm},
-        router/.style={diamond, draw, fill=orange!30, minimum size=1.5cm}
-    ]
+            node distance=3cm,
+            server/.style={rectangle, draw, fill=yellow!30, minimum width=2cm, minimum height=1cm},
+            client/.style={circle, draw, fill=blue!20, minimum size=1cm},
+            router/.style={diamond, draw, fill=orange!30, minimum size=1.5cm}
+        ]
         % Server
         \node[server] (server) at (0,0) {Server};
-        
+
         % Router
         \node[router] (router) at (4,0) {Router};
-        
+
         % Clients
         \node[client] (client1) at (7,2) {PC1};
         \node[client] (client2) at (7,0) {PC2};
         \node[client] (client3) at (7,-2) {PC3};
-        
+
         % Internet cloud (simplified as ellipse)
         \node[draw, ellipse, fill=gray!20, minimum width=2cm, minimum height=1cm] (internet) at (-3,0) {Internet};
-        
+
         % Connections
         \draw[thick] (internet) -- (server);
         \draw[thick] (server) -- (router);
         \draw[thick] (router) -- (client1);
         \draw[thick] (router) -- (client2);
         \draw[thick] (router) -- (client3);
-        
+
         % Labels
         \node[above] at ($(internet)!0.5!(server)$) {WAN};
         \node[above] at ($(server)!0.5!(router)$) {LAN};

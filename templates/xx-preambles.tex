@@ -14,7 +14,7 @@
 
 % Paket untuk memasukkan gambar dalam dokumen
 \usepackage{graphicx}
-\graphicspath{{gambar/}} % Menentukan folder default untuk gambar
+\graphicspath{{images/}} % Menentukan folder default untuk gambar
 \usepackage{float}       % Mengatur posisi gambar dalam teks
 
 % Mengatur indentasi paragraf
@@ -138,33 +138,33 @@
 \AtBeginDocument{\renewcommand{\thelstlisting}{\arabic{chapter}.\arabic{lstlisting}}}
 
 \captionsetup[lstlisting]{
-  format=plain,
-  labelfont=bf,
-  justification=centering,
-  singlelinecheck=false,
-  labelsep=space
+    format=plain,
+    labelfont=bf,
+    justification=centering,
+    singlelinecheck=false,
+    labelsep=space
 }
 \definecolor{codegreen}{rgb}{0,0.6,0}
 \definecolor{codegray}{rgb}{0.5,0.5,0.5}
 \definecolor{codepurple}{rgb}{0.58,0,0.82}
 \definecolor{backcolour}{rgb}{0.95,0.95,0.92}
 \lstdefinestyle{mystyle}{
-    backgroundcolor=\color{backcolour},   
+    backgroundcolor=\color{backcolour},
     commentstyle=\color{codegreen},
     keywordstyle=\color{magenta},
     numberstyle=\tiny\color{codegray},
     stringstyle=\color{codepurple},
     basicstyle=\ttfamily\footnotesize,
     columns=fullflexible,
-    breakatwhitespace=false,         
-    breaklines=true,                 
-    captionpos=b,                    
-    keepspaces=true,                 
-    numbers=left,                    
-    numbersep=5pt,                  
-    showspaces=false,                
+    breakatwhitespace=false,
+    breaklines=true,
+    captionpos=b,
+    keepspaces=true,
+    numbers=left,
+    numbersep=5pt,
+    showspaces=false,
     showstringspaces=false,
-    showtabs=false,                  
+    showtabs=false,
     tabsize=2,
     lineskip=-1pt
 }

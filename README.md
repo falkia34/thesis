@@ -1,6 +1,6 @@
-# 📘 Template LaTeX Laporan Tugas Akhir
+# 📘 Tugas Akhir
 
-*Program Sarjana Terapan Teknik Elektronika – Universitas Negeri Yogyakarta*
+_Program Sarjana Terapan Teknik Elektronika – Universitas Negeri Yogyakarta_
 
 Template ini dirancang untuk mempermudah penulisan Proposal dan Laporan Tugas Akhir bagi mahasiswa D4 Teknik Elektronika UNY. Template ini memastikan keseragaman format, efisiensi penulisan, serta kemudahan kolaborasi dan pengelolaan dokumen melalui Git atau Overleaf.
 
@@ -10,51 +10,51 @@ Template ini dirancang untuk mempermudah penulisan Proposal dan Laporan Tugas Ak
 
 ```
 Template-LaTeX-Laporan-Tugas-Akhir
-├── CHANGELOG                         # Catatan perubahan
-├── LICENSE                           # Lisensi proyek        
-├── Project                           # Folder proyek    
-│   ├── a0-identitas.tex              # Isi identitas laporan 
-│   ├── a1-database.hyphenate.tex     # Database untuk hyphenation
-│   ├── a2-abstrak.tex                # Abstrak dalam Bahasa Indonesia  
-│   ├── a3-abstract.tex               # Abstrak dalam Bahasa Inggris
-│   ├── a4-persembahan.tex            # Persembahan
-│   ├── a5-katapengantar.tex          # Kata Pengantar
-│   ├── a6-daftarsingkatan.tex        # Daftar Singkatan
-│   ├── a7-pustaka.bib                # Daftar pustaka dalam format BibTeX
-│   ├── a8-lampiran.tex               # Lampiran
-│   ├── b1-bab1.tex                   # BAB I - Pendahuluan
-│   ├── b2-bab2.tex                   # BAB II - Tinjauan Pustaka
-│   ├── b3-bab3.tex                   # BAB III - Metode Penelitian
-│   ├── b4-bab4.tex                   # BAB IV - Hasil dan Pembahasan
-│   ├── b5-bab5.tex                   # BAB V - Kesimpulan dan Saran
-│   ├── b6-bab6.tex                   # BAB VI - Tutorial LaTeX (opsional)
-│   ├── gambar                        # Folder untuk menyimpan gambar
-│   │   ├── gambar-kucing.jpg
-│   │   ├── logo-uny.png
-│   │   ├── screenshot-miktex.png
-│   │   ├── screenshot-overleaf.png
-│   │   ├── screenshot-texstudio-macos.png
-│   │   └── screenshot-texstudio-windows.png
-│   ├── kode                          # Folder untuk menyimpan kode program
-│   │   ├── code_sample.cpp
-│   │   ├── code_sample.ino
-│   │   ├── code_sample.java
-│   │   └── code_sample.py
-│   ├── laporan.pdf                   # Hasil kompilasi laporan
-│   ├── laporan.tex                   # File utama untuk kompilasi laporan
-│   └── untouch                       # Folder untuk menyimpan file yang tidak perlu diubah
-│       ├── xx-daftar.tex
-│       ├── xx-daftarpustaka.tex
-│       ├── xx-pengesahan.tex
-│       ├── xx-pernyataan.tex
-│       ├── xx-persetujuan-proposal.tex
-│       ├── xx-persetujuan-ujian.tex
-│       ├── xx-preambles.tex
-│       ├── xx-sampul-laporan.tex
-│       ├── xx-sampul-proposal.tex
-│       ├── xx-sampuldalam-laporan.tex
-│       └── xx-sampuldalam-proposal.tex
-└── README.md                         # Dokumen ini
+├── contents                        # Folder untuk menyimpan konten utama skripsi
+│   ├── a0-identitas.tex            # Isi identitas laporan
+│   ├── a1-hyphenate.tex            # Database untuk hyphenation
+│   ├── a2-abstrak.tex              # Abstrak dalam Bahasa Indonesia
+│   ├── a3-abstract.tex             # Abstrak dalam Bahasa Inggris
+│   ├── a4-persembahan.tex          # Persembahan
+│   ├── a5-katapengantar.tex        # Kata Pengantar
+│   ├── a6-daftarsingkatan.tex      # Daftar Singkatan
+│   ├── a7-pustaka.bib              # Daftar pustaka dalam format BibTeX
+│   ├── a8-lampiran.tex             # Lampiran
+│   ├── b1-bab1.tex                 # BAB I - Pendahuluan
+│   ├── b2-bab2.tex                 # BAB II - Tinjauan Pustaka
+│   ├── b3-bab3.tex                 # BAB III - Metode Penelitian
+│   ├── b4-bab4.tex                 # BAB IV - Hasil dan Pembahasan
+│   ├── b5-bab5.tex                 # BAB V - Kesimpulan dan Saran
+│   ├── b6-bab6.tex                 # BAB VI - Tutorial LaTeX (opsional)
+│   ├── images                      # Folder untuk menyimpan gambar
+│   ├── gambar-kucing.jpg
+│   ├── logo-uny.png
+│   ├── screenshot-miktex.png
+│   ├── screenshot-overleaf.png
+│   ├── screenshot-texstudio-macos.png
+│   └── screenshot-texstudio-windows.png
+├── templates                       # Folder untuk menyimpan file yang tidak perlu diubah
+│   ├── xx-daftar.tex
+│   ├── xx-daftarpustaka.tex
+│   ├── xx-pengesahan.tex
+│   ├── xx-pernyataan.tex
+│   ├── xx-persetujuan-proposal.tex
+│   ├── xx-persetujuan-ujian.tex
+│   ├── xx-preambles.tex
+│   ├── xx-sampul-laporan.tex
+│   ├── xx-sampul-proposal.tex
+│   ├── xx-sampuldalam-laporan.tex
+│   └── xx-sampuldalam-proposal.tex
+├── code                            # Folder untuk menyimpan kode program
+│   ├── code_sample.cpp
+│   ├── code_sample.ino
+│   ├── code_sample.java
+│   └── code_sample.py
+├── CHANGELOG               # Catatan perubahan
+├── LICENSE                 # Lisensi proyek
+├── skripsi.pdf             # Hasil kompilasi skripsi
+├── skripsi.tex             # File utama untuk kompilasi skripsi
+└── README.md
 ```
 
 ---
@@ -63,7 +63,7 @@ Template-LaTeX-Laporan-Tugas-Akhir
 
 ✅ **Format sesuai standar** Prodi D4 Teknik Elektronika UNY
 
-✅ **Dual mode support**: Kompilasi proposal & laporan akhir
+✅ **Dual mode support**: Kompilasi proposal & skripsi akhir
 
 ✅ **Kompilasi otomatis** dengan script `compile.sh` yang canggih
 
@@ -77,7 +77,6 @@ Template-LaTeX-Laporan-Tugas-Akhir
 
 ✅ **Auto package management**: Instalasi package LaTeX otomatis
 
-
 ---
 
 ## 🚀 Compilation Script (`compile.sh`)
@@ -87,18 +86,21 @@ Template ini dilengkapi dengan script kompilasi canggih yang mempermudah proses 
 ### ✨ **Fitur Script Compile**
 
 #### 🎯 **Smart Dependency Management**
+
 - **Auto-detection**: Deteksi otomatis LaTeX installation dan package requirements
 - **Auto-installation**: Install missing packages secara otomatis via `tlmgr`
 - **Cross-platform**: Support macOS, Windows, dan Linux
 - **Fallback instructions**: Panduan manual jika auto-install gagal
 
 #### ⚡ **Performance Optimization**
+
 - **Dependency Caching**: Cache status dependencies untuk 7 hari
 - **Speed Improvement**: ~65% lebih cepat pada subsequent runs
 - **Smart Cache**: Auto-invalidation jika LaTeX version berubah
 - **Background Processing**: Multiple verbosity levels untuk berbagai use cases
 
 #### 🛠️ **Advanced Options**
+
 - **Multiple Build Passes**: 4-pass compilation untuk resolving semua references
 - **BibTeX Integration**: Automatic bibliography processing
 - **Cleanup**: Auto-cleanup temporary files
@@ -107,8 +109,7 @@ Template ini dilengkapi dengan script kompilasi canggih yang mempermudah proses 
 ### 📋 **Quick Start**
 
 ```bash
-# Masuk ke direktori Project
-cd Project/
+# Masuk ke direktori cd
 
 # Kompilasi normal (menggunakan cache jika tersedia)
 ./compile.sh
@@ -122,27 +123,27 @@ cd Project/
 
 ### 🎛️ **Command Line Options**
 
-| Option | Deskripsi |
-|--------|-----------|
-| `--help` | Tampilkan bantuan lengkap |
-| `--quiet` | Mode silent (hanya hasil akhir) |
-| `--verbose` | Mode verbose (output lengkap) |
-| `--debug` | Mode debug (maximum verbosity) |
-| `--error-only` | Hanya tampilkan errors |
-| `--warning` | Tampilkan warnings dan errors |
-| `--final-warnings` | Hanya warnings dari kompilasi terakhir |
-| `--clean` | Bersihkan temporary files |
-| `--skip-deps` | Skip dependency checking |
-| `--force-deps-check` | Force full dependency recheck |
-| `--clear-cache` | Clear dependency cache |
+| Option               | Deskripsi                              |
+| -------------------- | -------------------------------------- |
+| `--help`             | Tampilkan bantuan lengkap              |
+| `--quiet`            | Mode silent (hanya hasil akhir)        |
+| `--verbose`          | Mode verbose (output lengkap)          |
+| `--debug`            | Mode debug (maximum verbosity)         |
+| `--error-only`       | Hanya tampilkan errors                 |
+| `--warning`          | Tampilkan warnings dan errors          |
+| `--final-warnings`   | Hanya warnings dari kompilasi terakhir |
+| `--clean`            | Bersihkan temporary files              |
+| `--skip-deps`        | Skip dependency checking               |
+| `--force-deps-check` | Force full dependency recheck          |
+| `--clear-cache`      | Clear dependency cache                 |
 
 ### 📊 **Performance Comparison**
 
-| Run Type | Waktu | Improvement |
-|----------|-------|-------------|
-| First run (dengan dependency check) | ~12s | Baseline |
-| Cached run (menggunakan cache) | ~4s | **65% faster** |
-| Skip dependencies | ~4s | **68% faster** |
+| Run Type                            | Waktu | Improvement    |
+| ----------------------------------- | ----- | -------------- |
+| First run (dengan dependency check) | ~12s  | Baseline       |
+| Cached run (menggunakan cache)      | ~4s   | **65% faster** |
+| Skip dependencies                   | ~4s   | **68% faster** |
 
 ### 🔧 **Usage Examples**
 
@@ -150,7 +151,7 @@ cd Project/
 # Development workflow (daily use)
 ./compile.sh                        # Fast compilation dengan cache
 
-# CI/CD pipeline  
+# CI/CD pipeline
 ./compile.sh --quiet --skip-deps     # Maximum speed untuk automation
 
 # Troubleshooting
@@ -216,7 +217,7 @@ brew install --cask mactex
 # Ubuntu/Debian
 sudo apt-get install texlive-full
 
-# Windows  
+# Windows
 # Download dan install MiKTeX dari https://miktex.org/
 ```
 
@@ -252,15 +253,16 @@ sudo tlmgr install package_name
 ### 💻 **Windows (TeXstudio)**
 
 1. **Install MikTeX**: [https://miktex.org/download](https://miktex.org/download)
-   > Pilih *For All Users*, centang opsi *Always install missing packages*
+
+   > Pilih _For All Users_, centang opsi _Always install missing packages_
 
 2. **Install TeXstudio**: [https://www.texstudio.org/](https://www.texstudio.org/)
 
 3. **Update MikTeX** melalui MikTeX Console
 
-4. **Clone/unduh** repositori dan buka `laporan.tex` melalui TeXstudio
+4. **Clone/unduh** repositori dan buka `skripsi.tex` melalui TeXstudio
 
-5. **Compile**: Klik **Build & View** untuk melihat hasil (`laporan.pdf`)
+5. **Compile**: Klik **Build & View** untuk melihat hasil (`skripsi.pdf`)
 
 ### 🍎 **macOS (VS Code)**
 
@@ -279,7 +281,7 @@ sudo tlmgr install package_name
 4. **Compile**: Gunakan script atau Ctrl+Alt+B
 
    ```bash
-   cd Project/
+   cd
    ./compile.sh
    ```
 
@@ -299,7 +301,7 @@ sudo tlmgr install package_name
    ```bash
    # TeXstudio
    sudo apt-get install texstudio
-   
+
    # VS Code
    sudo snap install code --classic
    ```
@@ -308,14 +310,14 @@ sudo tlmgr install package_name
 
    ```bash
    git clone [repository-url]
-   cd Template-LaTeX-Tugas-Akhir-Sarjana-Terapan-UNY/Project/
+   cd Template-LaTeX-Tugas-Akhir-Sarjana-Terapan-UNY/
    ./compile.sh
    ```
 
 ### 🌐 **Overleaf (Online)**
 
-1. **Upload project** ke Overleaf
-2. **Set main document** ke `laporan.tex`  
+1. \*_Upload _ ke Overleaf
+2. **Set main document** ke `laporan.tex`
 3. **Compile** langsung di browser
 
 > ⚠️ **Note**: Script `compile.sh` tidak tersedia di Overleaf
@@ -327,11 +329,11 @@ sudo tlmgr install package_name
 Gunakan perintah berikut pada baris awal `laporan.tex`:
 
 ```latex
-%\newcommand{\Jenis}{Proposal}   % Gunakan untuk Proposal
-\newcommand{\Jenis}{Laporan}     % Gunakan untuk Laporan
+%\newcommand{\doctype}{Proposal}   % Gunakan untuk Proposal
+\newcommand{\doctype}{Laporan}     % Gunakan untuk Laporan
 ```
 
-> *Hanya aktifkan salah satu perintah (`%` artinya dikomentari)*
+> _Hanya aktifkan salah satu perintah (`%` artinya dikomentari)_
 
 ---
 
@@ -343,7 +345,7 @@ Gunakan perintah berikut pada baris awal `laporan.tex`:
 | `b1-bab1.tex` – `b5-bab5.tex` | Isi konten utama BAB I–V                           |
 | `a7-pustaka.bib`              | Tambah referensi dengan BibTeX                     |
 | `a8-lampiran.tex`             | Tambah daftar lampiran                             |
-| `b6-bab6.tex`                 | *Berisi tutorial LaTeX, opsional, dapat diabaikan* |
+| `b6-bab6.tex`                 | _Berisi tutorial LaTeX, opsional, dapat diabaikan_ |
 | `a2–a6-*.tex`                 | Abstrak, Kata Pengantar, Persembahan, dll.         |
 
 ---
@@ -353,8 +355,8 @@ Gunakan perintah berikut pada baris awal `laporan.tex`:
 Gunakan salah satu reference manager berikut:
 
 - [Mendeley](https://www.mendeley.com/)
-- [Zotero](https://www.zotero.org/)  
-- [JabRef](https://www.jabref.org/) *(direkomendasikan)*
+- [Zotero](https://www.zotero.org/)
+- [JabRef](https://www.jabref.org/) _(direkomendasikan)_
 
 Format ekspor: `.bib` (BibTeX), lalu tambahkan ke file `a7-pustaka.bib`.
 
@@ -362,14 +364,14 @@ Format ekspor: `.bib` (BibTeX), lalu tambahkan ke file `a7-pustaka.bib`.
 
 ## 🎬 Video Tutorial
 
-| No | Judul                                              | Link                                                   |
-| -- | -------------------------------------------------- | ------------------------------------------------------ |
-| 1  | Penggunaan Template TA UNY                         | [YouTube](https://www.youtube.com/watch?v=lnPTVrOGB90) |
-| 2  | Penulisan Isi Laporan                              | [YouTube](https://www.youtube.com/watch?v=4Qk_2pknhsM) |
-| 3  | Menambah Gambar dan Tabel                          | [YouTube](https://www.youtube.com/watch?v=oxY1mbZgv94) |
-| 4  | Referensi dan Sitasi                               | [YouTube](https://www.youtube.com/watch?v=goq-IS4WJW4) |
-| 5  | Menulis Kode Program                               | [YouTube](https://www.youtube.com/watch?v=JeSJ0mYfxA0) |
-| 6  | Workshop Lengkap Proposal dan Laporan dengan LaTeX | [YouTube](https://www.youtube.com/watch?v=anMLRydjDOE) |
+| No  | Judul                                              | Link                                                   |
+| --- | -------------------------------------------------- | ------------------------------------------------------ |
+| 1   | Penggunaan Template TA UNY                         | [YouTube](https://www.youtube.com/watch?v=lnPTVrOGB90) |
+| 2   | Penulisan Isi Laporan                              | [YouTube](https://www.youtube.com/watch?v=4Qk_2pknhsM) |
+| 3   | Menambah Gambar dan Tabel                          | [YouTube](https://www.youtube.com/watch?v=oxY1mbZgv94) |
+| 4   | Referensi dan Sitasi                               | [YouTube](https://www.youtube.com/watch?v=goq-IS4WJW4) |
+| 5   | Menulis Kode Program                               | [YouTube](https://www.youtube.com/watch?v=JeSJ0mYfxA0) |
+| 6   | Workshop Lengkap Proposal dan Laporan dengan LaTeX | [YouTube](https://www.youtube.com/watch?v=anMLRydjDOE) |
 
 ---
 
@@ -382,9 +384,9 @@ Catatan lengkap perubahan dan versi terbaru tersedia di file:
 
 ## 🖼️ Screenshot
 
-| MacOS                                                             | Windows                                                               |
-| ----------------------------------------------------------------- | --------------------------------------------------------------------- |
-| ![TexStudio MacOS](Project/gambar/screenshot-texstudio-macos.png) | ![TexStudio Windows](Project/gambar/screenshot-texstudio-windows.png) |
+| MacOS                                                     | Windows                                                       |
+| --------------------------------------------------------- | ------------------------------------------------------------- |
+| ![TexStudio MacOS](images/screenshot-texstudio-macos.png) | ![TexStudio Windows](images/screenshot-texstudio-windows.png) |
 
 ---
 
