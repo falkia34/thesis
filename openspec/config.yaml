@@ -1,0 +1,59 @@
+schema: spec-driven
+
+context: |
+  # Project: Undergraduate Thesis (Tugas Akhir)
+
+  ## Document Details
+  - Title (ID): LEAF: Pengembangan Kerangka Kerja Agentik yang Dapat Diperluas dengan Minim Kode untuk Observabilitas Komputasi Awan Modern
+  - Title (EN): LEAF: Development of Low-code Extensible Agentic Framework for Modern Cloud Computing Observability
+  - Author: Muhammad Naufal Khoirul Imamilhaq Alhifdi
+  - Program: Sarjana Terapan (D4) Teknologi Informasi
+  - Institution: Universitas Negeri Yogyakarta (UNY), Fakultas Teknik
+  - Advisor: Muslikhin, S.Pd., M.Pd., Ph.D.
+
+  ## Language & Writing Style
+  - Primary language: **Bahasa Indonesia** (Indonesian)
+  - Academic formal writing style following UNY thesis guidelines
+  - Technical terms may use English with Indonesian explanations
+  - Citations use natbib with numbered style
+
+  ## Tech Stack
+  - LaTeX document with BibTeX bibliography
+  - Main file: skripsi.tex
+  - Content files: contents/b1-bab1.tex through b5-bab5.tex
+  - Bibliography: contents/a7-pustaka.bib
+  - Compilation: automatic
+
+  ## Document Structure
+  - BAB I: Pendahuluan (Introduction)
+  - BAB II: Tinjauan Pustaka (Literature Review)
+  - BAB III: Metode Penelitian (Methodology)
+  - BAB IV: Hasil dan Pembahasan (Results & Discussion)
+  - BAB V: Kesimpulan dan Saran (Conclusion & Recommendations)
+
+  ## Research Domain
+  - AI/ML agents and AIOps
+  - Multi-agent systems coordination
+  - Model Context Protocol (MCP) and Agent-to-Agent (A2A) protocols
+  - Kubernetes observability
+  - Site Reliability Engineering (SRE)
+
+  ## LEAF Framework Components
+  - Opinionated Grid architecture (Southbound MCP, Northbound/East-West A2A)
+  - 4-layer taxonomy: Orchestrator, Sensor, Processor, Executor
+  - Blackboard state store pattern
+  - Human-in-the-loop (HITL) safety requirements
+
+rules:
+  proposal:
+    - Write descriptions in English (specs/design are implementation artifacts)
+    - Keep proposals concise, focus on research contribution
+  specs:
+    - Requirements should map to thesis chapter sections
+    - Use WHEN/THEN format for testable outcomes
+  design:
+    - Document key decisions about content structure and academic approach
+    - Consider Indonesian academic conventions
+  tasks:
+    - Break writing tasks into manageable sections (one subsection per task)
+    - Include research, writing, and verification tasks separately
