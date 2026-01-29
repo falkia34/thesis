@@ -3,6 +3,7 @@
 BAB I (Pendahuluan) is the introduction chapter of an Indonesian undergraduate thesis following UNY format. The existing Latar Belakang section (~2500 words) comprehensively covers the research context but contains implementation details that belong in later sections. The remaining five sub-chapters contain only placeholder text and need complete rewrites.
 
 Current state of `contents/b1-bab1.tex`:
+
 - **Latar Belakang Masalah**: Complete but overly detailed (needs refinement)
 - **Identifikasi Masalah**: Placeholder only
 - **Batasan Masalah**: Placeholder only
@@ -15,6 +16,7 @@ Key constraint: All content must be written in formal Indonesian academic style 
 ## Goals / Non-Goals
 
 **Goals:**
+
 - Complete all six sub-chapters of BAB I with proper academic content
 - Ensure logical flow from background → problems → scope → questions → objectives → benefits
 - Maintain consistency with accessibility gap framing (LEAF as low-code agentic framework)
@@ -22,6 +24,7 @@ Key constraint: All content must be written in formal Indonesian academic style 
 - Align research questions with the three main contributions: architecture blueprint, manifest specification, reference implementation
 
 **Non-Goals:**
+
 - Adding new BibTeX references (use existing 22 entries)
 - Writing content for BAB II-V (out of scope for this change)
 - Changing the fundamental research framing or contribution claims
@@ -34,6 +37,7 @@ Key constraint: All content must be written in formal Indonesian academic style 
 **Choice**: Use a cascading structure where each section directly builds on the previous.
 
 **Rationale**: UNY thesis format expects clear traceability:
+
 - Identifikasi Masalah → derives 4-5 problems from Latar Belakang narrative
 - Batasan Masalah → narrows to 3-4 bounded problems from identification
 - Rumusan Masalah → formulates 3 research questions from bounded problems
@@ -45,6 +49,7 @@ Key constraint: All content must be written in formal Indonesian academic style 
 ### Decision 2: Three Research Questions Aligned with Contributions
 
 **Choice**: Structure around three research questions:
+
 1. How to design low-code agentic architecture with standard protocols?
 2. How to specify declarative manifest format for agent definition?
 3. How to implement and validate the framework for Kubernetes/SRE?
@@ -54,13 +59,15 @@ Key constraint: All content must be written in formal Indonesian academic style 
 ### Decision 3: Latar Belakang Architecture Update
 
 **Choice**: Update architecture description to reflect revised LEAF model:
+
 - Remove Blackboard as core pattern (it's now an optional custom orchestrator)
 - Present Orchestrator as an agent type that coordinates other agents
 - Add built-in orchestration patterns: supervisor (default), sequential, parallel
 - Clarify 4-layer hierarchy: Orchestrator → Processor → Sensor/Executor
 - Mention tools capability enforcement (sensor=read, executor=mutate) at agent layer
 
-**Rationale**: 
+**Rationale**:
+
 - Exploration revealed Blackboard is implementation-specific (suitable for SRE case study), not framework-required
 - LEAF should be agnostic about coordination patterns while providing sensible defaults
 - Orchestrator being an agent (using A2A like others) is cleaner than separate concept
@@ -72,7 +79,8 @@ Key constraint: All content must be written in formal Indonesian academic style 
 
 **Choice**: Identify 5 problems, bound to 4, formulate 3 research questions.
 
-**Rationale**: 
+**Rationale**:
+
 - 5 identified problems show comprehensive analysis
 - Bounding to 4 demonstrates methodological rigor (excluding something justifies scope)
 - 3 questions is manageable for D4 thesis scope and maps to clear deliverables
