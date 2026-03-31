@@ -350,7 +350,7 @@ clean_temp_files() {
     rm -f *.figlist *.makefile *.figlist.bak
     
     # Remove auxiliary files from subdirectories
-    rm -f untouch/*.aux
+    rm -f templates/*.aux
     
     log_message 2 "${GREEN}" "✓ Temporary files cleaned"
 }

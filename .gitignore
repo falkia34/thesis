@@ -35,3 +35,6 @@ __package_test__.*
 *.swp
 *.swo
 *~
+
+# Others
+references/
