@@ -3,91 +3,128 @@
 % Silahkan edit sesuai kebutuhan, baik menambah atau mengurangi \section, \subsection
 %==================================================================
 
-\chapter[TINJAUAN PUSTAKA]{\\ TINJAUAN PUSTAKA}
+\chapter[KAJIAN PUSTAKA]{\\ KAJIAN PUSTAKA}
 
-\section{Teori Dasar Komponen Elektronika}
-Bagian ini membahas teori dasar mengenai komponen elektronika yang digunakan dalam perancangan sistem. Setiap komponen memiliki karakteristik khusus yang mempengaruhi kinerja keseluruhan sistem. Pemahaman tentang karakteristik komponen-komponen ini sangat penting dalam mengoptimalkan fungsi dan stabilitas rangkaian.
+\section{Kajian Teori}
 
-\subsection{Jenis dan Karakteristik Komponen Pasif}
-Komponen pasif seperti resistor, kapasitor, dan induktor memiliki fungsi dasar dalam pengaturan arus dan tegangan dalam sirkuit. Bagian ini menguraikan jenis-jenis komponen pasif serta karakteristik utama yang mempengaruhi performa dan fungsi komponen tersebut dalam sirkuit elektronika.
+\subsection{INFINITE}
 
-\subsection{Jenis dan Karakteristik Komponen Aktif}
-Komponen aktif, seperti transistor, dioda, dan IC, memainkan peran penting dalam penguatan dan pengaturan sinyal. Bagian ini menjelaskan berbagai jenis komponen aktif yang digunakan dalam proyek serta karakteristik utamanya, yang menentukan efektivitas dan efisiensi sistem elektronika.
+INFINITE atau Divisi Teknologi Informasi INFINITE adalah satu dari lima divisi di bawah naungan Unit Kegiatam Mahasiswa (UKM) Rekayasa Teknologi (Restek) Universitas Negeri Yogyakarta (UNY). Organisasi ini berfungsi sebagai wadah bagi mahasiswa untuk mengembangkan diri di bidang teknologi informasi, baik melalui kegiatan pengembangan keterampilan teknis, kompetisi, maupun proyek kolaboratif. INFINITE berperan penting dalam memfasilitasi pengembangan pengetahuan dan kemampuan anggota dan membangun jejaring profesional di kalangan mahasiswa yang memiliki minat dalam teknologi informasi.
 
-\subsection{Peran dan Fungsi Modul dalam Sistem Elektronika}
-Modul-modul elektronika memberikan fungsionalitas tambahan yang membantu dalam memperkuat performa sistem. Bagian ini mengulas modul-modul yang sering digunakan, seperti modul daya atau komunikasi, serta peran masing-masing dalam mendukung integrasi sistem yang lebih efisien.
+Dalam menjalankan fungsinya, INFINITE memiliki kebutuhan pengelolaan informasi yang beragam dan kompleks. Kebutuhan tersebut mencakup: (1)~manajemen keanggotaan yang meliputi data profil anggota, status masa aktif, dan riwayat keikutsertaan dalam tim; (2)~pengelolaan kepengurusan yang mencakup struktur organisasi, profil pengurus, dan periode masa jabatan; (3)~pencatatan data perlombaan yang meliputi informasi kompetisi, tim-tim yang dibentuk oleh anggota, proposal pengajuan pendanaan oleh tim, dan dokumentasi prestasi yang diraih; serta (4)~pengumpulan testimoni baik dari alumni tentang dampak INFINITE terhadap karier mereka maupun testimoni proyek yang pernah dikerjakan oleh anggota. Kebutuhan pengelolaan data yang terintegrasi ini menjadi motivasi utama pengembangan sistem informasi organisasi INFINITE.
 
-\subsection{Analisis Daya dan Efisiensi Komponen}
-Analisis daya dan efisiensi komponen adalah aspek penting dalam desain sistem yang hemat energi. Bagian ini membahas cara-cara mengevaluasi dan mengoptimalkan daya yang dikonsumsi oleh komponen, yang berperan dalam meningkatkan efisiensi energi dari sistem secara keseluruhan.
+\subsection{Sistem Informasi}
 
-\section{Sistem dan Teknik Rangkaian Elektronika}
-Bagian ini membahas berbagai sistem dan teknik yang digunakan dalam perancangan rangkaian elektronika, baik analog maupun digital. Setiap teknik ini memungkinkan sistem berfungsi dengan lebih efektif sesuai dengan kebutuhan aplikasi.
+Sistem informasi merupakan kombinasi terorganisir dari manusia, perangkat keras, perangkat lunak, jaringan komunikasi, sumber data, serta kebijakan dan prosedur yang menyimpan, mengambil, mengubah, dan menyebarkan informasi dalam suatu organisasi \citep{OBrien_2017_MIS}. Menurut \citet{Laudon_2020_MIS}, sistem informasi dapat didefinisikan secara teknis sebagai sekumpulan komponen yang saling terkait yang mengumpulkan, memproses, menyimpan, dan mendistribusikan informasi untuk mendukung pengambilan keputusan, koordinasi, dan pengendalian dalam organisasi. Sistem informasi juga membantu manajer dan pekerja dalam menganalisis masalah, memvisualisasikan subjek yang kompleks, dan menciptakan produk baru.
 
-\subsection{Konsep Dasar Rangkaian Analog}
-Rangkaian analog digunakan untuk memproses sinyal kontinu dan memainkan peran penting dalam berbagai aplikasi. Bagian ini menjelaskan prinsip-prinsip dasar yang digunakan dalam rangkaian analog, termasuk elemen-elemen utamanya dan penggunaannya.
+Komponen utama sistem informasi terdiri dari lima elemen fundamental yang saling berinteraksi. Pertama, \textit{hardware} mencakup perangkat fisik seperti komputer, server, dan perangkat jaringan yang digunakan untuk memproses dan menyimpan data. Kedua, \textit{software} meliputi program aplikasi dan sistem operasi yang mengendalikan operasi perangkat keras dan memungkinkan pemrosesan data. Ketiga, data merupakan fakta mentah yang diorganisasi dan diproses menjadi informasi yang bermakna bagi pengguna. Keempat, prosedur adalah serangkaian instruksi dan aturan yang mengatur bagaimana komponen lain bekerja sama untuk memproses data menjadi informasi. Kelima, manusia (\textit{people}) mencakup pengguna akhir, administrator sistem, dan profesional teknologi informasi yang mengoperasikan dan mengelola sistem \citep{OBrien_2017_MIS}.
 
-\subsection{Konsep Dasar Rangkaian Digital}
-Rangkaian digital beroperasi dengan sinyal diskrit, cocok untuk pemrosesan informasi digital. Bagian ini menguraikan prinsip dasar rangkaian digital serta komponen-komponen utama yang mendukung fungsi-fungsi digital dalam proyek ini.
+\subsection{\textit{Backend} dengan Laravel}
 
-\subsection{Teknik Pengolahan Sinyal pada Sistem Elektronika}
-Pengolahan sinyal adalah proses penting untuk interpretasi informasi dari lingkungan. Bagian ini membahas metode umum dalam pengolahan sinyal yang diterapkan pada sistem elektronika, termasuk teknik yang digunakan dalam pemfilteran atau pemrosesan data.
+Laravel adalah kerangka kerja (\textit{framework}) aplikasi web berbasis PHP yang dikembangkan oleh Taylor Otwell pada tahun 2011. Laravel dirancang dengan filosofi pengembangan yang elegan dan ekspresif, menyediakan sintaks yang bersih serta fitur-fitur modern untuk mempercepat pengembangan aplikasi web \citep{Laravel_2024_Docs}. Sebagai salah satu kerangka kerja PHP yang paling populer, Laravel menawarkan berbagai fitur bawaan seperti sistem \textit{routing} yang fleksibel, \textit{Object-Relational Mapping} (ORM) melalui Eloquent, sistem migrasi basis data, antrian pekerjaan (\textit{job queues}), serta sistem autentikasi dan otorisasi yang komprehensif. Studi komparatif terhadap kerangka kerja PHP menunjukkan bahwa Laravel memiliki keunggulan dalam hal dokumentasi, komunitas pengembang, dan ekosistem paket pendukung \citep{Laaziri_2019_PHPFrameworks}.
 
-\subsection{Pengkabelan dan Pengaturan Sirkuit untuk Keandalan Sistem}
-Pengkabelan dan tata letak yang baik meningkatkan keandalan sistem secara keseluruhan. Bagian ini menguraikan teknik pengkabelan dan pengaturan sirkuit yang efektif, serta bagaimana hal ini dapat mempengaruhi performa sistem.
+\subsubsection{PHP}
 
-\subsection{Pengendalian dan Penggerak (Motor Driver, Relay, dsb.)}
-Bagian ini menjelaskan penggunaan penggerak seperti motor driver dan relay untuk menggerakkan komponen mekanis. Diperlukan teknik pengendalian khusus untuk memastikan bahwa setiap penggerak bekerja sesuai dengan tujuan sistem.
+PHP adalah bahasa pemrograman skrip sisi server yang awalnya dikembangkan oleh Rasmus Lerdorf pada tahun 1994 dengan nama \textit{Personal Home Page Tools}. Seiring perkembangannya, PHP bertransformasi menjadi bahasa pemrograman yang lengkap dan namanya diubah menjadi akronim rekursif \textit{PHP: Hypertext Preprocessor} \citep{PHP_2024_History}. PHP dirancang khusus untuk pengembangan web dan dapat disisipkan ke dalam HTML, menjadikannya pilihan populer untuk membangun aplikasi web dinamis.
 
-\section{Teknologi yang Digunakan}
-Bagian ini mengulas teknologi yang umum digunakan dalam proyek berbasis elektronika, seperti mikrokontroler, sensor, aktor, dan teknologi komunikasi nirkabel. Teknologi ini memungkinkan sistem untuk merespons lingkungan dan berinteraksi dengan pengguna.
+Dibandingkan dengan bahasa pemrograman \textit{backend} lainnya seperti Python, Java, atau Node.js, PHP memiliki beberapa keunggulan. Pertama, PHP memiliki kurva pembelajaran yang relatif landai dan sintaks yang mudah dipahami. Kedua, ekosistem PHP sangat matang dengan ketersediaan banyak kerangka kerja seperti Laravel, Symfony, dan CodeIgniter. Ketiga, sebagian besar penyedia \textit{hosting} web mendukung PHP secara \textit{native}, memudahkan proses \textit{deployment}. Namun demikian, PHP juga memiliki keterbatasan seperti inkonsistensi penamaan fungsi bawaan dan penanganan \textit{concurrency} yang kurang optimal dibandingkan Node.js. Dalam konteks proyek ini, PHP dipilih karena menjaga kemudahan transisi dari sistem informasi versi sebelumnya, dan kerangka kerja Laravel yang digunakan menyediakan abstraksi yang elegan untuk pengembangan API \textit{backend} serta memiliki dokumentasi dan komunitas yang sangat aktif.
 
-\subsection{Mikrokontroler dan Mikroprosesor}
-Mikrokontroler dan mikroprosesor berfungsi sebagai unit pemrosesan utama dalam sistem elektronika. Bagian ini menguraikan arsitektur dasar, bahasa pemrograman yang relevan, serta protokol komunikasi yang sering digunakan dalam proyek ini.
+\subsubsection{Arsitektur \textit{Model-View-Controller} (MVC)}
 
-\subsection{Sensor dan Aktuator}
-Sensor dan aktuator memungkinkan interaksi sistem dengan lingkungannya. Bagian ini membahas jenis-jenis sensor yang digunakan, cara kerja, dan integrasinya ke dalam sistem agar sistem dapat mengumpulkan data dan merespons secara aktif.
+\textit{Model-View-Controller} (MVC) adalah pola arsitektur perangkat lunak yang memisahkan aplikasi menjadi tiga komponen utama yang saling terhubung namun memiliki tanggung jawab yang berbeda \citep{Pop_2020_MVC}. Pemisahan ini bertujuan untuk meningkatkan modularitas, memudahkan pemeliharaan, dan memungkinkan pengembangan paralel oleh tim yang berbeda.
 
-\subsection{Teknologi Nirkabel}
-Teknologi nirkabel seperti Bluetooth dan Wi-Fi memungkinkan komunikasi jarak jauh dalam sistem IoT. Bagian ini menguraikan jenis teknologi nirkabel yang relevan, termasuk protokol komunikasi dan aspek keamanan yang perlu dipertimbangkan.
+Komponen pertama, \textit{Model}, bertanggung jawab atas logika bisnis dan pengelolaan data aplikasi. \textit{Model} merepresentasikan struktur data, aturan validasi, dan operasi terhadap basis data. Dalam Laravel, \textit{Model} diimplementasikan melalui Eloquent ORM yang menyediakan antarmuka objek untuk berinteraksi dengan tabel basis data. Komponen kedua, \textit{View}, menangani presentasi data kepada pengguna. \textit{View} menerima data dari \textit{Controller} dan merendernya dalam format yang sesuai untuk ditampilkan. Komponen ketiga, \textit{Controller}, berperan sebagai perantara antara \textit{Model} dan \textit{View}. \textit{Controller} menerima permintaan dari pengguna, memproses logika yang diperlukan dengan memanggil \textit{Model}, dan mengembalikan respons melalui \textit{View}.
 
-\section{Metode Kontrol dan Kecerdasan Buatan}
-Bagian ini membahas metode kontrol dan kecerdasan buatan yang diterapkan dalam sistem elektronika untuk mencapai pengendalian yang lebih cerdas dan otomatis, seperti kontrol PID, logika fuzzy, dan deep learning.
+Dalam implementasi Laravel \textit{headless}, arsitektur MVC diadaptasi tanpa komponen \textit{Blade templating} untuk menampilkan HTML. Sebagai gantinya, Laravel menggunakan \textit{Resources} dan \textit{Collections} untuk memformat data \textit{Model} menjadi respons JSON yang konsisten. Laravel menyediakan fitur-fitur seperti \textit{route model binding}, \textit{middleware} untuk autentikasi dan otorisasi, serta \textit{resource controllers} yang membantu untuk pengembangan API \citep{Laravel_2024_Docs}.
 
-\subsection{Pengendalian PID (Proportional-Integral-Derivative)}
-PID adalah metode kontrol yang efektif dalam mengatur respons sistem. Bagian ini menjelaskan prinsip dasar PID, aplikasinya dalam pengaturan sistem elektronika, serta teknik tuning yang dapat meningkatkan stabilitas dan respons sistem.
 
-\subsection{Fuzzy Logic Control}
-Logika fuzzy adalah metode kontrol fleksibel yang sering digunakan dalam sistem nonlinear. Bagian ini menjelaskan konsep dasar logika fuzzy, serta cara implementasi dan manfaatnya dalam pengendalian sistem yang kompleks.
+\subsubsection{\textit{RESTful Application Programming Interface} (API)}
 
-\subsection{Deep Learning}
-Deep learning memungkinkan sistem untuk belajar dari data, yang sangat berguna dalam aplikasi otomatisasi. Bagian ini menguraikan algoritma dasar dalam deep learning, seperti CNN dan RNN, serta penerapannya dalam pengembangan sistem IoT.
+\textit{Representational State Transfer} (REST) adalah gaya arsitektur untuk sistem terdistribusi yang pertama kali diperkenalkan oleh Roy Fielding dalam disertasinya pada tahun 2000 \citep{Fielding_2000_REST}. REST mendefinisikan sekumpulan batasan arsitektural yang, ketika diterapkan secara keseluruhan, menekankan skalabilitas interaksi antar komponen, antarmuka yang seragam, dan \textit{deployment} komponen yang independen. API yang mengikuti prinsip REST disebut sebagai \textit{RESTful} API.
 
-\subsection{Perbandingan dan Pemilihan Metode yang Sesuai}
-Bagian ini membahas perbandingan antara berbagai metode kontrol yang tersedia, menjelaskan kelebihan dan kekurangannya masing-masing, serta bagaimana memilih metode yang paling sesuai untuk aplikasi proyek ini.
+Prinsip utama REST meliputi: (1)~arsitektur \textit{client-server} yang memisahkan antarmuka pengguna dari penyimpanan data; (2)~\textit{statelessness}, di mana setiap permintaan dari klien harus berisi semua informasi yang diperlukan untuk memproses permintaan; (3)~\textit{cacheability} yang memungkinkan respons ditandai sebagai dapat di-\textit{cache} atau tidak; (4)~sistem berlapis (\textit{layered system}) yang memungkinkan penambahan lapisan perantara; dan (5)~antarmuka yang seragam menggunakan metode HTTP standar (GET, POST, PUT, DELETE) untuk operasi \textit{Create, Read, Update, Delete} (CRUD) \citep{Richardson_2023_RESTfulWebAPIs}.
 
-\section{Konsep Engineering Design Process}
-Engineering Design Process adalah metodologi sistematis yang digunakan untuk merancang sistem secara efektif. Bagian ini menguraikan prinsip utama dan langkah-langkah dari Engineering Design Process dalam konteks pengembangan sistem elektronika.
+\subsubsection{Basis Data PostgreSQL}
 
-\subsection{Pengertian dan Langkah-langkah Engineering Design Process}
-Engineering Design Process adalah proses desain iteratif yang mencakup beberapa tahapan untuk mencapai desain yang optimal. Bagian ini menjelaskan langkah-langkah dasar yang terlibat dan bagaimana proses ini diadaptasi dalam proyek ini.
+PostgreSQL adalah sistem manajemen basis data relasional objek (\textit{Object-Relational Database Management System}/ORDBMS) sumber terbuka yang dikembangkan sejak tahun 1986 sebagai bagian dari proyek POSTGRES di University of California, Berkeley \citep{PostgreSQL_2024_About}. PostgreSQL dikenal karena keandalan, integritas data, dan kepatuhannya terhadap standar SQL. Sebagai basis data sumber terbuka, PostgreSQL dapat digunakan, dimodifikasi, dan didistribusikan secara bebas tanpa biaya lisensi.
 
-\subsection{Aplikasi Engineering Design Process pada Proyek Elektronika}
-Bagian ini membahas penerapan Engineering Design Process dalam proyek elektronika untuk mencapai hasil desain yang optimal. Diuraikan langkah-langkah praktis dalam menerapkan metodologi ini.
+Fitur-fitur utama PostgreSQL meliputi: (1)~kepatuhan penuh terhadap properti \textit{Atomicity, Consistency, Isolation, Durability} (ACID) yang menjamin integritas transaksi; (2)~dukungan tipe data yang ekstensif termasuk JSON/JSONB untuk data semi-terstruktur; (3)~sistem indeks yang canggih termasuk B-tree, Hash, GiST, dan GIN; (4)~\textit{full-text search} bawaan untuk pencarian teks; serta (5)~kemampuan ekstensi yang memungkinkan penambahan fungsi kustom \citep{Juba_2019_PostgreSQL}. Dalam konteks proyek INFINITE, PostgreSQL dipilih karena beberapa alasan: pertama, PostgreSQL telah digunakan sebelumnya untuk beberapa aplikasi internal INFINITE sehingga tidak memerlukan \textit{deployment} baru; kedua, sebagai basis data sumber terbuka, PostgreSQL tidak memerlukan biaya lisensi yang sejalan dengan prinsip pengembangan organisasi mahasiswa; ketiga, PostgreSQL memiliki performa yang sangat baik untuk beban kerja transaksional maupun analitis.
 
-\subsection{Studi Kasus Implementasi Engineering Design Process dalam Desain Elektronika}
-Studi kasus ini menunjukkan contoh penerapan Engineering Design Process dalam desain sistem yang relevan dengan proyek. Dengan studi kasus ini, pembaca dapat memahami implementasi proses desain secara nyata.
+\subsection{\textit{Frontend} dengan Next.js}
 
-\subsection{Teknik Evaluasi dan Optimasi Desain}
-Teknik evaluasi dan optimasi desain merupakan langkah penting dalam proses desain yang berkelanjutan. Bagian ini menjelaskan metode yang digunakan untuk mengevaluasi dan menyempurnakan desain agar mencapai hasil terbaik.
+Next.js adalah kerangka kerja React yang dikembangkan oleh Vercel untuk membangun aplikasi web dengan kemampuan \textit{rendering} yang fleksibel \citep{Nextjs_2024_Docs}. Next.js memperluas kemampuan React dengan menyediakan fitur-fitur seperti \textit{Server-Side Rendering} (SSR), \textit{Static Site Generation} (SSG), \textit{Incremental Static Regeneration} (ISR), dan sistem \textit{routing} berbasis \textit{file system}. Kombinasi fitur-fitur ini memungkinkan pengembang untuk mengoptimalkan performa aplikasi sesuai dengan kebutuhan masing-masing halaman.
 
-\section{Penelitian Terdahulu yang Relevan}
-Bagian ini berisi ulasan terhadap penelitian terdahulu yang relevan dengan proyek ini. Tujuannya adalah untuk melihat pendekatan yang telah digunakan, menemukan kelebihan dan kekurangannya, serta mengidentifikasi inovasi yang dapat dikembangkan.
+React.js sendiri adalah pustaka JavaScript untuk membangun antarmuka pengguna yang dikembangkan oleh Meta (sebelumnya Facebook) dan dirilis sebagai sumber terbuka pada tahun 2013 \citep{React_2024_Docs}. React menggunakan pendekatan berbasis komponen (\textit{component-based}) yang memungkinkan pengembang membangun UI dari potongan-potongan kode yang terisolasi dan dapat digunakan kembali \citep{Gackenheimer_2023_React}. Konsep utama React meliputi: (1)~\textit{Virtual DOM} yang mengoptimalkan pembaruan UI dengan meminimalkan manipulasi DOM langsung; (2)~JSX (\textit{JavaScript XML}) yang memungkinkan penulisan markup dalam kode JavaScript; (3)~\textit{unidirectional data flow} yang membuat aliran data lebih mudah diprediksi; serta (4)~\textit{hooks} yang memungkinkan penggunaan state dan fitur React lainnya dalam komponen fungsional.
 
-\subsection{Tinjauan Penelitian Terdahulu tentang Proyek Serupa}
-Bagian ini membahas penelitian terdahulu yang serupa dengan proyek ini. Tinjauan ini bertujuan untuk memahami bagaimana proyek ini dapat memberikan kontribusi yang berbeda atau lebih baik.
+\subsubsection{TypeScript}
 
-\subsection{Analisis Kekurangan dan Kelebihan Metode pada Penelitian Terdahulu}
-Setiap metode yang digunakan dalam penelitian terdahulu memiliki kelebihan dan kekurangan. Bagian ini mengidentifikasi aspek yang perlu diperbaiki atau dikembangkan lebih lanjut berdasarkan analisis metode-metode tersebut.
+TypeScript adalah bahasa pemrograman sumber terbuka yang dikembangkan dan dipelihara oleh Microsoft sejak tahun 2012 \citep{TypeScript_2024_Docs}. TypeScript merupakan \textit{superset} dari JavaScript yang menambahkan sistem tipe statis opsional dan fitur-fitur pemrograman berorientasi objek yang lebih kaya. Kode TypeScript dikompilasi (\textit{transpiled}) menjadi JavaScript murni yang dapat dijalankan di berbagai lingkungan seperti browser, Node.js, atau \textit{runtime} JavaScript lainnya.
 
-\subsection{Inovasi dan Kontribusi yang Dibawa dalam Penelitian Ini}
-Penelitian ini membawa inovasi tertentu yang berkontribusi dalam memperkaya hasil penelitian sebelumnya. Bagian ini menjelaskan kontribusi utama proyek ini terhadap bidang elektronika, serta perbedaan yang ditawarkan.
+Sistem tipe TypeScript memungkinkan pendeteksian kesalahan pada waktu kompilasi daripada waktu eksekusi, yang secara signifikan meningkatkan keandalan kode \citep{Bierman_2014_TypeScript}. Fitur-fitur utama TypeScript meliputi: (1)~anotasi tipe untuk variabel, parameter fungsi, dan nilai kembalian; (2)~\textit{interfaces} dan \textit{type aliases} untuk mendefinisikan bentuk objek; (3)~\textit{generics} untuk membuat komponen yang dapat bekerja dengan berbagai tipe; (4)~\textit{enums} untuk mendefinisikan sekumpulan konstanta bernama; serta (5)~dukungan \textit{IntelliSense} yang lebih baik di \textit{Integrated Development Environment} (IDE). Dalam pengembangan aplikasi \textit{frontend} dengan Next.js, penggunaan TypeScript meningkatkan \textit{maintainability} kode, memudahkan \textit{refactoring}, dan memperbaiki kolaborasi tim melalui dokumentasi tipe yang eksplisit.
+
+\subsubsection{\textit{Clean Architecture}}
+
+\textit{Clean Architecture} adalah pendekatan arsitektur perangkat lunak yang diperkenalkan oleh Robert C. Martin (Uncle Bob) yang menekankan pemisahan kepentingan (\textit{separation of concerns}) dan independensi dari \textit{framework}, basis data, serta antarmuka pengguna \citep{Martin_2017_CleanArchitecture}. Prinsip utama \textit{Clean Architecture} adalah \textit{Dependency Rule} yang menyatakan bahwa dependensi kode sumber hanya boleh mengarah ke dalam, menuju kebijakan tingkat tinggi (\textit{high-level policies}).
+
+Arsitektur ini mengorganisasi kode ke dalam beberapa lapisan konsentris dengan tanggung jawab yang berbeda. Lapisan terdalam adalah \textit{Domain} (atau \textit{Entities}) yang berisi logika bisnis inti dan aturan bisnis yang paling umum. Lapisan \textit{Application} (atau \textit{Use Cases}) berisi logika aplikasi spesifik yang mengorkestrasi aliran data ke dan dari entitas. Lapisan \textit{Infrastructure} (atau \textit{Interface Adapters}) berisi implementasi konkret dari antarmuka yang didefinisikan di lapisan dalam, seperti repositori basis data atau klien API. Lapisan terluar adalah \textit{Presentation} (atau \textit{Frameworks and Drivers}) yang berisi detail implementasi seperti kerangka kerja UI atau pustaka eksternal.
+
+Dalam penelitian ini, \textit{Clean Architecture} diterapkan melalui struktur direktori yang mencerminkan lapisan-lapisan tersebut: direktori \texttt{domain} untuk entitas dan aturan bisnis, \texttt{application} untuk \textit{use cases} dan layanan aplikasi, \texttt{infrastructure} untuk implementasi repositori dan integrasi API, serta \texttt{presentation} untuk komponen React dan halaman Next.js. Pemisahan ini meningkatkan modularitas dan memungkinkan perubahan pada satu lapisan tanpa memengaruhi lapisan lainnya.
+
+\subsection{\textit{Deployment} dengan Kubernetes dan GitOps}
+
+\subsubsection{Komputasi Awan}
+
+Dalam operasional hariannya, INFINITE telah memanfaatkan komputasi awan untuk menjalankan berbagai sistem aplikasi yang dimiliki. Menurut National Institute of Standards and Technology (NIST), komputasi awan atau \textit{cloud computing} adalah suatu model yang memungkinkan akses secara \textit{on-demand} melalui jaringan kepada sekumpulan sumber daya komputasi bersama yang dapat disediakan dan dilepaskan dengan cepat. Karakteristik utama dari komputasi awan meliputi: (1)~layanan mandiri sesuai kebutuhan, pengguna dapat mengalokasikan sumber daya komputasi secara terprogram tanpa interaksi manusia; (2)~akses jaringan luas, tersedia melalui jaringan standar yang mendukung berbagai platform pengguna; (3)~penggabungan sumber daya, pengelolaan sumber daya dilakukan secara terpusat dengan model \textit{multi-tenant}; (4)~elastisitas cepat, memungkinkan penyediaan dan pelepasan sumber daya secara dinamis sesuai beban kerja; dan (5)~layanan terukur, optimasi penggunaan sumber daya melalui mekanisme pengukuran yang transparan \citep{Mell_2011_CloudComputing}. Secara umum, layanan komputasi awan terbagi ke dalam 3 model, yaitu \textit{Infrastructure as a Service} (IaaS), \textit{Platform as a Service} (PaaS), dan \textit{Software as a Service} (SaaS). IaaS menyediakan sumber daya komputasi dasar seperti mesin virtual, penyimpanan, dan jaringan; PaaS menyediakan platform untuk pengembangan aplikasi yang mencakup sistem operasi, \textit{runtime}, dan alat pengembangan; sedangkan SaaS menyediakan aplikasi siap pakai yang dapat diakses melalui web tanpa perlu instalasi lokal \citep{Younis_2024_Comprehensive}.
+
+\subsubsection{Kontainer dan Kubernetes}
+
+Seiring dengan adopsi komputasi awan yang meluas, tantangan utama yang dihadapi organisasi bergeser dari penyediaan infrastruktur ke pengelolaan kompleksitas sistem terdistribusi. Untuk mengatasi tantangan ini, platform orkestrasi seperti Kubernetes telah menjadi fondasi penting dalam membangun dan mengelola aplikasi \textit{cloud-native} yang skalabel dan dapat diandalkan. Kubernetes adalah platform orkestrasi kontainer sumber terbuka yang awalnya dikembangkan oleh Google berdasarkan pengalaman mengelola sistem berskala besar melalui proyek internal Borg \citep{Burns_2016_Borg}. Platform ini menyediakan abstraksi deklaratif untuk mengelola siklus hidup aplikasi terkontainerisasi, termasuk penjadwalan otomatis, penskalaan horizontal, pemulihan mandiri, penemuan layanan, serta penyeimbangan beban. Kubernetes mengorganisasi sumber daya dalam unit-unit seperti \textit{Pod} (unit terkecil yang dapat dijadwalkan), \textit{Deployment} (manajemen replika dan pembaruan), \textit{Service} (abstraksi jaringan), dan \textit{Namespace} (isolasi logis) \citep{Burns_2019_Kubernetes}. Hingga kini, adopsi Kubernetes telah meningkat sangat pesat. Survei Cloud Native Computing Foundation (CNCF) pada tahun 2025 menunjukkan bahwa 82\% organisasi telah menggunakan Kubernetes dalam lingkungan produksi \citep{CNCF_2026_Kubernetes}.
+
+\subsubsection{\textit{Continuous Integration/Continuous Deployment} (CI/CD)}
+
+\textit{Continuous Integration} (CI) dan \textit{Continuous Deployment} (CD) adalah praktik pengembangan perangkat lunak yang bertujuan untuk mengotomatisasi dan mempercepat siklus rilis perangkat lunak \citep{Shahin_2017_CICD}. CI mengacu pada praktik mengintegrasikan perubahan kode dari beberapa kontributor ke dalam repositori bersama secara sering, biasanya beberapa kali sehari, disertai dengan \textit{build} dan pengujian otomatis untuk mendeteksi kesalahan sedini mungkin. CD memperluas CI dengan mengotomatisasi proses \textit{deployment} ke lingkungan produksi atau \textit{staging}. Terdapat dua varian CD: \textit{Continuous Delivery} yang mengotomatisasi proses hingga siap di-\textit{deploy} namun memerlukan persetujuan manual, dan \textit{Continuous Deployment} yang sepenuhnya otomatis hingga produksi \citep{HumbleFarley_2017_CD}.
+
+\subsubsection{GitHub Actions}
+
+GitHub Actions adalah platform CI/CD yang terintegrasi langsung dengan GitHub, memungkinkan otomatisasi alur kerja pengembangan perangkat lunak \citep{GitHubActions_2024_Docs}. Alur kerja (\textit{workflow}) didefinisikan dalam berkas YAML yang disimpan di direktori \texttt{.github/workflows/} dan dapat dipicu oleh berbagai \textit{event} seperti \textit{push}, \textit{pull request}, atau jadwal \textit{cron}. Dalam proyek ini, GitHub Actions digunakan untuk membangun \textit{container image} dari \textit{backend} Laravel dan \textit{frontend} Next.js setiap kali ada perubahan kode yang di-\textit{push} ke repositori.
+
+\subsubsection{GitOps dengan ArgoCD}
+
+GitOps adalah paradigma operasional yang menggunakan Git sebagai sumber kebenaran tunggal (\textit{single source of truth}) untuk infrastruktur deklaratif dan aplikasi \citep{Weaveworks_2017_GitOps}. Prinsip utama GitOps meliputi: (1)~konfigurasi sistem dideskripsikan secara deklaratif; (2)~status sistem yang diinginkan disimpan di Git; (3)~perubahan yang disetujui diterapkan secara otomatis ke sistem; dan (4)~agen perangkat lunak memastikan kebenaran dan melaporkan penyimpangan \citep{Limoncelli_2018_GitOps}. ArgoCD adalah alat GitOps sumber terbuka untuk Kubernetes yang secara kontinu memantau repositori Git dan menyinkronkan status klaster Kubernetes agar sesuai dengan konfigurasi yang didefinisikan \citep{ArgoCD_2024_Docs}. ArgoCD menyediakan fitur seperti deteksi \textit{drift}, \textit{rollback} otomatis, serta antarmuka web untuk visualisasi dan manajemen aplikasi.
+
+\subsection{Perangkat Lunak dan Kerangka Kerja}
+
+\subsubsection{Model Pengembangan Perangkat Lunak}
+
+Penelitian ini mengadopsi model \textit{Research and Development} (R\&D) sebagai landasan metodologis untuk pengembangan \textit{framework} LEAF. Metode R\&D merupakan pendekatan penelitian yang bertujuan menghasilkan produk tertentu melalui proses yang sistematis, yang mencakup tahap penelitian awal, pengembangan produk, dan validasi \citep{Sugiyono_2013_RnD}. Dalam konteks rekayasa pendidikan dan teknologi, \citet{BorgGall_2003_Educational} mendeskripsikan siklus R\&D yang terdiri dari sepuluh langkah utama: (1)~penelitian dan pengumpulan informasi, (2)~perencanaan, (3)~pengembangan bentuk awal produk, (4)~uji coba lapangan awal, (5)~revisi produk utama, (6)~uji coba lapangan utama, (7)~revisi produk operasional, (8)~uji coba lapangan operasional, (9)~revisi produk akhir, dan (10)~diseminasi dan implementasi. Dalam penelitian ini, siklus tersebut diadaptasi sesuai dengan konteks pengembangan \textit{framework} perangkat lunak.
+
+Secara umum, proses pengembangan perangkat lunak mengikuti siklus hidup pengembangan sistem (\textit{Software Development Life Cycle}/SDLC) yang menyediakan kerangka kerja terstruktur untuk perencanaan, pembuatan, pengujian, dan penyebaran sistem perangkat lunak \citep{Pressman_2014_SE}. \citet{Sommerville_2016_SE} mengidentifikasi aktivitas fundamental dalam SDLC yang meliputi spesifikasi kebutuhan, desain dan implementasi, validasi, serta evolusi perangkat lunak. Dalam penelitian ini, tahapan SDLC diintegrasikan ke dalam kerangka R\&D: fase penelitian R\&D mencakup analisis kebutuhan dan studi literatur, fase pengembangan mencakup desain arsitektur dan implementasi \textit{framework}, dan fase validasi mencakup pengujian fungsional serta evaluasi kualitas perangkat lunak berdasarkan standar yang telah ditetapkan.
+
+\subsubsection{Pengujian Kualitas Perangkat Lunak}
+
+Pengujian kualitas perangkat lunak dalam penelitian ini mengacu pada standar internasional ISO/IEC 25010:2023, yang merupakan bagian dari rangkaian standar \textit{Systems and Software Quality Requirements and Evaluation} (SQuaRE) \citep{ISO25010_2011}. Model kualitas ISO/IEC 25010 mendefinisikan delapan karakteristik kualitas produk perangkat lunak, yaitu: (1)~\textit{functional suitability} (kesesuaian fungsional), (2)~\textit{performance efficiency} (efisiensi kinerja), (3)~\textit{compatibility} (kompatibilitas), (4)~\textit{usability} (kebergunaan), (5)~\textit{reliability} (keandalan), (6)~\textit{security} (keamanan), (7)~\textit{maintainability} (kemudahan pemeliharaan), dan (8)~\textit{portability} (portabilitas). Masing-masing karakteristik terdiri dari beberapa sub-karakteristik yang lebih spesifik.
+
+Dalam konteks evaluasi \textit{framework} LEAF, empat karakteristik kualitas dipilih sebagai kriteria utama berdasarkan relevansinya dengan tujuan dan sifat produk yang dikembangkan:
+\begin{enumerate}
+    \item \textbf{\textit{Functional Suitability}} (Kesesuaian Fungsional): mengukur sejauh mana perangkat lunak menyediakan fungsi-fungsi yang memenuhi kebutuhan yang dinyatakan dan tersirat ketika digunakan dalam kondisi tertentu. Karakteristik ini mencakup sub-karakteristik \textit{functional completeness}, \textit{functional correctness}, dan \textit{functional appropriateness}. Untuk LEAF, hal ini mencakup kemampuan \textit{framework} dalam mendefinisikan agen secara deklaratif, mengorkestrasi alur kerja multi-agen, dan mengintegrasikan sumber data \textit{observability} melalui MCP/A2A.
+    \item \textbf{\textit{Usability}} (Kebergunaan): mengukur sejauh mana perangkat lunak dapat digunakan oleh pengguna tertentu untuk mencapai tujuan tertentu dengan efektivitas, efisiensi, dan kepuasan. Karakteristik ini sangat relevan karena tujuan utama LEAF adalah menurunkan hambatan masuk bagi pengguna non-programmer melalui pendekatan \textit{low-code} deklaratif.
+    \item \textbf{\textit{Maintainability}} (Kemudahan Pemeliharaan): mengukur tingkat efektivitas dan efisiensi perangkat lunak dapat dimodifikasi untuk diperbaiki, ditingkatkan, atau diadaptasi. Sub-karakteristik yang relevan meliputi \textit{modularity}, \textit{reusability}, \textit{analysability}, \textit{modifiability}, dan \textit{testability}. Arsitektur modular LEAF yang berbasis protokol standar diharapkan mendukung kemudahan pemeliharaan yang tinggi.
+    \item \textbf{\textit{Portability}} (Portabilitas): mengukur tingkat efektivitas dan efisiensi perangkat lunak dapat dipindahkan dari satu lingkungan perangkat keras, perangkat lunak, atau lingkungan operasional ke lingkungan lainnya. Penggunaan format manifes deklaratif (YAML/JSON) dan \textit{containerization} via Docker/Kubernetes mendukung portabilitas lintas platform.
+\end{enumerate}
+
+\section{Hasil Penelitian yang Relevan}
+
+Lorem ipsum (lewati dulu)
+
+\section{Kerangka Pikir}
+
+Lorem ipsum
+
+\section{Pertanyaan Penelitian}
+
+Berdasarkan kajian teori, analisis hasil penelitian yang relevan, dan kerangka pikir yang telah diuraikan pada bagian-bagian sebelumnya, pertanyaan penelitian yang akan dijawab melalui penelitian ini adalah:
+\begin{enumerate}
+    \item Bagaimana merancang arsitektur \textit{framework} agentik \textit{low-code} yang memanfaatkan protokol standar MCP dan A2A untuk interoperabilitas?
+    \item Bagaimana menyusun spesifikasi format manifes deklaratif yang memungkinkan definisi agen tanpa pemrograman?
+    \item Bagaimana mengimplementasikan dan memvalidasi \textit{framework} tersebut pada domain \textit{observability} Kubernetes dan operasi SRE?
+\end{enumerate}

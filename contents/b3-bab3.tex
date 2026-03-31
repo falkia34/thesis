@@ -3,87 +3,258 @@
 % Silahkan edit sesuai kebutuhan, baik menambah atau mengurangi \section, \subsection
 %==================================================================
 
-\chapter[KONSEP RANCANGAN ALAT DAN PENGUJIAN]{\\ KONSEP RANCANGAN ALAT DAN PENGUJIAN}
+\chapter[METODE PENELITIAN]{\\ METODE PENELITIAN}
 
-\section{Metode Pengerjaan Project Berbasis Engineering Design Process}
-Bagian ini menjelaskan metode pengerjaan proyek yang mengadopsi pendekatan Engineering Design Process. Pendekatan ini digunakan untuk memastikan perancangan dan pengembangan proyek dilakukan secara sistematis, mulai dari identifikasi masalah hingga evaluasi akhir. Langkah-langkah dalam metode ini membantu dalam mencapai solusi yang optimal dan terukur.
+\section{Jenis Penelitian}
 
-\subsection{Identifikasi Masalah}
-Tahap identifikasi masalah bertujuan untuk menguraikan permasalahan utama yang dihadapi dan memerlukan solusi. Pada tahap ini, dilakukan analisis untuk memahami aspek-aspek penting dari masalah dan menentukan faktor-faktor yang perlu diatasi melalui proyek ini.
+Penelitian ini menggunakan metode \textit{Research and Development} (R\&D). Menurut \citet{Sugiyono_2013_RnD}, metode R\&D adalah suatu metode penelitian yang digunakan untuk menghasilkan produk tertentu dan menguji keefektifan produk tersebut. Metode ini dipilih karena tujuan utama penelitian ini adalah mengembangkan sebuah produk berupa kerangka kerja perangkat lunak, yaitu \textit{Low-code Extensible Agentic Framework} (LEAF).
+Kerangka kerja ini memungkinkan pengguna mendefinisikan dan mengorkestrasi agen AI secara deklaratif melalui manifes YAML/JSON, dengan memanfaatkan protokol standar \textit{Model Context Protocol} (MCP) dan \textit{Agent-to-Agent} (A2A) untuk interoperabilitas.
 
-\subsection{Definisi Kebutuhan}
-Berdasarkan masalah yang telah diidentifikasi, tahap ini berfokus pada definisi kebutuhan proyek secara jelas dan terstruktur. Kebutuhan ini meliputi spesifikasi teknis, fungsi yang diinginkan, serta kriteria-kriteria lain yang harus dipenuhi agar solusi dapat berfungsi dengan baik.
+Proses pengembangan produk dilaksanakan menggunakan model \textit{Waterfall} sebagai siklus hidup pengembangan perangkat lunak, yang diperkenalkan pertama kali oleh \citet{Royce_1970_Waterfall} dan dikembangkan lebih lanjut dalam literatur rekayasa perangkat lunak modern \citep{Pressman_2014_SE, Sommerville_2016_SE}. Model \textit{Waterfall} dipilih dibandingkan model pengembangan lainnya seperti \textit{Agile} karena memiliki alur kerja yang sistematis dah bertahap, serta cocok untuk proyek yang sudah didefinisikan dengan baik dan juga  stabil \citep{Haniva_2023_Waterfall}.
 
-\subsection{Generasi Ide dan Solusi}
-Pada tahap ini, berbagai ide dan solusi alternatif dikembangkan dan dievaluasi. Bagian ini menjelaskan proses brainstorming untuk menghasilkan ide yang inovatif, termasuk analisis terhadap kelebihan dan kekurangan dari setiap alternatif solusi yang diusulkan.
+\begin{figure}[ht]
+    \centering
+    \usetikzlibrary{shapes.geometric, positioning}
+    \begin{tikzpicture}[
+            node distance=0.8cm and -0.5cm,
+            block/.style={
+                    rectangle,
+                    thick,
+                    rounded corners=1em,
+                    draw=black,
+                    fill=white,
+                    align=center,
+                    font=\fontsize{10.5}{12}\selectfont,
+                    minimum height=3em,
+                    minimum width=7em,
+                    text width=6em,
+                    inner sep=0.5em
+                },
+            line/.style={
+                    draw,
+                    thick,
+                    ->,
+                    >=stealth,
+                    shorten >=1pt,
+                    rounded corners=1pt
+                }
+        ]
 
-\subsection{Perencanaan dan Desain Awal}
-Desain awal sistem dikembangkan berdasarkan solusi yang dipilih, dengan mempertimbangkan aspek teknis dan kebutuhan yang telah didefinisikan. Bagian ini menyajikan perencanaan mengenai struktur sistem, alat, dan bahan yang akan digunakan, serta jadwal kerja proyek secara keseluruhan.
+        % Nodes
+        \node [block] (req) {Requirement Definition};
+        \node [block, below right=of req] (sys) {System and Software Design};
+        \node [block, below right=of sys] (imp) {Implementation and Unit Testing};
+        \node [block, below right=of imp] (int) {Integration and System Testing};
+        \node [block, below right=of int] (ops) {Operation and Maintenance};
 
-\subsection{Pembuatan Prototipe}
-Prototipe dibuat untuk menguji konsep dan desain awal dari sistem. Bagian ini menguraikan langkah-langkah dalam proses pembuatan prototipe, termasuk alat dan bahan yang diperlukan, serta tantangan yang mungkin dihadapi selama proses.
+        % Sequential arrows
+        \path [line] (req.east) -| (sys.north);
+        \path [line] (sys.east) -| (imp.north);
+        \path [line] (imp.east) -| (int.north);
+        \path [line] (int.east) -| (ops.north);
 
-\subsection{Pengujian dan Evaluasi}
-Prototipe yang telah dibuat kemudian diuji untuk menilai kinerjanya terhadap kebutuhan dan spesifikasi yang telah ditetapkan. Bagian ini menjelaskan prosedur pengujian yang diterapkan, metode pengumpulan data, serta analisis terhadap hasil yang diperoleh.
+        % Back arrows
+        \path [line] (ops.west) -| (req.south);
+        \path [line] (ops.west) -| (sys.south);
+        \path [line] (ops.west) -| (imp.south);
+        \path [line] (ops.west) -| (int.south);
+    \end{tikzpicture}
+    \caption{Diagram model \textit{Waterfall}}
+    \label{fig:waterfall}
+\end{figure}
 
-\subsection{Perbaikan dan Penyempurnaan}
-Berdasarkan hasil pengujian dan evaluasi, dilakukan perbaikan untuk menyempurnakan sistem. Bagian ini menjelaskan penyesuaian yang dilakukan untuk meningkatkan kinerja sistem, serta proses iterasi yang dilakukan hingga mencapai hasil yang optimal.
+Pada model ini, terdapat lima tahap yang dilaksanakan secara berurutan: ~(1) \textit{Requirements Definition}, ~(2) \textit{System and Software Design}, ~(3) \textit{Implementation and Unit Testing}, ~(4) \textit{Integration and System Testing}, dan ~(5) \textit{Operation and Maintenance}, sebagaimana yang diilustrasikan pada Gambar~\ref{fig:waterfall}. Masing-masing tahap menghasilkan artefak yang menjadi masukan bagi tahap berikutnya, sehingga tidak memungkinkan melewati salah satu tahap langsung ke tahap selanjutnya. Tahapan yang dilakukan pada penelitian ini terbatas hingga tahap keempat (\textit{Integration and System Testing}), sedangkan tahap kelima (\textit{Operation and Maintenance}) dilakukan ketika nantinya digunakan secara nyata dan terdapat peerkembangan kebutuhan dari pengguna.
 
-\section{Perancangan Sistem Elektronika}
-Bagian ini menguraikan perancangan dari sisi elektronika yang menjadi inti dari sistem. Perancangan ini mencakup blok diagram, pemilihan komponen, dan perancangan rangkaian.
+\section{Metode Penelitian}
 
-\subsection{Blok Diagram Sistem}
-Blok diagram sistem memberikan gambaran umum mengenai arsitektur sistem secara keseluruhan. Bagian ini menyajikan diagram beserta penjelasan fungsi setiap blok yang terdapat di dalam sistem, termasuk bagaimana setiap blok berinteraksi.
+\subsection{\textit{Requirements Definition}}
 
-\subsection{Pemilihan dan Spesifikasi Komponen Elektronika}
-Pemilihan komponen elektronika dilakukan berdasarkan kebutuhan dari desain sistem. Bagian ini menjelaskan spesifikasi teknis dari setiap komponen yang digunakan, seperti mikrokontroler, sensor, aktuator, dan komponen pendukung lainnya.
+Tahap \textit{requirements definition} bertujuan untuk mengidentifikasi dan mendokumentasikan kebutuhan fungsional maupun non-fungsional dari LEAF. Pada tahap ini, digunakan metode kuesioner yang ditujukan kepada para ahli \textit{cloud computing}, SRE, \textit{system administrator}, dan peran serupa lainnya untuk mengumpulkan kebutuhan dari perspektif ahli bidang. Kuesioner dirancang untuk mengevaluasi kebutuhan terkait fitur inti kerangka kerja seperti definisi deklaratif, integrasi MCP/A2A, orkestrasi multi-agen, serta kebutuhan non-fungsional seperti interoperabilitas, ekstensibilitas, dan kemudahan penggunaan.
 
-\subsection{Perancangan Rangkaian Elektronika}
-Perancangan rangkaian elektronika bertujuan untuk mencapai fungsionalitas yang diinginkan dari sistem. Bagian ini menguraikan skema rangkaian, penjelasan aliran arus dan tegangan, serta hubungan antar komponen dalam sistem.
+\subsection{\textit{System and Software Design}}
 
-\section{Perancangan Mekanik}
-Bagian ini membahas perancangan mekanik dari sistem yang mendukung komponen elektronik secara fisik, termasuk struktur dan pemilihan bahan.
+Berdasarkan kebutuhan yang telah diidentifikasi pada tahap sebelumnya, dilakukan tahap \textit{System and Software Design} untuk menerjemahkan kebutuhan tersebut menjadi arsitektur dan spesifikasi teknis LEAF. Proses desain dilakukan dengan pendekatan \textit{top-down}, dimulai dari perancangan arsitektur sistem keseluruhan hingga spesifikasi antarmuka. Aktivitas desain mencakup 2 aspek utama:
+\begin{enumerate}[label=\alph*.]
+    \item Desain sistem: Perancangan desain sistem yang mencakup arsitektur komponen-komponen utama kerangka kerja, seperti tipe dan hierarki agen, serta aturan kapabilitas masing-masing tipe agen. Desain sistem juga mencakup perancangan pola orkestrasi dan koordinasi multi-agen.
+    \item Desain antarmuka: Perancangan antarmuka mencakup antarmuka pengguna serta antarmuka sistem.
+          \begin{itemize}
+              \item Untuk antarmuka pengguna, meliputi desain format manifes deklaratif (YAML/JSON) untuk mendefinikan agen serta peralatan, dengan fokus pada kemudahan penggunaan dan kejelasan struktur.
+              \item Untuk antarmuka sistem meliputi desain komunikasi antar agen dengan protokol A2A, serta desain komunikasi ke server peralatan dengan protokol MCP.
+          \end{itemize}
+\end{enumerate}
 
-\subsection{Spesifikasi Desain Mekanik}
-Desain mekanik disusun berdasarkan kebutuhan fisik sistem untuk memastikan bahwa komponen elektronika terlindungi dan dapat berfungsi dengan baik. Bagian ini menjelaskan spesifikasi teknis desain mekanik yang digunakan.
+\subsection{\textit{Implementation and Unit Testing}}
 
-\subsection{Pemilihan Bahan dan Komponen Mekanik}
-Pemilihan bahan didasarkan pada kriteria seperti kekuatan, ketahanan, dan biaya. Bagian ini menguraikan bahan dan komponen mekanik yang digunakan untuk konstruksi sistem, serta alasan pemilihan bahan tersebut.
+Pada tahap \textit{implementation and unit testing} ini, desain pada tahap sebelumnya direalisasikan menjadi kode program kerangka kerja yang fungsional. Implementasi kerangka kerja LEAF pada penelitian ini dilakukan menggunakan bahasa pemrograman Python dan \textit{library} Google ADK yang mendukung integrasi \textit{native} dengan MCP dan A2A. Sedangkan untuk implementasi manifest, dibuat standar format YAML/JSON menggunakan JSON Schema untuk memudahkan validasi struktur manifest bagi pengguna.
 
-\subsection{Desain Struktur dan Konstruksi}
-Struktur dan konstruksi sistem dirancang untuk memberikan dukungan fisik yang stabil. Bagian ini menjelaskan proses desain dan konstruksi dari struktur mekanik sistem, serta tantangan yang mungkin dihadapi.
+\subsection{\textit{Integration and System Testing}}
 
-\section{Perancangan Perangkat Lunak}
-Bagian ini mencakup perancangan perangkat lunak yang mengendalikan sistem, meliputi diagram alir, pengembangan kode, dan pengujian perangkat lunak.
+Pengujian kerangka kerja LEAF pada tahap ini dilakukan dengan metode \textit{black-box}, yaitu dengan mengimplementasikan kerangka kerja LEAF dalam studi kasus pembuatan agen AI untuk bidang \textit{observability} Kubernetes dan operasi SRE. Berdasarkan implementasi tersebut, dilakukan validasi dan evaluasi untuk memastikan bahwa kerangka kerja memenuhi kebutuhan yang telah ditetapkan. Pengujian dilakukan berdasarkan standar kualitas ISO/IEC 25010:2023, dengan pemfokusan pada aspek \textit{Functional Suitability}, \textit{Compatibility}, \textit{Interaction Capability}, and \textit{Flexibility} yang relevan dengan karakteristik produk yang dikembangkan.
 
-\subsection{Flowchart atau Diagram Alir Perangkat Lunak}
-Diagram alir menggambarkan alur kerja dari perangkat lunak yang mengontrol sistem. Bagian ini menyajikan flowchart lengkap yang menunjukkan logika dan struktur kontrol dari perangkat lunak.
+\section{Tempat dan Waktu Penelitian}
 
-\subsection{Pemrograman dan Pengembangan Kode}
-Kode perangkat lunak dikembangkan untuk mendukung fungsionalitas sistem. Bagian ini menguraikan struktur dan logika dari program yang dibuat, bahasa pemrograman yang digunakan, serta strategi pengembangan kode.
+Penelitian dilakukan di Fakultas Teknik, Universitas Negeri Yogyakarta serta secara daring. Pengembangan kerangka kerja LEAF dan pengujian dilaksanakan menggunakan infrastruktur komputasi awan dan klaster Kubernetes yang dapat diakses secara jarak jauh. Tahapan penelitian secara keseluruhan dilaksanakan dalam jangka waktu bulan Maret--Mei tahun 2026, dengan jadwal yang dipetakan terhadap tahapan model \textit{Waterfall} sebagamana yang dapat diamati pada Tabel~\ref{tab:jadwal}.
 
-\subsection{Pengujian Kode Perangkat Lunak}
-Setelah kode perangkat lunak dikembangkan, dilakukan pengujian untuk memastikan bahwa perangkat lunak berfungsi sesuai yang diharapkan. Bagian ini menjelaskan metode pengujian, jenis uji (misalnya, uji unit dan uji integrasi), serta hasil yang diperoleh.
+\begin{table}[ht]
+    \centering
+    \caption{Jadwal Pelaksanaan Penelitian}
+    \label{tab:jadwal}
+    \small
+    \begin{tabular}{|l|c|c|c|c|c|c|c|c|c|c|c|c|}
+        \hline
+        \multirow{2}{*}{\textbf{Kegiatan}}       & \multicolumn{4}{c|}{\textbf{Maret}} & \multicolumn{4}{c|}{\textbf{April}} & \multicolumn{4}{c|}{\textbf{Mei}}                                                                                                             \\
+        \cline{2-13}
+                                                 & 1                                   & 2                                   & 3                                 & 4         & 1         & 2         & 3         & 4         & 1         & 2         & 3         & 4         \\
+        \hline
+        \textit{Requirements Definition}         & $\bullet$                           & $\bullet$                           &                                   &           &           &           &           &           &           &           &           &           \\
+        \hline
+        \textit{System and Software Design}      &                                     & $\bullet$                           & $\bullet$                         & $\bullet$ &           &           &           &           &           &           &           &           \\
+        \hline
+        \textit{Implementation and Unit Testing} &                                     &                                     &                                   & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ &           &           &           &           \\
+        \hline
+        \textit{Integration and System Testing}  &                                     &                                     &                                   &           &           &           &           & $\bullet$ & $\bullet$ & $\bullet$ &           &           \\
+        \hline
+        Penyusunan Laporan                       & $\bullet$                           & $\bullet$                           & $\bullet$                         & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ \\
+        \hline
+    \end{tabular}
+\end{table}
 
-\section{Perancangan Integrasi Sistem}
-Bagian ini menjelaskan proses integrasi antara komponen elektronik, mekanik, dan perangkat lunak agar sistem dapat bekerja sebagai satu kesatuan.
+\section{Subjek Penelitian}
 
-\subsection{Integrasi Komponen Elektronika, Mekanik, dan Perangkat Lunak}
-Proses integrasi bertujuan untuk menyatukan seluruh komponen sistem agar berfungsi sebagai satu kesatuan. Bagian ini menguraikan langkah-langkah dalam proses integrasi dan memastikan semua komponen bekerja secara sinkron.
+Subjek penelitian ini terdiri dari para ahli yang berperan sebagai validator dan evaluator untuk hasil pengembangan kerangka kerja LEAF serta implementasinya dalam studi kasus \textit{observability} Kubernetes dan operasi SRE. Pengujian dilakukan terhadap aspek \textit{Functional Suitability}, \textit{Compatibility}, \textit{Interaction Capability}, dan \textit{Flexibility} yang telah ditetapkan kepada 5 responden ahli terpilih. Pemilihan responden ahli didasarkan pada latar belakang profesional dan pengalaman mereka dalam bidang terkait, yaitu praktisi \textit{cloud computing}, SRE, \textit{system administrator}, dan peran serupa lainnya.
 
-\subsection{Pengujian Awal dan Penyempurnaan Integrasi}
-Pengujian awal dilakukan setelah integrasi untuk menilai performa sistem secara keseluruhan. Bagian ini menjelaskan hasil pengujian integrasi dan modifikasi yang diperlukan untuk meningkatkan kinerja sistem.
+\section{Metode Pengumpulan Data}
 
-\section{Rencana Pengujian}
-Bagian ini merencanakan pengujian yang komprehensif terhadap sistem untuk memastikan bahwa semua komponen dan fungsi bekerja dengan baik.
+Data yang dikumpulkan dalam penelitian pengembangan kerangka kerja LEAF ini terdiri dari data primer dan data sekunder. Metode pengumpulan data yang digunakan adalah sebagai berikut.
 
-\subsection{Metode Pengujian Sistem}
-Metode pengujian dipilih berdasarkan tujuan dan kebutuhan proyek. Bagian ini menjelaskan berbagai metodologi pengujian yang dirancang, seperti uji kinerja, uji stabilitas, dan uji kompatibilitas.
+\subsection{Studi Pustaka}
 
-\subsection{Prosedur Pengujian}
-Prosedur pengujian disusun untuk menguji sistem secara menyeluruh, mulai dari pengaturan awal hingga pelaksanaan uji. Bagian ini menjelaskan langkah-langkah pengujian secara detail untuk menjamin konsistensi dan keandalan hasil.
+Studi pustaka dilakukan untuk mengumpulkan data sekunder berupa teori, konsep, dan temuan dari penelitian-penelitian terdahulu yang relevan. Sumber pustaka meliputi jurnal ilmiah internasional, buku teks, dokumentasi teknis standar (seperti protokol A2A dan MCP), dan publikasi dari organisasi seperti CNCF dan Linux Foundation. Hasil studi pustaka menjadi dasar untuk menetapkan kebutuhan kerangka kerja pada tahap \textit{Requirement Analysis}.
 
-\subsection{Kriteria Keberhasilan Pengujian}
-Kriteria keberhasilan ditentukan untuk mengevaluasi kinerja sistem berdasarkan parameter-parameter tertentu. Bagian ini menguraikan kriteria-kriteria keberhasilan yang digunakan, seperti ketepatan, keandalan, dan efisiensi sistem.
+\subsection{Kuesioner}
 
-Pada bagian ini akan dijelaskan beberapa tahap utama dalam proses pengembangan proyek dan beberapa rekomendasi peningkatan yang dapat dilakukan. Daftar tahapan pengembangan proyek akan disajikan dalam bentuk bernomor untuk menunjukkan urutan logis dari proses, sementara rekomendasi peningkatan akan disajikan dalam bentuk daftar berpoin untuk mempermudah identifikasi setiap item secara mandiri.
+Kuesioner digunakan untuk mengumpulkan data primer dari para ahli terkait kebutuhan dan fitur yang diharapkan dari kerangka kerja LEAF pada tahap  \textit{Requirement Analysis}, serta untuk mengumpulkan data validasi dan evaluasi dari para ahli setelah pengembangan produk pada tahap \textit{Integration and System Testing}. Kuesioner dirancang dengan menggunakan skala Likert untuk menilai tingkat kebutuhan dan kepuasan terhadap fitur-fitur yang dikembangkan, serta untuk mengidentifikasi potensi peningkatan berdasarkan masukan dari para ahli.
+
+\subsection{Wawancara}
+
+Wawancara dilakukan secara mendalam dengan beberapa responden ahli untuk mendapatkan pemahaman yang lebih komprehensif tentang kebutuhan, tantangan, dan harapan mereka terkait pengembangan kerangka kerja LEAF. Wawancara dilakukan secara daring menggunakan platform komunikasi pertemuan video, dengan panduan wawancara yang telah disiapkan sebelumnya untuk memastikan konsistensi dalam pengumpulan data. Wawancara ini juga digunakan untuk menggali lebih dalam tentang masukan yang diberikan dan mendapatkan wawasan tambahan yang mungkin tidak terungkap melalui kuesioner.
+
+\section{Instrumen Penelitian}
+
+Instrumen penelitian disusun berdasarkan tujuan penelitian dan kebutuhan pengumpulan data, yang digunakan untuk memvalidasi dan mengevaluasi kerangka kerja LEAF. Instrumen yang digunakan dalam penelitian ini dikembangkan berdasarkan aspek \textit{Functional Suitability}, \textit{Compatibility}, \textit{Interaction Capability}, dan \textit{Flexibility} dari standar ISO/IEC 25010:2023 yang relevan dengan karakteristik produk yang dikembangkan. Dalam praktik pengujiannya, instrumen disusun dalam bentuk kuesioner/lembar penilaian yang dikembangkan mengikuti pendekatan \citet{Arikunto_2013_Prosedur}. Lembar penilaian menggunakan skala Likert lima tingkat untuk menilai setiap indikator. Skala penilaian yang digunakan disajikan pada Tabel~\ref{tab:skala}.
+
+\begin{table}[ht]
+    \centering
+    \caption{Skala Penilaian Instrumen Kuesioner}
+    \label{tab:skala}
+    \begin{tabular}{|c|l|l|}
+        \hline
+        \textbf{Skor} & \textbf{Kategori} & \textbf{Keterangan}                               \\
+        \hline
+        5             & Sangat Baik       & Sepenuhnya sesuai dan tanpa kekurangan            \\
+        \hline
+        4             & Baik              & Sebagian besar sesuai dengan sedikit kekurangan   \\
+        \hline
+        3             & Cukup             & Cukup sesuai namun memerlukan perbaikan           \\
+        \hline
+        2             & Kurang            & Kurang sesuai dan memerlukan perbaikan signifikan \\
+        \hline
+        1             & Sangat Kurang     & Tidak sesuai dan perlu perancangan ulang          \\
+        \hline
+    \end{tabular}
+\end{table}
+
+
+% \subsection{\textbf{Fungsionalitas (\textit{Functionality})}}
+
+% Kesesuaian fitur dengan kebutuhan, kelengkapan fitur inti (definisi agen deklaratif, integrasi MCP/A2A, orkestrasi multi-agen), dan kebenaran fungsional.
+
+% \subsection{\textbf{Kegunaan (\textit{Usability})}}
+
+% Kemudahan penggunaan manifes deklaratif, kejelasan dokumentasi, kurva pembelajaran, dan pengalaman pengguna dalam mendefinisikan agen tanpa pemrograman.
+
+% \subsection{\textbf{Keandalan (\textit{Reliability})}}
+
+% Konsistensi perilaku \textit{framework}, penanganan kesalahan, dan stabilitas pada berbagai skenario penggunaan.
+
+% \subsection{\textbf{Pemeliharaan (\textit{Maintainability})}}
+
+% Kualitas kode, modularitas arsitektur, kemudahan perluasan (\textit{extensibility}), dan kesesuaian dengan standar.
+
+\subsection{Instrumen \textit{Functional Suitability}}
+
+Instrumen untuk mengukur \textit{Functional Suitability} dirancang untuk mengevaluasi sejauh mana fitur-fitur yang dikembangkan memenuhi kebutuhan fungsional yang telah ditetapkan. Indikator yang digunakan meliputi kesesuaian fitur dengan kebutuhan, kelengkapan fitur inti (definisi agen deklaratif, integrasi MCP/A2A, orkestrasi multi-agen), dan kebenaran fungsional.
+
+\subsection{Instrumen \textit{Compatibility}}
+
+Instrumen untuk mengukur \textit{Compatibility} dirancang untuk mengevaluasi sejauh mana kerangka kerja LEAF dapat beroperasi dengan baik dalam lingkungan yang berbeda, serta kemampuannya untuk berinteraksi dengan sistem dan perangkat lunak lain. Indikator yang digunakan meliputi interoperabilitas dengan protokol standar, kemampuan integrasi dengan berbagai platform, dan kompatibilitas dengan berbagai jenis agen dan peralatan.
+
+\subsection{Instrumen \textit{Interaction Capability}}
+
+Instrumen untuk mengukur \textit{Interaction Capability} dirancang untuk mengevaluasi sejauh mana kerangka kerja LEAF dapat mendukung interaksi yang efektif antara agen, serta antara agen dengan pengguna. Indikator yang digunakan meliputi kemampuan komunikasi antar agen, kemampuan beradaptasi dengan konteks interaksi, dan kemudahan penggunaan antarmuka untuk mendefinisikan interaksi.
+
+\subsection{Instrumen \textit{Flexibility}}
+
+Instrumen untuk mengukur \textit{Flexibility} dirancang untuk mengevaluasi sejauh mana kerangka kerja LEAF dapat dengan mudah disesuaikan dan diperluas untuk memenuhi kebutuhan yang berubah. Indikator yang digunakan meliputi kemudahan dalam menambahkan fitur baru, kemampuan untuk menyesuaikan perilaku agen, dan kemampuan untuk beradaptasi dengan berbagai skenario penggunaan.
+
+\section{Teknik Analisis Data}
+
+Teknik analisis data yang digunakan dalam penelitian ini disesuaikan dengan jenis data yang dikumpulkan, yaitu data kuantitatif dari instrumen validasi dan pengujian, serta data kualitatif dari masukan para ahli.
+
+\subsection{Analisis Deskriptif untuk Validasi Ahli}
+
+Data kuantitatif dari lembar validasi ahli dianalisis secara deskriptif menggunakan perhitungan persentase kelayakan. Persentase kelayakan dihitung dengan rumus:
+
+\begin{equation}
+    \text{Persentase Kelayakan} = \frac{\text{Skor yang diperoleh}}{\text{Skor maksimal}} \times 100\%
+    \label{eq:kelayakan}
+\end{equation}
+
+Hasil perhitungan persentase kelayakan kemudian diinterpretasikan berdasarkan klasifikasi kelayakan yang disajikan pada Tabel~\ref{tab:kelayakan}.
+
+\begin{table}[ht]
+    \centering
+    \caption{Klasifikasi Kelayakan Produk}
+    \label{tab:kelayakan}
+    \begin{tabular}{|c|l|}
+        \hline
+        \textbf{Persentase} & \textbf{Kategori Kelayakan} \\
+        \hline
+        81\% -- 100\%       & Sangat Layak                \\
+        \hline
+        61\% -- 80\%        & Layak                       \\
+        \hline
+        41\% -- 60\%        & Cukup Layak                 \\
+        \hline
+        21\% -- 40\%        & Kurang Layak                \\
+        \hline
+        0\% -- 20\%         & Tidak Layak                 \\
+        \hline
+    \end{tabular}
+\end{table}
+
+Produk dinyatakan layak untuk digunakan apabila persentase kelayakan dari seluruh aspek penilaian mencapai kategori minimal ``Layak'' (61\%). Jika terdapat aspek yang memperoleh kategori di bawah ``Layak'', maka dilakukan revisi pada aspek tersebut dan validasi ulang hingga kriteria kelayakan terpenuhi.
+
+\subsection{Analisis Pengujian Fungsional}
+
+Data dari pengujian fungsional dianalisis berdasarkan persentase keberhasilan kasus uji. Setiap kasus uji menghasilkan dua kemungkinan hasil: berhasil (\textit{pass}) atau gagal (\textit{fail}). Persentase keberhasilan dihitung dengan rumus:
+
+\begin{equation}
+    \text{Persentase Keberhasilan} = \frac{\text{Jumlah kasus uji berhasil}}{\text{Total kasus uji}} \times 100\%
+    \label{eq:keberhasilan}
+\end{equation}
+
+\textit{Framework} dinyatakan memenuhi kebutuhan fungsional apabila seluruh kasus uji (100\%) berhasil dieksekusi sesuai keluaran yang diharapkan. Jika terdapat kasus uji yang gagal, dilakukan identifikasi penyebab kegagalan, perbaikan kode, dan pengujian ulang hingga seluruh kasus uji berhasil.
+
+\subsection{Analisis Kualitatif}
+
+Data kualitatif berupa komentar, saran, dan masukan dari para ahli validator dianalisis melalui proses berikut:
+\begin{enumerate}
+    \item \textbf{Pengumpulan dan pencatatan}: Seluruh komentar dan saran dari para ahli dikumpulkan dan dicatat secara sistematis.
+    \item \textbf{Kategorisasi}: Masukan dikategorikan berdasarkan aspek yang dibahas (fungsionalitas, kegunaan, keandalan, atau pemeliharaan) dan tingkat urgensi (kritis, penting, atau saran).
+    \item \textbf{Prioritisasi}: Masukan diprioritaskan berdasarkan dampaknya terhadap kualitas \textit{framework}. Masukan kritis dan penting diprioritaskan untuk ditindaklanjuti segera.
+    \item \textbf{Implementasi revisi}: Perbaikan dilakukan pada \textit{framework} berdasarkan masukan yang telah diprioritaskan.
+    \item \textbf{Dokumentasi perubahan}: Setiap perubahan yang dilakukan berdasarkan masukan ahli didokumentasikan untuk pelacakan dan akuntabilitas.
+\end{enumerate}
+
+Kombinasi analisis kuantitatif dan kualitatif memberikan evaluasi yang komprehensif terhadap kualitas produk, memungkinkan penilaian numerik yang objektif sekaligus pemahaman mendalam tentang aspek-aspek yang memerlukan perbaikan.

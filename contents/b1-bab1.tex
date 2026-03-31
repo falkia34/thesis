@@ -5,23 +5,70 @@
 
 \chapter[PENDAHULUAN]{\\ PENDAHULUAN}
 
-\section{Latar Belakang}
-Bagian ini menjelaskan alasan dan motivasi di balik pengembangan proyek ini. Proyek ini diinisiasi untuk mengatasi kebutuhan atau permasalahan tertentu yang timbul dalam bidang teknologi, industri, atau aplikasi sehari-hari. Melalui identifikasi kebutuhan ini, diperoleh wawasan tentang bagaimana proyek dapat memberikan solusi yang efektif dan efisien. Latar belakang ini juga menguraikan pentingnya topik proyek dalam perkembangan teknologi terkini, serta bagaimana penerapan teknologi atau metode yang diusulkan dapat membawa nilai tambah. Selain itu, bagian ini memberikan gambaran singkat mengenai situasi atau tren teknologi saat ini yang mempengaruhi pengembangan proyek.
+\section{Latar Belakang Masalah}
+
+Unit Kegiatan Mahasiswa (UKM) merupakan wadah pengembangan diri mahasiswa di luar kegiatan akademik yang memiliki peran strategis dalam pendidikan tinggi. Melalui UKM, mahasiswa dapat mengembangkan kemampuan berpikir kritis, keterampilan kepemimpinan, dan sosial yang tidak sepenuhnya diperoleh dari kurikulum formal \citep{Pertiwi_2021_PeranOrganisasi}. INFINITE atau Divisi Teknologi Informasi INFINITE adalah satu dari lima divisi di bawah naungan UKM Rekayasa Teknologi (Restek) Universitas Negeri Yogyakarta (UNY). Organisasi ini berfungsi sebagai wadah bagi mahasiswa untuk mengembangkan diri terutama di bidang teknologi informasi, baik melalui kegiatan pengembangan keterampilan teknis, kompetisi, maupun proyek kolaboratif. INFINITE berperan penting dalam memfasilitasi pengembangan pengetahuan dan kemampuan anggota serta membangun jejaring profesional di kalangan mahasiswa yang memiliki minat dalam teknologi informasi.
+
+Dalam menjalankan fungsinya, INFINITE memiliki kebutuhan pengelolaan informasi yang beragam dan kompleks. Kebutuhan tersebut mencakup: (1)~manajemen keanggotaan yang meliputi data profil anggota, status masa aktif, dan riwayat keikutsertaan dalam tim; (2)~pengelolaan kepengurusan yang mencakup struktur organisasi, profil pengurus, dan periode masa jabatan; (3)~pencatatan data perlombaan yang meliputi informasi kompetisi, tim-tim yang dibentuk oleh anggota, proposal pengajuan pendanaan oleh tim, dan dokumentasi prestasi yang diraih; serta (4)~pengumpulan testimoni baik dari alumni tentang dampak INFINITE terhadap karier mereka maupun testimoni proyek yang pernah dikerjakan oleh anggota. Kebutuhan pengelolaan data yang terintegrasi ini menjadi motivasi utama keberadaan sistem informasi organisasi INFINITE.
+
+Untuk memenuhi kebutuhan tersebut, INFINITE sebelumnya telah memiliki sistem informasi berbasis web yang dikembangkan secara internal. Sistem ini dibangun menggunakan \textit{framework} Laravel dengan arsitektur \textit{monolithic} dan di-\textit{hosting} pada layanan \textit{shared hosting} konvensional. Selain sistem utama tersebut, terdapat juga sebagian data yang dikelola melalui sistem terpisah yang di-\textit{deploy} menggunakan Strapi, sebuah \textit{headless Content Management System} (CMS) berbasis Node.js. Sistem Strapi ini harus dijalankan di server pribadi milik salah satu anggota INFINITE karena layanan \textit{shared hosting} organisasi tidak mendukung \textit{runtime} Node.js. Fragmentasi sistem ini menciptakan tantangan dalam hal pemeliharaan dan konsistensi data.
+
+Seiring dengan perkembangan organisasi, INFINITE membutuhkan aplikasi-aplikasi pendukung lain yang tersedia secara \textit{open-source} dalam bentuk \textit{container}. Teknologi kontainerisasi menawarkan kemudahan dalam hal \textit{deployment}, pemeliharaan, dan pembaruan versi aplikasi \citep{Burns_2019_Kubernetes}. Untuk mengelola aplikasi-aplikasi terkontainerisasi tersebut, INFINITE mengadopsi layanan komputasi awan (\textit{cloud computing}) dengan Kubernetes sebagai platform orkestrasi. Kubernetes menyediakan abstraksi deklaratif untuk mengelola siklus hidup aplikasi terkontainerisasi, termasuk penjadwalan otomatis, penskalaan horizontal, dan pemulihan mandiri \citep{Burns_2016_Borg}. Dalam implementasinya, INFINITE menggunakan pendekatan GitOps dengan ArgoCD sebagai alat untuk mengelola \textit{deployment} aplikasi secara deklaratif, di mana Git berfungsi sebagai sumber kebenaran tunggal untuk konfigurasi infrastruktur \citep{Limoncelli_2018_GitOps, ArgoCD_2024_Docs}.
+
+Namun adopsi komputasi awan dan Kubernetes ini menimbulkan tantangan operasional baru. Migrasi ke infrastruktur komputasi awan tentunya meningkatkan beban biaya. Peningkatan ini sepadan karena memang \textit{deployment} aplikasi-aplikasi baru meningkat dan membutuhkan sumber daya tambahan. Akan tetapi, pengoperasian dua infrastruktur secara bersamaan---\textit{shared hosting} untuk sistem informasi lama dan komputasi awan untuk aplikasi-aplikasi baru---mengakibatkan penambahan beban biaya yang signifikan dan tidak sepadan. Oleh karena itu, efisiensi biaya akan lebih optimal jika seluruh aplikasi dapat dikonsolidasikan dalam satu platform infrastruktur.
+
+Tantangan lain yang dihadapi terletak pada kebutuhan integrasi aplikasi-aplikasi baru yang di-\textit{deploy} di Kubernetes dengan sistem informasi yang sudah ada. Kebutuhan integrasi ini mencakup autentikasi terpusat dengan \textit{Single Sign-On} (SSO) berstandar protokol OpenID Connect (OIDC), manajemen pengguna, dan pertukaran data antar aplikasi. Sistem informasi versi sebelumnya tidak menyediakan \textit{Application Programming Interface} (API) yang memadai untuk menunjang kebutuhan integrasi tersebut. Arsitektur \textit{monolithic} dengan \textit{rendering} tampilan di sisi server membatasi kemampuan sistem untuk berkomunikasi dengan aplikasi eksternal secara terprogram.
+
+Berdasarkan permasalahan yang telah diuraikan, dikembangkan sistem informasi organisasi INFINITE yang terkontainerisasi dengan arsitektur \textit{headless} menggunakan Laravel sebagai \textit{backend} dan Next.js sebagai \textit{frontend}. Laravel dipilih sebagai \textit{backend} untuk menyesuaikan dengan teknologi yang telah digunakan pada sistem informasi versi sebelumnya, sehingga memudahkan proses migrasi dan transfer pengetahuan kepada anggota baru. Hal ini sejalan dengan penelitian oleh \citet{Yadav_2019_Laravel} yang menunjukkan bahwa Laravel memiliki kemudahan penggunaan yang menjadikannya sesuai untuk pengembangan aplikasi web, sehingga mudah dipelajari dan digunakan bahkan bagi pengembang pemula. Selain itu, Next.js dipilih sebagai \textit{frontend} karena menyediakan fitur-fitur yang mempermudah pengembangan aplikasi berbasis React, seperti \textit{Server-Side Rendering} (SSR) dan \textit{automatic code splitting} yang dapat meningkatkan performa aplikasi. Hal ini juga ditunjukkan dalam penelitian oleh \citet{Muzakki_2023_Nextjs}, yang membuktikan bahwa Next.js memberikan keunggulan performa melalui fitur SSR dan optimasi otomatis. Kedua teknologi ini mendukung kebutuhan INFINITE dalam mengembangkan sistem yang dapat dikelola dan dikembangkan oleh anggota baru yang masih pemula, serta memenuhi kriteria sistem yang dapat berjalan di platform Kubernetes, menyediakan API untuk integrasi, dan dapat dikelola secara deklaratif melalui pendekatan GitOps.
+
+\section{Identifikasi Masalah}
+Berdasarkan latar belakang yang telah diuraikan, dapat diidentifikasi beberapa permasalahan sebagai berikut:
+\begin{enumerate}
+	\item Sistem informasi yang ada saat ini menggunakan arsitektur \textit{monolithic} yang tidak menyediakan API untuk integrasi dengan aplikasi eksternal.
+	\item Fragmentasi sistem informasi dengan sistem utama di \textit{shared hosting} dan Strapi di server terpisah menciptakan tantangan dalam pemeliharaan dan konsistensi data.
+	\item Pengoperasian dua infrastruktur secara bersamaan (\textit{shared hosting} dan komputasi awan) mengakibatkan inefisiensi biaya operasional.
+	\item Sistem informasi yang ada tidak mendukung integrasi dengan protokol OIDC untuk memungkinkan autentikasi terpusat dengan sistem SSO.
+	\item Sistem informasi yang ada tidak dapat di-\textit{deploy} sebagai \textit{container} untuk dikelola melalui pendekatan GitOps.
+\end{enumerate}
+
+\section{Batasan Masalah}
+Dari berbagai masalah yang teridentifikasi, penelitian ini membatasi ruang lingkup pada aspek-aspek berikut:
+\begin{enumerate}
+	\item Pengembangan sistem informasi difokuskan pada pengelolaan data organisasi INFINITE.
+	\item Arsitektur sistem tetap menggunakan Laravel sebagai \textit{backend} dengan pendekatan \textit{headless} yang menyediakan API dan Next.js sebagai \textit{frontend} untuk antarmuka pengguna.
+	\item Sistem di-\textit{deploy} sebagai aplikasi terkontainerisasi di platform Kubernetes dengan pendekatan GitOps menggunakan ArgoCD.
+	\item Integrasi autentikasi menggunakan protokol OIDC dengan sistem SSO INFINITE sebagai \textit{identity provider}.
+	\item Penelitian ini tidak mencakup migrasi data dari sistem lama ke sistem baru. Proses migrasi data dianggap sebagai tahap terpisah dan dilakukan bersama dengan kepengurusan INFINITE ketika struktur basis data sistem baru telah siap.
+	\item Penelitian ini tidak mencakup proses penyiapan infrastruktur Kubernetes, sistem SSO, serta \textit{deployment} basis data. Hal tersebut dianggap sudah tersedia dan siap digunakan sebagai bagian dari lingkungan operasional INFINITE.
+\end{enumerate}
 
 \section{Rumusan Masalah}
-Rumusan masalah adalah langkah penting yang merangkum permasalahan spesifik atau kebutuhan yang menjadi dasar pengembangan proyek. Pada bagian ini, dijelaskan permasalahan utama yang dihadapi, seperti keterbatasan pada sistem atau perangkat yang sudah ada, atau kebutuhan baru yang belum terpenuhi oleh teknologi saat ini. Identifikasi masalah juga mencakup tantangan teknis, fungsional, atau ekonomi yang menjadi penghambat dan bagaimana proyek ini diharapkan dapat menjawab permasalahan tersebut. Fokusnya adalah memberikan pemahaman yang jelas mengenai alasan pentingnya mengembangkan proyek ini sebagai solusi yang dibutuhkan.
+Berdasarkan identifikasi dan batasan masalah, rumusan masalah dalam penelitian ini adalah:
+\begin{enumerate}
+	\item Bagaimana mengembangkan sistem informasi organisasi INFINITE yang terkontainerisasi dengan menggunakan Laravel \textit{headless}, Next.js, dan autentikasi OIDC?
+	\item Bagaimana men-\textit{deploy} sistem informasi organisasi INFINITE sebagai aplikasi terkontainerisasi di Kubernetes dengan pendekatan GitOps?
+	\item Bagaimana menguji sistem informasi organisasi INFINITE yang dikembangkan untuk memastikan kualitas sistem dan pemenuhan kebutuhan pengguna?
+\end{enumerate}
 
-\section{Tujuan Proyek}
-Tujuan proyek menyatakan secara spesifik hasil atau capaian yang diinginkan dari pengembangan proyek ini. Bagian ini dirancang untuk memastikan bahwa proyek memiliki sasaran yang jelas dan terukur. Tujuan tersebut dirumuskan berdasarkan masalah yang telah diidentifikasi dan mencakup pencapaian tertentu, seperti peningkatan kinerja sistem, efisiensi, atau kemudahan penggunaan yang diharapkan. Selain itu, tujuan proyek dapat berupa pengembangan prototipe, penerapan teknologi tertentu, atau pencapaian fungsionalitas baru yang belum ada. Penjabaran tujuan yang jelas membantu menjaga fokus proyek dan memberikan arah yang tepat dalam setiap tahapan pengembangan.
+\section{Tujuan Penelitian}
+Sesuai dengan rumusan masalah tersebut, tujuan penelitian ini adalah:
+\begin{enumerate}
+	\item Mengembangkan sistem informasi organisasi INFINITE yang terkontainerisasi dengan menggunakan Laravel \textit{headless}, Next.js, dan autentikasi OIDC.
+	\item Men-\textit{deploy} sistem informasi organisasi INFINITE sebagai aplikasi terkontainerisasi di Kubernetes dengan pendekatan GitOps.
+	\item Menguji sistem informasi organisasi INFINITE yang dikembangkan untuk memastikan kualitas sistem dan pemenuhan kebutuhan pengguna.
+\end{enumerate}
 
-\section{Manfaat Proyek}
-Manfaat proyek menguraikan dampak positif yang diharapkan dari hasil proyek ini bagi pengguna, industri, atau masyarakat secara umum. Manfaat ini mencakup berbagai aspek, seperti kontribusi terhadap peningkatan produktivitas, pengurangan biaya, peningkatan kualitas, atau kemudahan dalam penggunaan teknologi. Selain manfaat langsung, proyek ini juga diharapkan memiliki dampak jangka panjang yang bermanfaat, seperti mendorong inovasi di bidang terkait atau membuka peluang baru untuk pengembangan lebih lanjut. Dengan menjelaskan manfaat proyek, pembaca dapat memahami nilai tambah yang dihadirkan oleh proyek ini.
+\section{Manfaat Penelitian}
 
-\section{Batasan Proyek}
-Batasan proyek mengidentifikasi cakupan dan batasan ruang lingkup pengembangan sistem atau perangkat yang dirancang. Bagian ini mencakup aspek-aspek yang akan menjadi fokus utama dalam pengembangan serta aspek yang akan dikecualikan dari lingkup proyek. Penjelasan batasan ini penting agar proyek tetap terarah dan tidak meluas ke aspek-aspek yang berada di luar tujuan awal. Batasan proyek juga mencakup keterbatasan teknis, waktu, atau sumber daya yang mempengaruhi desain dan implementasi sistem. Dengan menetapkan batasan, proyek ini dapat lebih terfokus dan efisien dalam pencapaiannya.
+Hasil penelitian ini diharapkan dapat memberikan manfaat baik secara teoritis maupun praktis.
 
-\section{Keaslian Gagasan}
-Keaslian gagasan bertujuan untuk menekankan inovasi atau kontribusi unik yang ditawarkan oleh proyek ini. Bagian ini menjelaskan bagaimana proyek ini menawarkan pendekatan yang berbeda atau peningkatan dibandingkan dengan metode atau perangkat yang sudah ada. Keaslian gagasan dapat diperlihatkan melalui perbandingan dengan proyek atau produk serupa, menunjukkan perbedaan signifikan atau keunggulan yang dihadirkan oleh solusi yang diusulkan. Misalnya, peningkatan kinerja, efisiensi, atau kemudahan penggunaan yang dihasilkan dari metode atau pendekatan baru. Selain itu, bagian ini juga bisa mencakup penggunaan teknologi atau desain yang belum banyak diterapkan dalam konteks yang sama. Penekanan pada keaslian gagasan membantu menunjukkan bahwa proyek ini tidak hanya mengikuti pola yang sudah ada, tetapi juga menghadirkan sesuatu yang baru dan relevan.
+\subsection{Manfaat Teoritis}
 
-\section{Sistematika Penulisan}
-Sistematika penulisan memberikan panduan mengenai struktur dari keseluruhan laporan proyek ini, sehingga memudahkan pembaca dalam memahami alur isi laporan dari setiap bab. Bagian ini menjelaskan isi dari setiap bab secara singkat, mulai dari latar belakang hingga kesimpulan dan rekomendasi. Misalnya, BAB I membahas pendahuluan dan dasar pengembangan proyek, BAB II menguraikan tinjauan pustaka dan landasan teori, dan seterusnya. Dengan memberikan sistematika penulisan, pembaca dapat memahami bagaimana laporan ini disusun secara keseluruhan dan bagaimana setiap bab saling berkaitan dalam mencapai tujuan akhir proyek.
+Penelitian ini diharapkan dapat memberikan kontribusi pada pengembangan ilmu pengetahuan di bidang rekayasa perangkat lunak, khususnya dalam konteks pengembangan sistem informasi organisasi dengan komponen \textit{backend} dan \textit{frontend} terpisah yang dihubungkan melalui antarmuka API. Penelitian ini juga diharapkan dapat memberikan referensi implementasi integrasi autentikasi berstandar protokol OIDC, yang dapat menjadi acuan bagi pengembang lain yang ingin mengadopsi pendekatan serupa. Selain itu, penelitian ini diharapkan dapat memberikan wawasan tentang penerapan pendekatan \textit{deployment} terkontainerisasi pada Kubernetes dengan GitOps.
+
+\subsection{Manfaat Praktis}
+
+\begin{enumerate}[label=\alph*.]
+	\item Bagi INFINITE: menyediakan sistem informasi terintegrasi yang dapat diakses melalui API dan mendukung integrasi dengan aplikasi lain di ekosistem Kubernetes.
+	\item Bagi komunitas akademik UNY: menyediakan studi kasus pengembangan sistem informasi organisasi mahasiswa dengan teknologi modern.
+\end{enumerate}
