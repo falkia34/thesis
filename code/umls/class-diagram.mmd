@@ -1,0 +1,399 @@
+classDiagram
+    direction TB
+
+    %% ========================================
+    %% DOMAIN: User Management
+    %% ========================================
+
+    class User {
+        +UUID id
+        +String name
+        +String username
+        +String email_address
+        +String phone_number
+        +String student_id
+        +UUID major_id
+        +JSON links
+        +Date start_date
+        +Date end_date
+        +Boolean is_member
+        +Boolean is_extraordinary
+        +String sso_id
+        +Boolean is_active()
+    }
+
+    class Persona {
+        +UUID id
+        +String name
+        +Integer priority
+        +String description
+        +Blob logo
+    }
+
+    class UserPersona {
+        +UUID id
+        +UUID user_id
+        +UUID persona_id
+    }
+
+    class Token {
+        +UUID id
+        +String sso_id
+        +UUID user_id
+        +DateTime last_used_at
+        +DateTime created_at
+        +DateTime expires_at
+    }
+
+    %% ========================================
+    %% DOMAIN: Academic References
+    %% ========================================
+
+    class Degree {
+        +UUID id
+        +String code
+        +String name
+    }
+
+    class Faculty {
+        +UUID id
+        +String code
+        +String name
+    }
+
+    class Major {
+        +UUID id
+        +String code
+        +String name
+        +UUID degree_id
+        +UUID faculty_id
+    }
+
+    %% ========================================
+    %% DOMAIN: Organization - Core Team
+    %% ========================================
+
+    class CoreTeam {
+        +UUID id
+        +Integer year
+        +Boolean is_active
+        +UUID group_id
+    }
+
+    class CoreTeamDivision {
+        +UUID id
+        +String name
+        +Integer priority
+    }
+
+    class CoreTeamMember {
+        +UUID id
+        +UUID user_id
+        +UUID core_team_id
+        +UUID core_team_division_id
+        +Blob photo
+        +Blob animation
+    }
+
+    %% ========================================
+    %% DOMAIN: Organization - Community Groups
+    %% ========================================
+
+    class CommunityGroup {
+        +UUID id
+        +String name
+        +Integer priority
+        +String description
+        +Blob logo
+        +Boolean is_active
+    }
+
+    class CommunityGroupMember {
+        +UUID id
+        +UUID user_id
+        +UUID community_group_id
+    }
+
+    class CommunityGroupAdmin {
+        +UUID id
+        +Integer year
+        +Boolean is_active
+        +UUID group_id
+    }
+
+    class CommunityGroupAdminMember {
+        +UUID id
+        +UUID user_id
+        +UUID community_group_admin_id
+        +UUID community_group_id
+        +Blob photo
+        +Blob animation
+    }
+
+    %% ========================================
+    %% DOMAIN: Competition Catalog & Taxonomy
+    %% ========================================
+
+    class Competition {
+        +UUID id
+        +String name
+        +String shortname
+        +String description
+    }
+
+    class CompetitionInstance {
+        +UUID id
+        +UUID competition_id
+        +String name
+        +String shortname
+        +String description
+        +String url
+        +String organizer
+        +UUID organizer_type_id
+        +Blob logo
+        +DateTime start_date
+        +DateTime end_date
+        +String location
+    }
+
+    class CompetitionOrganizerType {
+        +UUID id
+        +String name
+        +Float weight
+    }
+
+    class CompetitionScale {
+        +UUID id
+        +String name
+        +Float weight
+    }
+
+    class CompetitionRank {
+        +UUID id
+        +String name
+        +Float weight
+    }
+
+    class CompetitionTimeRange {
+        +UUID id
+        +String name
+        +Float weight
+    }
+
+    class CompetitionOutput {
+        +UUID id
+        +String name
+        +Float weight
+    }
+
+    class CompetitionTeamType {
+        +UUID id
+        +String name
+        +Float weight
+    }
+
+    %% ========================================
+    %% DOMAIN: Teams & Achievements
+    %% ========================================
+
+    class Team {
+        +UUID id
+        +String name
+        +Boolean is_personal
+        +UUID leader_id
+        +UUID team_type_id
+    }
+
+    class TeamMember {
+        +UUID id
+        +UUID user_id
+        +UUID team_id
+    }
+
+    class Achievement {
+        +UUID id
+        +UUID team_id
+        +UUID competition_instance_id
+        +UUID competition_team_type_id
+        +UUID competition_scale_id
+        +UUID competition_time_range_id
+        +UUID competition_output_id
+        +UUID competition_rank_id
+        +String competition_branch
+        +DateTime competition_start_date
+        +DateTime competition_end_date
+        +String description
+        +Blob image
+        +String status
+        +Integer point()
+    }
+
+    class AchievementLeaderboard {
+        +UUID id
+        +UUID user_id
+        +Integer year
+        +Integer total_points
+    }
+
+    class FundApplication {
+        +UUID id
+        +UUID team_id
+        +UUID competition_instance_id
+        +UUID competition_scale_id
+        +String competition_branch
+        +DateTime competition_start_date
+        +DateTime competition_end_date
+        +Blob letter_of_acceptance
+        +Blob proposal
+        +String status
+    }
+
+    %% ========================================
+    %% DOMAIN: Content & Configuration
+    %% ========================================
+
+    class Testimonial {
+        +UUID id
+        +String name
+        +String position
+        +Blob photo
+        +String content
+    }
+
+    class ProjectGallery {
+        +UUID id
+        +String title
+        +String description
+        +String url
+        +Blob image
+    }
+
+    class Config {
+        +UUID id
+        +String key
+        +String value
+        +String type
+        +Boolean is_private
+    }
+
+    %% ========================================
+    %% DOMAIN: Authorization (Spatie Permission)
+    %% ========================================
+
+    class Group {
+        +UUID id
+        +String name
+        +String guard_name
+        +String sso_id
+    }
+
+    class Permission {
+        +UUID id
+        +String name
+        +String guard_name
+    }
+
+    class UserGroup {
+        +UUID id
+        +UUID user_id
+        +UUID group_id
+    }
+
+    class GroupPermission {
+        +UUID id
+        +UUID group_id
+        +UUID permission_id
+    }
+
+    class UserPermission {
+        +UUID id
+        +UUID user_id
+        +UUID permission_id
+    }
+
+    %% ========================================
+    %% RELATIONSHIPS: User Management
+    %% ========================================
+
+    User "1" --> "0..1" Major : belongs to
+    User "1" --> "*" UserPersona : has many
+    Persona "1" --> "*" UserPersona : has many
+    User "1" --> "*" Token : has many
+
+    %% ========================================
+    %% RELATIONSHIPS: Academic References
+    %% ========================================
+
+    Degree "1" --> "*" Major : has many
+    Faculty "1" --> "*" Major : has many
+    Major "1" --> "*" User : has many
+
+    %% ========================================
+    %% RELATIONSHIPS: Core Team
+    %% ========================================
+
+    CoreTeam "1" --> "*" CoreTeamMember : has many
+    CoreTeamDivision "1" --> "*" CoreTeamMember : has many
+    User "1" --> "*" CoreTeamMember : has many
+
+    %% ========================================
+    %% RELATIONSHIPS: Community Groups
+    %% ========================================
+
+    CommunityGroup "1" --> "*" CommunityGroupMember : has many
+    User "1" --> "*" CommunityGroupMember : has many
+    CommunityGroupAdmin "1" --> "*" CommunityGroupAdminMember : has many
+    CommunityGroup "1" --> "*" CommunityGroupAdminMember : has many
+    User "1" --> "*" CommunityGroupAdminMember : has many
+
+    %% ========================================
+    %% RELATIONSHIPS: Competition
+    %% ========================================
+
+    Competition "1" --> "*" CompetitionInstance : has many
+    CompetitionInstance "1" --> "1" CompetitionOrganizerType : belongs to
+    CompetitionInstance "1" --> "*" FundApplication : has many
+    CompetitionInstance "1" --> "*" Achievement : has many
+
+    CompetitionScale "1" --> "*" FundApplication : has many
+    CompetitionScale "1" --> "*" Achievement : has many
+    CompetitionRank "1" --> "*" Achievement : has many
+    CompetitionTimeRange "1" --> "*" Achievement : has many
+    CompetitionOutput "1" --> "*" Achievement : has many
+    CompetitionTeamType "1" --> "*" FundApplication : has many
+    CompetitionTeamType "1" --> "*" Achievement : has many
+
+    %% ========================================
+    %% RELATIONSHIPS: Teams & Achievements
+    %% ========================================
+
+    User "1" --> "*" Team : leads
+    Team "1" --> "1" CompetitionTeamType : belongs to
+    Team "1" --> "*" TeamMember : has many
+    User "1" --> "*" TeamMember : has many
+    Team "1" --> "*" FundApplication : has many
+    Team "1" --> "*" Achievement : has many
+
+    Achievement "1" --> "1" Team : belongs to
+    Achievement "1" --> "1" CompetitionInstance : belongs to
+    Achievement "1" --> "1" CompetitionScale : belongs to
+    Achievement "1" --> "1" CompetitionTimeRange : belongs to
+    Achievement "1" --> "1" CompetitionOutput : belongs to
+    Achievement "1" --> "1" CompetitionRank : belongs to
+
+    User "1" --> "*" AchievementLeaderboard : has many
+
+    FundApplication "1" --> "1" Team : belongs to
+    FundApplication "1" --> "1" CompetitionInstance : belongs to
+    FundApplication "1" --> "1" CompetitionScale : belongs to
+
+    %% ========================================
+    %% RELATIONSHIPS: Authorization
+    %% ========================================
+
+    Group "1" --> "*" GroupPermission : has many
+    Permission "1" --> "*" GroupPermission : has many
+    Group "1" --> "*" UserGroup : has many
+    User "1" --> "*" UserGroup : has many
+    Permission "1" --> "*" UserPermission : has many
+    User "1" --> "*" UserPermission : has many

@@ -8,7 +8,6 @@
 \renewcommand{\cfttoctitlefont}{\hfill\large\bfseries}
 \renewcommand{\cftaftertoctitle}{\hfill\hfill}
 \renewcommand\contentsname{DAFTAR ISI}
-\singlespacing
 \tableofcontents
 
 % Daftar Singkatan
@@ -21,18 +20,31 @@
 \setlength{\cftbeforeloftitleskip}{-0.5cm}
 \renewcommand{\cftloftitlefont}{\hfill\large\bfseries}
 \renewcommand{\cftafterloftitle}{\hfill}
-\renewcommand{\cftfigleader}{\dotfill}
 \renewcommand\listfigurename{DAFTAR GAMBAR}
+\begingroup
+\renewcommand*{\addvspace}[1]{}
 \listoffigures
+\endgroup
 
 % Daftar Tabel
 \clearpage
 \phantomsection
 \addcontentsline{toc}{chapter}{DAFTAR TABEL}
-\setlength{\cftbeforeloftitleskip}{-0.5cm}
-\renewcommand{\cftloftitlefont}{\hfill\large\bfseries}
-\renewcommand{\cftafterloftitle}{\hfill}
-\renewcommand{\cfttableader}{\dotfill}
-\renewcommand\listtablename{\centerline {\large\bfseries  DAFTAR TABEL}}
+\setlength{\cftbeforelottitleskip}{-0.5cm}
+\renewcommand{\cftlottitlefont}{\hfill\large\bfseries}
+\renewcommand{\cftafterlottitle}{\hfill}
+\renewcommand\listtablename{DAFTAR TABEL}
+\begingroup
+\renewcommand*{\addvspace}[1]{}
 \listoftables
+\endgroup
+
+% Daftar Lampiran
+\clearpage
+\phantomsection
+\addcontentsline{toc}{chapter}{DAFTAR LAMPIRAN}
+\setlength{\cftbeforeloatitleskip}{-0.5cm}
+\renewcommand{\cftloatitlefont}{\hfill\large\bfseries}
+\renewcommand{\cftafterloatitle}{\hfill\hfill}
+\listofannexes
 %% DILARANG EDIT BAGIAN INI

@@ -1,0 +1,17 @@
+flowchart LR
+    User(("User"))
+    style User fill:#e1f5ff,stroke:#0288d1,stroke-width:3px,color:#000
+
+    ManajemenFaculty(("Manajemen Faculty"))
+    ManajemenDegree(("Manajemen Degree"))
+    ManajemenMajor(("Manajemen Major"))
+
+    Login(("Login"))
+
+    User --> ManajemenFaculty
+    User --> ManajemenDegree
+    User --> ManajemenMajor
+
+    ManajemenFaculty -.->|"#lt;#lt;include#gt;#gt;"| Login
+    ManajemenDegree -.->|"#lt;#lt;include#gt;#gt;"| Login
+    ManajemenMajor -.->|"#lt;#lt;include#gt;#gt;"| Login

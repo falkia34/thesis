@@ -1,0 +1,23 @@
+flowchart LR
+    User(("User"))
+    style User fill:#e1f5ff,stroke:#0288d1,stroke-width:3px,color:#000
+
+    ManajemenTeam(("Manajemen Team"))
+    ManajemenTeamMember(("Manajemen Team Member"))
+    ManajemenFundApplication(("Manajemen Fund Application"))
+    ManajemenAchievement(("Manajemen Achievement"))
+    ManajemenAchievementLeaderboard(("Manajemen Achievement Leaderboard"))
+
+    Login(("Login"))
+
+    User --> ManajemenTeam
+    User --> ManajemenTeamMember
+    User --> ManajemenFundApplication
+    User --> ManajemenAchievement
+    User --> ManajemenAchievementLeaderboard
+
+    ManajemenTeam -.->|"#lt;#lt;include#gt;#gt;"| Login
+    ManajemenTeamMember -.->|"#lt;#lt;include#gt;#gt;"| Login
+    ManajemenFundApplication -.->|"#lt;#lt;include#gt;#gt;"| Login
+    ManajemenAchievement -.->|"#lt;#lt;include#gt;#gt;"| Login
+    ManajemenAchievementLeaderboard -.->|"#lt;#lt;include#gt;#gt;"| Login

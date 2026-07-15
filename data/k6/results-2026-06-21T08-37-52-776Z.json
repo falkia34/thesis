@@ -1,0 +1,904 @@
+{
+  "root_group": {
+    "groups": [
+      {
+        "checks": [],
+        "name": "setup",
+        "path": "::setup",
+        "id": "5c0f8025f7e0b6654089e5b00e950f1a",
+        "groups": [
+            {
+              "path": "::setup::Setup - Prerequisite Resources",
+              "id": "4dd3ae74ef239ce1f1e7fe73cab9ea3a",
+              "groups": [],
+              "checks": [],
+              "name": "Setup - Prerequisite Resources"
+            }
+          ]
+      },
+      {
+        "name": "Users READ",
+        "path": "::Users READ",
+        "id": "fc4e5d038c647be5cdc970522b00e493",
+        "groups": [],
+        "checks": [
+            {
+              "fails": 0,
+              "name": "Users READ",
+              "path": "::Users READ::Users READ",
+              "id": "ce0596b7579734e5a28072aec27e55bd",
+              "passes": 33613
+            }
+          ]
+      },
+      {
+        "checks": [
+          {
+            "name": "UserPermissions READ",
+            "path": "::User Permissions READ::UserPermissions READ",
+            "id": "187c67911a17c2917919ac7c849ca3fe",
+            "passes": 26465,
+            "fails": 0
+          }
+        ],
+        "name": "User Permissions READ",
+        "path": "::User Permissions READ",
+        "id": "72f91a41772a44973d44f6feb8bb8acd",
+        "groups": []
+      },
+      {
+        "groups": [],
+        "checks": [
+            {
+              "id": "93485adbffe375382e9b0c6a15952bfc",
+              "passes": 20552,
+              "fails": 0,
+              "name": "Competitions READ",
+              "path": "::Competitions READ::Competitions READ"
+            }
+          ],
+        "name": "Competitions READ",
+        "path": "::Competitions READ",
+        "id": "4558eef4e262ee3cd984c000a402ea66"
+      },
+      {
+        "name": "Configs READ",
+        "path": "::Configs READ",
+        "id": "4dd8f41a4baeae3820e380cf497a3b20",
+        "groups": [],
+        "checks": [
+            {
+              "fails": 0,
+              "name": "Configs READ",
+              "path": "::Configs READ::Configs READ",
+              "id": "ff126a09940446138bb48c54eaa2792b",
+              "passes": 13329
+            }
+          ]
+      },
+      {
+        "name": "Fund Applications CREATE",
+        "path": "::Fund Applications CREATE",
+        "id": "df181ea43598536488b7e4619cb6db43",
+        "groups": [],
+        "checks": [
+            {
+              "name": "FundApplications CREATE",
+              "path": "::Fund Applications CREATE::FundApplications CREATE",
+              "id": "7bb0d4892eb17c426fc5b40dc20969a2",
+              "passes": 2589,
+              "fails": 0
+            },
+            {
+              "name": "FundApplications UPDATE",
+              "path": "::Fund Applications CREATE::FundApplications UPDATE",
+              "id": "b2ab798b16777ee4d5b1ea7be815c201",
+              "passes": 2588,
+              "fails": 1
+            },
+            {
+              "name": "FundApplications DELETE",
+              "path": "::Fund Applications CREATE::FundApplications DELETE",
+              "id": "d694ad89e1b7a91d8639592469e98546",
+              "passes": 2589,
+              "fails": 0
+            }
+          ]
+      },
+      {
+        "name": "Teams CREATE",
+        "path": "::Teams CREATE",
+        "id": "2a590fe30e8fff2bca95d05dafded538",
+        "groups": [],
+        "checks": [
+            {
+              "fails": 0,
+              "name": "Teams CREATE",
+              "path": "::Teams CREATE::Teams CREATE",
+              "id": "ce02f6df91aac68ed92f83b6d60dd128",
+              "passes": 2679
+            },
+            {
+              "name": "Teams DELETE",
+              "path": "::Teams CREATE::Teams DELETE",
+              "id": "f65350513a63cde4da21fda7790422fa",
+              "passes": 2679,
+              "fails": 0
+            }
+          ]
+      },
+      {
+        "name": "Testimonials READ",
+        "path": "::Testimonials READ",
+        "id": "f47f7f11aa84ada07a3e940cd4cf4f60",
+        "groups": [],
+        "checks": [
+            {
+              "id": "8f11a9210f8e1efc7eb205a740b32cf8",
+              "passes": 5864,
+              "fails": 0,
+              "name": "Testimonials READ",
+              "path": "::Testimonials READ::Testimonials READ"
+            }
+          ]
+      },
+      {
+        "name": "Achievements CREATE",
+        "path": "::Achievements CREATE",
+        "id": "2d7cebdff8cbf082481ddca855f81264",
+        "groups": [],
+        "checks": [
+            {
+              "passes": 1945,
+              "fails": 0,
+              "name": "Achievements CREATE",
+              "path": "::Achievements CREATE::Achievements CREATE",
+              "id": "103c93cce5a1cc43fa83d593e9f4da32"
+            },
+            {
+              "name": "Achievements UPDATE",
+              "path": "::Achievements CREATE::Achievements UPDATE",
+              "id": "fe98bcbca7c2263d6a7e9b15f387e153",
+              "passes": 1945,
+              "fails": 0
+            },
+            {
+              "id": "7d86318d23863a98a8da2d5c3b01f19e",
+              "passes": 1945,
+              "fails": 0,
+              "name": "Achievements DELETE",
+              "path": "::Achievements CREATE::Achievements DELETE"
+            }
+          ]
+      },
+      {
+        "id": "4635b0b1421d8d6c140a233d36d2dca0",
+        "groups": [],
+        "checks": [
+            {
+              "name": "CommunityGroups READ",
+              "path": "::Community Groups READ::CommunityGroups READ",
+              "id": "a9a225f8fb4c63214e0b21f31712aefd",
+              "passes": 5795,
+              "fails": 0
+            }
+          ],
+        "name": "Community Groups READ",
+        "path": "::Community Groups READ"
+      },
+      {
+        "name": "Achievements UPDATE",
+        "path": "::Achievements UPDATE",
+        "id": "94757842baf79d401e774a6255db176d",
+        "groups": [],
+        "checks": [
+            {
+              "name": "Achievements UPDATE",
+              "path": "::Achievements UPDATE::Achievements UPDATE",
+              "id": "6c0830a7f03d8e30df94e425e606f6a3",
+              "passes": 1251,
+              "fails": 0
+            },
+            {
+              "path": "::Achievements UPDATE::Achievements DELETE",
+              "id": "6d952ad8b1e2c77b959d0b1f23fd114d",
+              "passes": 417,
+              "fails": 0,
+              "name": "Achievements DELETE"
+            }
+          ]
+      },
+      {
+        "path": "::Fund Applications UPDATE",
+        "id": "d062f3a7dce917899e831de64ffb2719",
+        "groups": [],
+        "checks": [
+            {
+              "path": "::Fund Applications UPDATE::FundApplications UPDATE",
+              "id": "fa5d807a1a16c30012808e82d6203f83",
+              "passes": 1896,
+              "fails": 0,
+              "name": "FundApplications UPDATE"
+            },
+            {
+              "path": "::Fund Applications UPDATE::FundApplications DELETE",
+              "id": "6402841f8c2c3d43c8f8c2da4ab91dbd",
+              "passes": 632,
+              "fails": 0,
+              "name": "FundApplications DELETE"
+            }
+          ],
+        "name": "Fund Applications UPDATE"
+      },
+      {
+        "groups": [
+          {
+            "path": "::teardown::Teardown - Cleanup",
+            "id": "8f5cd800c1d630b96c2ed0bfe2fd7516",
+            "groups": [],
+            "checks": [],
+            "name": "Teardown - Cleanup"
+          }
+        ],
+        "checks": [],
+        "name": "teardown",
+        "path": "::teardown",
+        "id": "a8a9942382e8ffe2e56ef29e664b8229"
+      }
+    ],
+    "checks": [],
+    "name": "",
+    "path": "",
+    "id": "d41d8cd98f00b204e9800998ecf8427e"
+  },
+  "options": {
+    "noColor": false,
+    "summaryTrendStats": [
+      "avg",
+      "min",
+      "med",
+      "max",
+      "p(50)",
+      "p(90)",
+      "p(95)",
+      "p(99)"
+    ],
+    "summaryTimeUnit": ""
+  },
+  "state": {
+    "isStdOutTTY": true,
+    "isStdErrTTY": true,
+    "testRunDurationMs": 2422623.0669
+  },
+  "metrics": {
+    "community_groups_throughput": {
+      "values": {
+        "count": 5795,
+        "rate": 2.3920353434986934
+      },
+      "type": "counter",
+      "contains": "default"
+    },
+    "http_req_connecting": {
+      "values": {
+        "avg": 0.022023567099700447,
+        "min": 0,
+        "med": 0,
+        "max": 36.8837,
+        "p(50)": 0,
+        "p(90)": 0,
+        "p(95)": 0,
+        "p(99)": 0
+      },
+      "type": "trend",
+      "contains": "time"
+    },
+    "user_permissions_error_rate": {
+      "values": {
+        "rate": 0,
+        "passes": 0,
+        "fails": 26465
+      },
+      "type": "rate",
+      "contains": "default"
+    },
+    "http_reqs": {
+      "type": "counter",
+      "contains": "default",
+      "values": {
+        "count": 129859,
+        "rate": 53.602643256496435
+      }
+    },
+    "testimonials_throughput": {
+      "type": "counter",
+      "contains": "default",
+      "values": {
+        "count": 5864,
+        "rate": 2.420516868727582
+      }
+    },
+    "achievements_response_time": {
+      "type": "trend",
+      "contains": "time",
+      "values": {
+        "avg": 1596.7904388131296,
+        "min": 266.5975,
+        "med": 1434.3359,
+        "max": 7618.7439,
+        "p(50)": 1434.3359,
+        "p(90)": 2864.31998,
+        "p(95)": 3314.4872999999993,
+        "p(99)": 4328.867252
+      }
+    },
+    "http_req_sending": {
+      "type": "trend",
+      "contains": "time",
+      "values": {
+        "avg": 0.21084246759947278,
+        "min": 0,
+        "med": 0,
+        "max": 27.1495,
+        "p(50)": 0,
+        "p(90)": 0.5183,
+        "p(95)": 0.5825099999999992,
+        "p(99)": 0.866951999999999
+      }
+    },
+    "api_response_time": {
+      "type": "trend",
+      "contains": "time",
+      "values": {
+        "p(90)": 2511.55878,
+        "p(95)": 2992.007539999999,
+        "p(99)": 3894.5545099999995,
+        "avg": 1281.4457300148388,
+        "min": 204.8924,
+        "med": 1110.8338,
+        "max": 7618.7439,
+        "p(50)": 1110.8338
+      }
+    },
+    "competitions_throughput": {
+      "type": "counter",
+      "contains": "default",
+      "values": {
+        "count": 20552,
+        "rate": 8.483366760929275
+      }
+    },
+    "teardown_throughput": {
+      "type": "counter",
+      "contains": "default",
+      "values": {
+        "count": 18,
+        "rate": 0.007429963103188349
+      }
+    },
+    "setup_throughput": {
+      "type": "counter",
+      "contains": "default",
+      "values": {
+        "count": 18,
+        "rate": 0.007429963103188349
+      }
+    },
+    "data_sent": {
+      "type": "counter",
+      "contains": "data",
+      "values": {
+        "count": 68839471,
+        "rate": 28415.2627540558
+      }
+    },
+    "community_groups_response_time": {
+      "values": {
+        "avg": 1260.0645860396921,
+        "min": 214.1196,
+        "med": 1111.479,
+        "max": 7145.6617,
+        "p(50)": 1111.479,
+        "p(90)": 2444.8868,
+        "p(95)": 2962.2427100000004,
+        "p(99)": 3733.335278000002
+      },
+      "type": "trend",
+      "contains": "time"
+    },
+    "testimonials_response_time": {
+      "contains": "time",
+      "values": {
+        "p(99)": 3763.203432,
+        "avg": 1239.1252893929081,
+        "min": 220.1623,
+        "med": 1078.73325,
+        "max": 7065.9705,
+        "p(50)": 1078.73325,
+        "p(90)": 2405.4498399999998,
+        "p(95)": 2906.7401349999986
+      },
+      "type": "trend"
+    },
+    "http_req_duration{expected_response:true}": {
+      "type": "trend",
+      "contains": "time",
+      "values": {
+        "med": 1110.83995,
+        "max": 7618.7439,
+        "p(50)": 1110.83995,
+        "p(90)": 2511.56252,
+        "p(95)": 2992.0144099999993,
+        "p(99)": 3894.5568149999986,
+        "avg": 1281.4505574196196,
+        "min": 204.8924
+      }
+    },
+    "http_req_blocked": {
+      "type": "trend",
+      "contains": "time",
+      "values": {
+        "max": 7650.1301,
+        "p(50)": 0,
+        "p(90)": 0,
+        "p(95)": 0,
+        "p(99)": 0,
+        "avg": 0.8788143162969067,
+        "min": 0,
+        "med": 0
+      }
+    },
+    "user_permissions_throughput": {
+      "type": "counter",
+      "contains": "default",
+      "values": {
+        "count": 26465,
+        "rate": 10.924109640326648
+      }
+    },
+    "http_req_duration": {
+      "type": "trend",
+      "contains": "time",
+      "values": {
+        "med": 1110.8338,
+        "max": 7618.7439,
+        "p(50)": 1110.8338,
+        "p(90)": 2511.55878,
+        "p(95)": 2992.007539999999,
+        "p(99)": 3894.5545099999995,
+        "avg": 1281.4457300148388,
+        "min": 204.8924
+      },
+      "thresholds": {
+        "p(50)<1000": {
+          "ok": false
+        },
+        "p(95)<3000": {
+          "ok": true
+        },
+        "p(99)<10000": {
+          "ok": true
+        }
+      }
+    },
+    "http_req_tls_handshaking": {
+      "type": "trend",
+      "contains": "time",
+      "values": {
+        "avg": 0.04185116472481691,
+        "min": 0,
+        "med": 0,
+        "max": 164.8952,
+        "p(50)": 0,
+        "p(90)": 0,
+        "p(95)": 0,
+        "p(99)": 0
+      }
+    },
+    "achievements_throughput": {
+      "contains": "default",
+      "values": {
+        "count": 7920,
+        "rate": 3.2691837654028735
+      },
+      "type": "counter"
+    },
+    "api_throughput": {
+      "thresholds": {
+        "count>0": {
+          "ok": true
+        }
+      },
+      "type": "counter",
+      "contains": "default",
+      "values": {
+        "rate": 53.602643256496435,
+        "count": 129859
+      }
+    },
+    "teams_error_rate": {
+      "type": "rate",
+      "contains": "default",
+      "values": {
+        "fails": 5358,
+        "rate": 0,
+        "passes": 0
+      }
+    },
+    "users_response_time": {
+      "type": "trend",
+      "contains": "time",
+      "values": {
+        "p(90)": 2440.06338,
+        "p(95)": 2907.0694799999997,
+        "p(99)": 3788.1975119999984,
+        "avg": 1232.2747557909192,
+        "min": 220.9945,
+        "med": 1054.9856,
+        "max": 7142.2784,
+        "p(50)": 1054.9856
+      }
+    },
+    "teardown_error_rate": {
+      "type": "rate",
+      "contains": "default",
+      "values": {
+        "rate": 0,
+        "passes": 0,
+        "fails": 18
+      }
+    },
+    "users_throughput": {
+      "type": "counter",
+      "contains": "default",
+      "values": {
+        "count": 33613,
+        "rate": 13.874630543748331
+      }
+    },
+    "fund_applications_error_rate": {
+      "contains": "default",
+      "values": {
+        "rate": 0.00009151642719868216,
+        "passes": 1,
+        "fails": 10926
+      },
+      "type": "rate"
+    },
+    "users_error_rate": {
+      "type": "rate",
+      "contains": "default",
+      "values": {
+        "rate": 0,
+        "passes": 0,
+        "fails": 33613
+      }
+    },
+    "vus_max": {
+      "type": "gauge",
+      "contains": "default",
+      "values": {
+        "min": 200,
+        "max": 200,
+        "value": 200
+      }
+    },
+    "http_req_waiting": {
+      "type": "trend",
+      "contains": "time",
+      "values": {
+        "max": 7618.7439,
+        "p(50)": 1109.8596,
+        "p(90)": 2509.93498,
+        "p(95)": 2991.07637,
+        "p(99)": 3894.165682,
+        "avg": 1280.6962874771868,
+        "min": 204.3208,
+        "med": 1109.8596
+      }
+    },
+    "api_error_rate": {
+      "type": "rate",
+      "contains": "default",
+      "values": {
+        "fails": 129858,
+        "rate": 0.00000770065994655742,
+        "passes": 1
+      },
+      "thresholds": {
+        "rate<0.01": {
+          "ok": true
+        }
+      }
+    },
+    "configs_throughput": {
+      "contains": "default",
+      "values": {
+        "count": 13329,
+        "rate": 5.501887677910973
+      },
+      "type": "counter"
+    },
+    "community_groups_error_rate": {
+      "type": "rate",
+      "contains": "default",
+      "values": {
+        "rate": 0,
+        "passes": 0,
+        "fails": 5795
+      }
+    },
+    "achievements_error_rate": {
+      "type": "rate",
+      "contains": "default",
+      "values": {
+        "rate": 0,
+        "passes": 0,
+        "fails": 7920
+      }
+    },
+    "configs_response_time": {
+      "type": "trend",
+      "contains": "time",
+      "values": {
+        "p(95)": 2924.4605399999996,
+        "p(99)": 3790.1687039999993,
+        "avg": 1211.0880338209925,
+        "min": 215.1057,
+        "med": 1032.6052,
+        "max": 6317.7767,
+        "p(50)": 1032.6052,
+        "p(90)": 2443.2096800000004
+      }
+    },
+    "vus": {
+      "type": "gauge",
+      "contains": "default",
+      "values": {
+        "value": 0,
+        "min": 0,
+        "max": 189
+      }
+    },
+    "setup_error_rate": {
+      "contains": "default",
+      "values": {
+        "rate": 0,
+        "passes": 0,
+        "fails": 18
+      },
+      "type": "rate"
+    },
+    "iteration_duration": {
+      "type": "trend",
+      "contains": "time",
+      "values": {
+        "p(50)": 1637.30625,
+        "p(90)": 3328.4927300000013,
+        "p(95)": 4188.48154,
+        "p(99)": 8144.06782799995,
+        "avg": 1963.127750731484,
+        "min": 710.4754,
+        "med": 1637.30625,
+        "max": 19391.8672
+      }
+    },
+    "fund_applications_response_time": {
+      "type": "trend",
+      "contains": "time",
+      "values": {
+        "min": 260.2752,
+        "med": 1398.7755,
+        "max": 7036.9483,
+        "p(50)": 1398.7755,
+        "p(90)": 2876.9291599999997,
+        "p(95)": 3351.714929999999,
+        "p(99)": 4340.839121999998,
+        "avg": 1558.1795198041561
+      }
+    },
+    "configs_error_rate": {
+      "contains": "default",
+      "values": {
+        "rate": 0,
+        "passes": 0,
+        "fails": 13329
+      },
+      "type": "rate"
+    },
+    "iterations": {
+      "type": "counter",
+      "contains": "default",
+      "values": {
+        "count": 113880,
+        "rate": 47.00689989950495
+      }
+    },
+    "teams_throughput": {
+      "type": "counter",
+      "contains": "default",
+      "values": {
+        "count": 5358,
+        "rate": 2.2116523503823986
+      }
+    },
+    "teardown_response_time": {
+      "type": "trend",
+      "contains": "time",
+      "values": {
+        "p(99)": 532.273071,
+        "avg": 376.2122111111112,
+        "min": 283.7071,
+        "med": 351.1434,
+        "max": 541.1443,
+        "p(50)": 351.1434,
+        "p(90)": 482.41483000000005,
+        "p(95)": 496.78815499999996
+      }
+    },
+    "data_received": {
+      "type": "counter",
+      "contains": "data",
+      "values": {
+        "count": 534012756,
+        "rate": 220427.50409510682
+      }
+    },
+    "http_req_receiving": {
+      "type": "trend",
+      "contains": "time",
+      "values": {
+        "p(95)": 2.0731099999999993,
+        "p(99)": 7.291041999999982,
+        "avg": 0.5386000700760075,
+        "min": 0,
+        "med": 0,
+        "max": 1140.3438,
+        "p(50)": 0,
+        "p(90)": 0.9714
+      }
+    },
+    "competitions_response_time": {
+      "type": "trend",
+      "contains": "time",
+      "values": {
+        "max": 5712.6931,
+        "p(50)": 988.4364,
+        "p(90)": 2369.3612100000005,
+        "p(95)": 2830.283165,
+        "p(99)": 3657.9536230000003,
+        "avg": 1164.586713434217,
+        "min": 204.8924,
+        "med": 988.4364
+      }
+    },
+    "user_permissions_response_time": {
+      "contains": "time",
+      "values": {
+        "p(90)": 2483.971700000001,
+        "p(95)": 2952.1267,
+        "p(99)": 3865.136428000002,
+        "avg": 1268.8255202569483,
+        "min": 216.9807,
+        "med": 1098.3992,
+        "max": 7207.4849,
+        "p(50)": 1098.3992
+      },
+      "type": "trend"
+    },
+    "competitions_error_rate": {
+      "values": {
+        "rate": 0,
+        "passes": 0,
+        "fails": 20552
+      },
+      "type": "rate",
+      "contains": "default"
+    },
+    "fund_applications_throughput": {
+      "type": "counter",
+      "contains": "default",
+      "values": {
+        "rate": 4.510400379363283,
+        "count": 10927
+      }
+    },
+    "setup_response_time": {
+      "contains": "time",
+      "values": {
+        "p(50)": 381.1651,
+        "p(90)": 926.98021,
+        "p(95)": 1141.7395599999986,
+        "p(99)": 1748.9390319999984,
+        "avg": 570.57785,
+        "min": 290.2022,
+        "med": 381.1651,
+        "max": 1900.7389
+      },
+      "type": "trend"
+    },
+    "testimonials_error_rate": {
+      "type": "rate",
+      "contains": "default",
+      "values": {
+        "rate": 0,
+        "passes": 0,
+        "fails": 5864
+      }
+    },
+    "group_duration": {
+      "values": {
+        "avg": 1462.716014215587,
+        "min": 210.3067,
+        "med": 1136.8216,
+        "max": 18891.7174,
+        "p(50)": 1136.8216,
+        "p(90)": 2828.390350000001,
+        "p(95)": 3688.3321949999995,
+        "p(99)": 7648.958431000006
+      },
+      "type": "trend",
+      "contains": "time"
+    },
+    "checks": {
+      "type": "rate",
+      "contains": "default",
+      "values": {
+        "rate": 0.9999922344572663,
+        "passes": 128773,
+        "fails": 1
+      }
+    },
+    "http_req_failed": {
+      "type": "rate",
+      "contains": "default",
+      "values": {
+        "rate": 0.00000770065994655742,
+        "passes": 1,
+        "fails": 129858
+      },
+      "thresholds": {
+        "rate<0.01": {
+          "ok": true
+        }
+      }
+    },
+    "teams_response_time": {
+      "type": "trend",
+      "contains": "time",
+      "values": {
+        "p(50)": 1157.61875,
+        "p(90)": 2502.71323,
+        "p(95)": 2976.7140749999994,
+        "p(99)": 3907.3327060000047,
+        "avg": 1319.8971023142972,
+        "min": 239.0875,
+        "med": 1157.61875,
+        "max": 5923.4246
+      }
+    }
+  },
+  "setup_data": {
+    "ids": {
+      "competitionOrganizerTypeId": "019ee92f-5474-70ae-8d91-8276fdee5ef0",
+      "competitionRankId": "019ee92f-56e4-7389-b2f9-7ca160a1baab",
+      "competitionScaleId": "019ee92f-5823-70a5-8b5a-567b5ec3f55b",
+      "degreeId": "019ee92f-4e9a-738c-9e89-e33cd9f244f6",
+      "majorId": "019ee92f-5317-70fd-a9ac-e1f7bec69419",
+      "competitionId": "019ee92f-5bcf-7052-a637-8362c5b2a9ba",
+      "competitionInstanceId": "019ee92f-6330-728f-a42b-b7136a95caf0",
+      "competitionOutputId": "019ee92f-55a0-720c-8bd4-938e7d6ec4f3",
+      "competitionTeamTypeId": "019ee92f-5956-724b-810b-ed079ca67cec",
+      "configKey": "k6_config_uid_17_57780",
+      "permissionId": "019ee92f-70e7-7316-a679-307c05b7049c",
+      "userId": "019ee92f-6515-7304-9280-b6df475f518a",
+      "memberUserId": "019ee92f-67a2-7123-8bb7-d62e985e9e85",
+      "communityGroupId": "019ee92f-6942-733e-a5ad-283bcbaf8aee",
+      "competitionTimeRangeId": "019ee92f-5aa2-714a-8419-7a2e8c06162c",
+      "facultyId": "019ee92f-51a5-73c6-80b1-4e5685b1f964",
+      "teamId": "019ee92f-6c67-70f3-b9d9-026acc5f7063",
+      "userPermissionId": "019ee92f-72dd-723f-84bb-f3df692c3f0d"
+    },
+    "hasFailure": false
+  }
+}

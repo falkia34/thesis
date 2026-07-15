@@ -1,0 +1,32 @@
+flowchart LR
+    User(("User"))
+    style User fill:#e1f5ff,stroke:#0288d1,stroke-width:3px,color:#000
+
+    ManajemenCompetition(("Manajemen Competition"))
+    ManajemenCompetitionInstance(("Manajemen Competition Instance"))
+    ManajemenOrganizerType(("Manajemen Organizer Type"))
+    ManajemenCompetitionScale(("Manajemen Competition Scale"))
+    ManajemenCompetitionRank(("Manajemen Competition Rank"))
+    ManajemenCompetitionTimeRange(("Manajemen Competition Time Range"))
+    ManajemenCompetitionOutput(("Manajemen Competition Output"))
+    ManajemenCompetitionTeamType(("Manajemen Competition Team Type"))
+
+    Login(("Login"))
+
+    User --> ManajemenCompetition
+    User --> ManajemenCompetitionInstance
+    User --> ManajemenOrganizerType
+    User --> ManajemenCompetitionScale
+    User --> ManajemenCompetitionRank
+    User --> ManajemenCompetitionTimeRange
+    User --> ManajemenCompetitionOutput
+    User --> ManajemenCompetitionTeamType
+
+    ManajemenCompetition -.->|"#lt;#lt;include#gt;#gt;"| Login
+    ManajemenCompetitionInstance -.->|"#lt;#lt;include#gt;#gt;"| Login
+    ManajemenOrganizerType -.->|"#lt;#lt;include#gt;#gt;"| Login
+    ManajemenCompetitionScale -.->|"#lt;#lt;include#gt;#gt;"| Login
+    ManajemenCompetitionRank -.->|"#lt;#lt;include#gt;#gt;"| Login
+    ManajemenCompetitionTimeRange -.->|"#lt;#lt;include#gt;#gt;"| Login
+    ManajemenCompetitionOutput -.->|"#lt;#lt;include#gt;#gt;"| Login
+    ManajemenCompetitionTeamType -.->|"#lt;#lt;include#gt;#gt;"| Login

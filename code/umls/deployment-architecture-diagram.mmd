@@ -1,0 +1,110 @@
+flowchart TD
+    %% ================= External =================
+    client(["Client / Browser"])
+    cf["Cloudflare DNS + Proxy<br/>(records managed by external-dns)"]
+    smtp["SMTP Relay<br/>smtp.hostinger.com :465"]
+    oracle[("Oracle Cloud Object Storage<br/>WAL archive + scheduled backup<br/>(barman-cloud plugin)")]
+
+    %% ================= Cluster =================
+    subgraph cluster["K3s Cluster - vali.infiniteuny.id"]
+        slb["k3s ServiceLB (Klipper)<br/>exposes Gateway svc as LoadBalancer<br/>TCP :443 on every node"]
+
+        subgraph mesh["Istio Ambient Mesh"]
+            istiod["istiod<br/>control plane (ambient profile)"]
+            zt["ztunnel<br/>per-node L4 mTLS (HBONE)"]
+            gw["<b>Gateway istio-http-grpc</b><br/>ns: default - class: istio<br/>HTTPS :443<br/>hostname wildcard *.infiniteuny.id<br/>TLS terminate (cert-manager / Let's Encrypt)"]
+            wp["<b>Waypoint istio-waypoint</b><br/>ns: default - class: istio-waypoint<br/>HBONE :15008 - L7 policy"]
+            ra["RequestAuthentication infinity-ra<br/>JWT issuer auth.infiniteuny.id<br/>claims to headers x-user-id,<br/>x-user-email, x-token-*"]
+        end
+
+        subgraph infinity["Namespace prod-infinity"]
+            fesvc["Service<br/>infinity-frontend :80"]
+            fe["Deployment infinity-frontend<br/>Next.js :3000 - v1.3.15"]
+            besvc["Service<br/>infinity-backend :80<br/>(ambient + ingress-use-waypoint)"]
+            be["Deployment infinity-backend<br/>Laravel :8000 - v1.13.3<br/>CONTAINER_MODE=server"]
+            behpa["HPA 1-5 pods (cpu60/mem80)<br/>+ PodDisruptionBudget"]
+            hz["Deployment infinity-horizon<br/>Laravel Horizon queue worker<br/>CONTAINER_MODE=horizon - HPA 1-3"]
+            sc["Deployment infinity-scheduler<br/>Laravel scheduler<br/>CONTAINER_MODE=scheduler + PDB"]
+            mg["Job infinity-migrate<br/>php artisan migrate --isolated<br/>(ArgoCD sync hook)"]
+            rpx["Service infinity-redis-ha-haproxy :6379<br/>HAProxy x3 - routes to Redis master"]
+            rds[("Redis HA (Helm redis-ha)<br/>StatefulSet x3 + Sentinel quorum<br/>masterGroup: infinity")]
+            cfg["ConfigMap infinity-cm<br/>SealedSecret infinity-secret"]
+        end
+
+        subgraph cnpgns["Namespace prod-cnpg-internal"]
+            cnro["Service cnpg-internal-ro :5432<br/>(read replicas)"]
+            cnrw["Service cnpg-internal-rw :5432<br/>(primary read-write)"]
+            cnpg[("CNPG Cluster cnpg-internal<br/>PostgreSQL 17 - 3 instances<br/>Database infinity (owner: infinity)")]
+        end
+
+        subgraph ssons["Namespace prod-authentik"]
+            sso["Authentik - INFINITE SSO<br/>authentik-server :443<br/>OIDC provider (dashboard app)"]
+        end
+
+        subgraph s3ns["Namespace prod-minio-internal"]
+            s3[("MinIO Tenant (S3)<br/>minio :443 - bucket: infinity")]
+        end
+    end
+
+    %% ================= Traffic flow =================
+    client -->|"HTTPS :443"| cf
+    cf -->|"HTTPS :443 (proxied)"| slb
+    slb -->|"TCP :443"| gw
+
+    gw -->|"host dash.infiniteuny.id<br/>HTTPRoute infinity-httproute"| fesvc
+    gw -->|"host api.infiniteuny.id path /infinity<br/>HTTPRoute api-httproute (ns prod-api)<br/>URLRewrite /infinity to /<br/>cross-ns via ReferenceGrant infinity-rg"| wp
+    gw -->|"host auth.infiniteuny.id<br/>HTTPRoute authentik-httproute"| sso
+    gw -->|"host storage.infiniteuny.id<br/>HTTPRoute minio-internal-httproute"| s3
+
+    wp -->|"HBONE/mTLS via ztunnel"| besvc
+    ra -.->|"enforced at"| wp
+    ra -.->|"fetch JWKS / validate iss"| sso
+
+    fesvc --> fe
+    fe -->|"OIDC discovery + code exchange<br/>(better-auth server-side)"| sso
+    besvc --> be
+    behpa -.->|"scales"| be
+
+    %% Backend data plane
+    be -->|"pgsql read :5432"| cnro
+    be -->|"pgsql write :5432"| cnrw
+    be -->|"cache / queue / session :6379"| rpx
+    be -->|"S3 API (AWS_ENDPOINT<br/>storage.infiniteuny.id)"| s3
+    be -->|"OIDC + Authentik API"| sso
+    be -->|"outgoing mail :465"| smtp
+
+    %% Async workers
+    hz -->|"pop jobs :6379"| rpx
+    hz -->|"pgsql :5432"| cnrw
+    sc -->|"dispatch scheduled jobs :6379"| rpx
+    sc -->|"pgsql :5432"| cnrw
+    mg -->|"schema migration :5432"| cnrw
+
+    rpx --> rds
+    cnro --> cnpg
+    cnrw --> cnpg
+    cnpg -->|"WAL + base backup"| oracle
+
+    cfg -.->|"envFrom"| be
+    cfg -.->|"envFrom"| fe
+    cfg -.->|"envFrom"| hz
+    cfg -.->|"envFrom"| sc
+
+    %% Control plane (dotted)
+    istiod -.->|"xDS config"| gw
+    istiod -.->|"xDS config"| wp
+    istiod -.->|"xDS config"| zt
+    zt -.->|"L4 mTLS for mesh traffic"| besvc
+
+    %% ================= Styles =================
+    classDef edge fill:#e8f4fd,stroke:#1e88e5,stroke-width:2px,color:#000
+    classDef gateway fill:#fff3e0,stroke:#fb8c00,stroke-width:2px,color:#000
+    classDef app fill:#e8f5e9,stroke:#43a047,stroke-width:2px,color:#000
+    classDef data fill:#f3e5f5,stroke:#8e24aa,stroke-width:2px,color:#000
+    classDef sec fill:#ffebee,stroke:#e53935,stroke-width:2px,color:#000
+
+    class slb,cf edge
+    class gw,wp gateway
+    class fe,be,hz,sc,mg,fesvc,besvc app
+    class rds,rpx,cnpg,cnro,cnrw,s3,oracle data
+    class ra,sso sec

@@ -1,0 +1,195 @@
+<?php
+
+/**
+ * @group Users
+ * Manage users.
+ */
+class UserController extends Controller
+{
+    public function __construct()
+    {
+        $this->middleware('can:create,'.User::class)->only('store');
+        $this->middleware('can:update,user')->only('update');
+        $this->middleware('can:delete,user')->only('destroy');
+    }
+
+    /**
+     * List all users
+     *
+     * @unauthenticated
+     *
+     * @apiResourceCollection App\Http\Resources\User\UserCollection
+     *
+     * @apiResourceModel App\Models\User paginate=10,cursor
+     */
+    public function index(Request $request)
+    {
+        $users = QueryBuilder::for(User::class)
+            ->allowedFields(
+                'id',
+                'sso_id',
+                'name',
+                'username',
+                'email_address',
+                'phone_number',
+                'student_id',
+                'major_id',
+                'links',
+                'start_date',
+                'end_date',
+                'is_member',
+                'is_extraordinary',
+                'created_at',
+                'updated_at',
+            )
+            ->allowedIncludes(
+                'major',
+                'major.degree',
+                'major.faculty',
+                'personas',
+                'groups',
+                'permissions',
+            )
+            ->allowedFilters(
+                AllowedFilter::exact('sso_id'),
+                'name',
+                'username',
+                'email_address',
+                'phone_number',
+                'student_id',
+                AllowedFilter::exact('major_id'),
+                AllowedFilter::operator('start_date', FilterOperator::DYNAMIC),
+                AllowedFilter::operator('end_date', FilterOperator::DYNAMIC),
+                AllowedFilter::exact('is_member'),
+                AllowedFilter::exact('is_extraordinary'),
+                AllowedFilter::operator('created_at', FilterOperator::DYNAMIC),
+                AllowedFilter::operator('updated_at', FilterOperator::DYNAMIC),
+            )
+            ->allowedSorts(
+                'id',
+                'name',
+                'username',
+                'email_address',
+                'phone_number',
+                'student_id',
+                'major_id',
+                'start_date',
+                'end_date',
+                'is_member',
+                'is_extraordinary',
+                'created_at',
+                'updated_at',
+            )
+            ->defaultSorts('-id')
+            ->cursorPaginate($request->query('per_page', 10));
+
+        return new UserCollection($users);
+    }
+
+    /**
+     * Create a user
+     *
+     * @apiResource App\Http\Resources\User\UserResource status=201
+     *
+     * @apiResourceModel App\Models\User
+     *
+     * @bodyParam links object required Example: {"github": "https://github.com/infiniteuny", "linkedin": "https://linkedin.com/company/infiniteuny/", "website": "https://infiniteuny.id"}
+     * @bodyParam links.* string Example: https://example.com
+     */
+    public function store(StoreUserRequest $request)
+    {
+        $data = $request->validated();
+        $data['links'] = $data['links'] ?? [];
+        $data['is_member'] ??= false;
+        $data['is_extraordinary'] ??= false;
+
+        $user = User::create($data);
+
+        CreateSsoUser::dispatch($user);
+
+        return new UserResource($user);
+    }
+
+    /**
+     * Retrieve a user
+     *
+     * @unauthenticated
+     *
+     * @apiResource App\Http\Resources\User\UserResource
+     *
+     * @apiResourceModel App\Models\User
+     */
+    public function show(User $user)
+    {
+        $user = QueryBuilder::for(User::where('id', $user->id))
+            ->allowedFields(
+                'id',
+                'sso_id',
+                'name',
+                'username',
+                'email_address',
+                'phone_number',
+                'student_id',
+                'major_id',
+                'links',
+                'start_date',
+                'end_date',
+                'is_member',
+                'is_extraordinary',
+                'created_at',
+                'updated_at',
+            )
+            ->allowedIncludes(
+                'major',
+                'major.degree',
+                'major.faculty',
+                'personas',
+                'groups',
+                'permissions',
+            )
+            ->firstOrFail();
+
+        return new UserResource($user);
+    }
+
+    /**
+     * Update a user
+     *
+     * @apiResource App\Http\Resources\User\UserResource
+     *
+     * @apiResourceModel App\Models\User
+     *
+     * @bodyParam links object Example: {"github": "https://github.com/infiniteuny", "linkedin": "https://linkedin.com/company/infiniteuny/", "website": "https://infiniteuny.id"}
+     * @bodyParam links.* string Example: https://example.com
+     */
+    public function update(UpdateUserRequest $request, User $user)
+    {
+        $user->update($request->validated());
+
+        if ($user->sso_id) {
+            UpdateSsoUser::dispatch($user);
+        } else {
+            CreateSsoUser::dispatch($user);
+        }
+
+        return new UserResource($user);
+    }
+
+    /**
+     * Delete a user
+     *
+     * @apiResource App\Http\Resources\User\UserResource
+     *
+     * @apiResourceModel App\Models\User
+     */
+    public function destroy(User $user)
+    {
+        $user->delete();
+
+        if ($user->sso_id) {
+            DeleteSsoUser::dispatch($user->sso_id);
+        }
+
+        return new UserResource($user);
+    }
+}

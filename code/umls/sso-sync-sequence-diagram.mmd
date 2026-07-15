@@ -1,0 +1,25 @@
+sequenceDiagram
+    autonumber
+    actor User
+    participant Frontend as INFINITE Dashboard (Frontend)
+    participant Backend as INFINITE Dashboard API (Backend)
+    participant Redis as Rredis
+    participant SSO as INFINITE SSO
+
+    User->>Frontend: Create/update/delete data
+    Frontend->>Backend: Send request
+    Backend->>Backend: Process the request and store the result
+    Backend->>Redis: Enqueue sync jobs
+
+    loop Every hour
+        Backend->>Redis: Enqueue sync jobs
+    end
+
+    loop Watching
+        Backend->>Redis: Fetch jobs queue
+        Redis-->>Backend: Return the job data
+        Backend->>Backend: Gather and proces job data
+        Backend->>SSO: Sync data
+        SSO-->>Backend: Return response
+        Backend->>Backend: Update timestamp of the data
+    end

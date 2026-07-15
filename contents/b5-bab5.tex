@@ -6,37 +6,32 @@
 \chapter[KESIMPULAN DAN SARAN]{\\ KESIMPULAN DAN SARAN}
 
 \section{Kesimpulan}
-Bagian kesimpulan menyajikan ringkasan dari temuan dan hasil yang diperoleh selama pelaksanaan proyek. Kesimpulan ini menjawab tujuan proyek dan masalah yang telah diidentifikasi di awal laporan, serta mengonfirmasi pencapaian yang telah diraih berdasarkan hasil implementasi dan pengujian. Kesimpulan harus ditarik secara objektif, didasarkan pada data dan hasil yang telah diperoleh, serta tidak memasukkan opini atau asumsi yang tidak didukung oleh hasil pengujian.
 
-Kesimpulan harus dibuat dengan singkat dan jelas, mencakup poin-poin utama yang berhasil dicapai dalam proyek, seperti:
-\begin{packed_item}
-    \item Capaian utama yang menunjukkan bahwa proyek berhasil memenuhi spesifikasi yang ditetapkan
-    \item Efektivitas sistem dalam menjalankan fungsinya berdasarkan hasil pengujian
-    \item Kesesuaian hasil proyek dengan teori dan standar yang telah diuraikan sebelumnya
-\end{packed_item}
+Berdasarkan hasil penelitian dan pengembangan sistem informasi organisasi INFINITE yang telah diuraikan pada bab-bab sebelumnya, dapat ditarik beberapa kesimpulan sebagai berikut:
 
-Selain itu, kesimpulan juga membahas keterkaitan dengan hasil-hasil penelitian atau proyek serupa yang telah dilakukan sebelumnya, untuk menunjukkan kontribusi dan relevansi dari proyek ini dalam konteks yang lebih luas. Bagian ini juga bisa mencakup hal-hal baru yang ditemukan selama proyek yang dapat memberikan kontribusi positif dalam pengembangan teknologi atau aplikasi di masa mendatang.
+\begin{enumerate}
+    \item Sistem informasi organisasi INFINITE berhasil dikembangkan dengan model \textit{Waterfall} yang terdiri dari \textit{Requirements Definition}, \textit{System and Software Design}, \textit{Implementation and Unit Testing}, serta \textit{Integration and System Testing}. Sistem yang dihasilkan berupa \textit{backend} Laravel dengan arsitektur \textit{headless} yang menyediakan API, \textit{frontend} Next.js, serta integrasi autentikasi terpusat berstandar protokol OIDC melalui sistem SSO INFINITE. Sistem berhasil di-\textit{deploy} sebagai aplikasi terkontainerisasi di platform Kubernetes dengan pendekatan GitOps menggunakan ArgoCD, memungkinkan pengelolaan konfigurasi infrastruktur secara deklaratif melalui repositori Git. \textit{Pipeline} CI/CD berbasis GitHub Actions memastikan setiap perubahan kode melalui proses validasi, pembangunan \textit{image} kontainer, penandatanganan digital dengan Cosign, serta rilis ke \textit{registry} secara otomatis.
+    \item Sistem informasi organisasi INFINITE telah diuji berdasarkan standar kualitas ISO/IEC 25010:2023 untuk \textit{Product Quality} dan ISO/IEC 25019:2023 untuk \textit{Quality in Use}. Pengujian karakteristik \textit{Functional Suitability} memperoleh persentase kelayakan sebesar 100\% (Sangat Layak). Pengujian karakteristik \textit{Interaction Capability} memperoleh persentase kelayakan sebesar 91{,}73\% (Sangat Layak). Pengujian karakteristik \textit{Performance Efficiency} pada \textit{frontend} menghasilkan rata-rata skor performa sebesar 90{,}42 (Baik), sedangkan pada \textit{backend} menghasilkan rata-rata \textit{Response Time} sebesar 1 detik, \textit{Throughput} sebesar 53{,}6 permintaan per detik, \textit{Error Rate} sebesar 0\%, serta maksimum 189 \textit{Virtual Users} simultan. Pengujian karakteristik \textit{Beneficialness} memperoleh persentase kelayakan sebesar 81{,}30\% (Sangat Layak). Berdasarkan hasil pengujian tersebut, sistem informasi organisasi INFINITE tergolong layak digunakan sebagai solusi pengelolaan data organisasi secara terintegrasi dan berkelanjutan.
+\end{enumerate}
 
-Secara keseluruhan, kesimpulan harus memberikan gambaran yang menyeluruh mengenai efektivitas, pencapaian, dan kontribusi proyek terhadap bidang yang diteliti, sekaligus merangkum seluruh hasil dengan ringkas namun komprehensif.
+\section{Keterbatasan Produk}
+
+Produk sistem informasi organisasi INFINITE yang dihasilkan masih memiliki sejumlah keterbatasan, antara lain sebagai berikut:
+
+\begin{enumerate}[label=\alph*.]
+    \item Sistem belum diintegrasikan dengan halaman \textit{landing} organisasi yang ditujukan untuk publik dalam melihat data seperti papan peringkat prestasi atau galeri proyek, sehingga konsumsi data publik masih terbatas melalui API.
+    \item Pengujian kualitas karakteristik \textit{Performance Efficiency} pada \textit{backend} dilakukan dengan tipe \textit{breakpoint test} yang berfokus pada batas kapasitas sistem, sehingga belum mencakup skenario pengujian beban jangka panjang (\textit{soak test}) maupun pengujian lonjakan beban (\textit{spike test}).
+    \item Infrastruktur Kubernetes belum dilengkapi dengan mekanisme pemantauan metrik aplikasi, sehingga selama pengujian tidak tersedia observabilitas terhadap penggunaan sumber daya, pelacakan kesalahan, maupun metrik operasional lainnya.
+    \item Faktor eksternal pada sisi infrastruktur seperti \textit{deployment} basis data, \textit{gateway} API, dan konfigurasi komponen infrastruktur terkait lainnya belum di-\textit{tune} secara optimal, sehingga dampak terhadap performa sistem belum dapat dianalisis secara komprehensif.
+\end{enumerate}
 
 \section{Saran}
-Bagian saran menyajikan rekomendasi untuk pengembangan lebih lanjut yang dapat dilakukan berdasarkan temuan dan hasil yang diperoleh dalam proyek ini. Saran diberikan untuk membantu pembaca memahami langkah-langkah tambahan atau perbaikan yang dapat dilakukan untuk menyempurnakan proyek ini atau untuk membuka peluang penelitian atau pengembangan lebih lanjut.
 
-Saran yang diberikan sebaiknya mencakup hal-hal berikut:
-\begin{packed_item}
-    \item Pengembangan lanjutan pada sistem atau perangkat, seperti peningkatan teknologi atau penambahan fitur yang belum sempat diimplementasikan dalam proyek ini.
-    \item Pengujian lebih lanjut di berbagai kondisi atau lingkungan yang berbeda, untuk memastikan sistem mampu beradaptasi dalam berbagai situasi dan meningkatkan keandalannya.
-    \item Penelitian tambahan untuk menggali aspek-aspek yang belum sepenuhnya terjawab dalam proyek ini atau untuk memvalidasi hasil yang telah diperoleh.
-    \item Pengembangan aplikasi sistem yang lebih luas di bidang lain yang relevan, agar hasil proyek ini dapat memberikan manfaat yang lebih besar di luar bidang awal yang menjadi fokus.
-\end{packed_item}
+Berdasarkan kesimpulan dan keterbatasan produk yang telah diuraikan, terdapat sejumlah saran yang dapat dijadikan acuan untuk pengembangan lebih lanjut, yaitu sebagai berikut:
 
-Selain itu, saran juga dapat mencakup rekomendasi untuk mengatasi keterbatasan yang ditemui selama proyek, seperti:
-\begin{packed_item}
-    \item Penyempurnaan metode atau pendekatan yang digunakan, jika ditemukan kelemahan dalam tahap implementasi atau pengujian
-    \item Peningkatan perangkat keras atau perangkat lunak untuk meningkatkan performa sistem secara keseluruhan
-    \item Pemanfaatan teknologi atau metode baru yang relevan untuk memperbaiki atau menambah kapabilitas sistem
-\end{packed_item}
-
-Saran harus dibahas dalam konteks tujuan proyek dan masalah yang diidentifikasi, serta didasarkan pada hasil yang diperoleh. Rekomendasi juga perlu realistis dan dapat diimplementasikan dalam kondisi praktis, agar memberikan panduan yang bermanfaat bagi pengembangan lebih lanjut atau implementasi yang lebih luas.
-
-Secara keseluruhan, saran ini bertujuan untuk memberikan arah bagi pengembangan proyek atau penelitian selanjutnya, sekaligus menunjukkan bagaimana hasil dari proyek ini dapat dioptimalkan dan memberikan kontribusi yang lebih besar dalam bidang yang terkait.
+\begin{enumerate}
+    \item Mengembangkan halaman \textit{landing} organisasi yang memungkinkan publik untuk melihat data seperti papan peringkat prestasi dan galeri proyek.
+    \item Melakukan pengujian \textit{Performance Efficiency} pada \textit{backend} dengan skenario \textit{soak test} dan \textit{spike test} untuk memastikan ketahanan sistem terhadap beban jangka panjang maupun lonjakan beban mendadak.
+    \item Mengimplementasikan mekanisme pemantauan metrik aplikasi menggunakan VictoriaMetrics yang ringan dan Grafana untuk menyediakan observabilitas terhadap penggunaan sumber daya, pelacakan kesalahan, dan metrik operasional lainnya pada infrastruktur Kubernetes.
+    \item Melakukan \textit{tuning} dan optimasi terhadap faktor eksternal pada sisi infrastruktur seperti konfigurasi basis data, \textit{gateway} API, dan komponen terkait, serta melakukan pengujian performa terintegrasi untuk menganalisis dampak secara komprehensif.
+\end{enumerate}

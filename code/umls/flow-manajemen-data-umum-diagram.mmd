@@ -1,0 +1,42 @@
+flowchart TD
+    subgraph Akses
+        A1((Mulai)) --> B1(Pengguna login ke web dasbor)
+        B1 --> C1{Pengguna memiliki\nhak akses yang sesuai?}
+        C1 -->|Ya| D1(Pengguna mengakses data)
+        D1 --> E1(Data ditampilkan)
+        E1 --> F1((Selesai))
+        C1 -->|Tidak| F1
+    end
+
+    subgraph Tambah
+        A2((Mulai)) --> B2(Pengguna login ke web dasbor)
+        B2 --> C2{Pengguna memiliki\nhak akses yang sesuai?}
+        C2 -->|Ya| D2(Pengguna menambahkan data)
+        D2 --> E2(Data ditambahkan)
+        E2 --> F2((Selesai))
+        C2 -->|Tidak| F2
+    end
+
+    subgraph Ubah
+        A3((Mulai)) --> B3(Pengguna login ke web dasbor)
+        B3 --> C3{Pengguna memiliki\nhak akses yang sesuai?}
+        C3 -->|Ya| D3(Pengguna mengubah data)
+        D3 --> E3(Data diubah)
+        E3 --> F3((Selesai))
+        C3 -->|Tidak| F3
+    end
+
+    subgraph Hapus
+        A4((Mulai)) --> B4(Pengguna login ke web dasbor)
+        B4 --> C4{Pengguna memiliki\nhak akses yang sesuai?}
+        C4 -->|Ya| D4(Pengguna menghapus data)
+        D4 --> E4(Data dihapus)
+        E4 --> F4((Selesai))
+        C4 -->|Tidak| F4
+    end
+
+    style Akses fill:none,stroke-width:0px
+    style Tambah fill:none,stroke-width:0px
+    style Ubah fill:none,stroke-width:0px
+    style Hapus fill:none,stroke-width:0px
+    Akses ~~~ Tambah ~~~ Ubah ~~~ Hapus

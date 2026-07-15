@@ -5,6 +5,7 @@
 *.toc
 *.lof
 *.lot
+*.loa
 *.bbl
 *.blg
 *.synctex.gz
@@ -38,3 +39,8 @@ __package_test__.*
 
 # Others
 references/
+AGENTS.md
+.github/
+.opencode/
+openspec/
+others/

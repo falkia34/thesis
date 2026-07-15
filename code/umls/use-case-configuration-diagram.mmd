@@ -1,0 +1,11 @@
+flowchart LR
+    User(("User"))
+    style User fill:#e1f5ff,stroke:#0288d1,stroke-width:3px,color:#000
+
+    ManajemenSystemConfiguration(("Manajemen System Configuration"))
+
+    Login(("Login"))
+
+    User --> ManajemenSystemConfiguration
+
+    ManajemenSystemConfiguration -.->|"#lt;#lt;include#gt;#gt;"| Login

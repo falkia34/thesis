@@ -7,22 +7,21 @@
 \phantomsection
 \addcontentsline{toc}{chapter}{ABSTRAK}
 \begin{center}
-    \textbf{\large{\judulid}}\\[0.5cm]
-    Oleh\\
+    \textbf{\large{\judulid}}\\[2em]
     \penulis\\
-    NIM: \nim\\[2em]
+    NIM \nim\\[2em]
     \textbf{ABSTRAK}\\[0.5cm]
 \end{center}
 %% DILARANG EDIT BAGIAN INI
 
 %% edit bagian ini
-Abstrak adalah sebuah ringkasan singkat yang menjelaskan secara umum tentang isi dari laporan tugas akhir. Abstrak ditulis dalam tiga (3) paragraf yang berisi beberapa kalimat yang menyatakan tujuan, metode, hasil, dan kesimpulan dari laporan tugas akhir. Paragraf pertama berisi latar belakang dan tujuan tugas akhir. Paragraf kedua berisi metode dan pembahasannya. Paragraf ketiga berisi hasil dan simpulan dari tugas akhir yang dikerjakan.
+INFINITE adalah divisi di bawah UKM Rekayasa Teknologi (Restek) UNY yang berfungsi sebagai wadah pengembangan diri mahasiswa di bidang teknologi informasi. Sistem informasi organisasi INFINITE sebelumnya terfragmentasi dalam dua sistem, yaitu Laravel dengan arsitektur monolitik di \textit{shared hosting} dan CMS Strapi yang terpisah, sehingga menimbulkan tantangan pemeliharaan, konsistensi data, inefisiensi biaya operasional, serta ketidakmampuan integrasi dengan aplikasi eksternal dan infrastruktur Kubernetes. Penelitian ini bertujuan mengembangkan sistem informasi organisasi INFINITE yang terkontainerisasi dengan arsitektur \textit{headless} menggunakan Laravel sebagai \textit{backend}, Next.js sebagai \textit{frontend}, dan autentikasi berstandar protokol \textit{OpenID Connect} (OIDC), serta di-\textit{deploy} di Kubernetes dengan pendekatan GitOps menggunakan ArgoCD.
 
-Abstrak harus menjelaskan secara jelas dan singkat apa yang dibahas dalam laporan tugas akhir, mengapa penelitian ini penting dan apa yang ditemukan dari penelitian tersebut. Abstrak harus ditulis dengan bahasa yang mudah dipahami dan harus mencakup informasi penting yang dibahas dalam laporan tugas akhir.
+Pengembangan sistem dilakukan menggunakan metode \textit{Research and Development} (R\&D) dengan model \textit{Waterfall} melalui empat tahapan: \textit{Requirements Definition}, \textit{System and Software Design}, \textit{Implementation and Unit Testing}, serta \textit{Integration and System Testing}. Pengujian dilakukan berdasarkan standar ISO/IEC 25010:2023 untuk \textit{Product Quality} dan ISO/IEC 25019:2023 untuk \textit{Quality in Use}, yang mencakup aspek \textit{Functional Suitability}, \textit{Interaction Capability}, \textit{Performance Efficiency}, dan \textit{Beneficialness}.
 
-Abstrak harus mengandung kata-kata yang relevan dengan laporan tugas akhir dan ditulis dengan bahasa yang formal dan akademik. Abstrak merupakan bagian penting dari sebuah laporan tugas akhir karena merupakan bagian yang pertama kali dibaca oleh pembaca dan harus dapat memberikan gambaran yang jelas tentang isi dari laporan tugas akhir. Oleh karena itu, abstrak harus ditulis dengan baik dan sebaik mungkin agar dapat memberikan gambaran yang jelas tentang laporan tugas akhir yang ditulis. Panjang abstrak sebaiknya dicukupkan dalam satu halaman, termasuk kata kunci. Tiga kata kunci dipandang cukup, yang masing-masingnya memuat paduan kata utama, yang dapat merepresentasikan isi Abstrak.\\[0.6cm]
+Hasil penelitian menunjukkan bahwa sistem berhasil dikembangkan dan di-\textit{deploy} sebagai aplikasi terkontainerisasi di Kubernetes, dengan hasil pengujian \textit{Functional Suitability} sebesar 100\% (Sangat Layak), \textit{Interaction Capability} 91{,}73\% (Sangat Layak), \textit{Performance Efficiency} pada \textit{frontend} berupa rata-rata skor Lighthouse 90{,}42 (Baik) dan pada \textit{backend} berupa \textit{Response Time} 1 detik, \textit{Throughput} 53{,}6 permintaan per detik, \textit{Error Rate} 0\%, serta maksimum 189 \textit{Virtual Users} simultan, dan \textit{Beneficialness} 81{,}30\% (Sangat Layak). Berdasarkan hasil tersebut, sistem informasi organisasi INFINITE tergolong layak digunakan sebagai solusi pengelolaan data organisasi secara terintegrasi dan berkelanjutan.\\[0.6cm]
 %% edit sampai sini
 
 %% DILARANG EDIT BAGIAN INI
-\noindent Kata kunci: Konsep Abstrak, Komponen Abstrak, Kata Kunci.
+\noindent \textbf{Kata kunci:} Sistem Informasi, \textit{Headless}, Kontainer.
 %% DILARANG EDIT BAGIAN INI

@@ -1,0 +1,20 @@
+flowchart LR
+    User(("User"))
+    style User fill:#e1f5ff,stroke:#0288d1,stroke-width:3px,color:#000
+
+    ManajemenUser(("Manajemen User"))
+    ManajemenProfile(("Manajemen Profile"))
+    ManajemenToken(("Manajemen Token"))
+    ManajemenPersona(("Manajemen Persona"))
+
+    Login(("Login"))
+
+    User --> ManajemenUser
+    User --> ManajemenProfile
+    User --> ManajemenToken
+    User --> ManajemenPersona
+
+    ManajemenUser -.->|"#lt;#lt;include#gt;#gt;"| Login
+    ManajemenProfile -.->|"#lt;#lt;include#gt;#gt;"| Login
+    ManajemenToken -.->|"#lt;#lt;include#gt;#gt;"| Login
+    ManajemenPersona -.->|"#lt;#lt;include#gt;#gt;"| Login

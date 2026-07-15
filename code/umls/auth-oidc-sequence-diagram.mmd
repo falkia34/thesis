@@ -1,0 +1,28 @@
+sequenceDiagram
+    autonumber
+    actor User
+    participant Frontend as INFINITE Dashboard (Frontend)
+    participant Backend as INFINITE Dashboard API (Backend)
+    participant SSO as INFINITE SSO (Authentik)
+
+    User->>Frontend: Click login link
+    activate Frontend
+    Frontend->>SSO: Request authorization code to /authorize
+    activate SSO
+    SSO->>User: Redirect to login/authorization prompt
+    activate User
+    User-->>SSO: Authenticate and consent
+    deactivate User
+    SSO-->>Frontend: Return authorization code
+    deactivate SSO
+    Frontend->>SSO: Send authorization code and application credentials
+    activate SSO
+    SSO->>SSO: Validate authorization code and application credentials
+    SSO-->>Frontend: Return access token and ID token
+    deactivate SSO
+    activate Backend
+    Frontend->>Backend: Request with access token
+    Backend-->>Frontend: Response with data
+    Frontend-->>User: Display the requested data
+    deactivate Frontend
+    deactivate Backend

@@ -1,0 +1,23 @@
+flowchart LR
+    User(("User"))
+    style User fill:#e1f5ff,stroke:#0288d1,stroke-width:3px,color:#000
+
+    ManajemenGroup(("Manajemen Group"))
+    ManajemenPermission(("Manajemen Permission"))
+    ManajemenUserGroup(("Manajemen User Group"))
+    ManajemenGroupPermission(("Manajemen Group Permission"))
+    ManajemenUserPermission(("Manajemen User Permission"))
+
+    Login(("Login"))
+
+    User --> ManajemenGroup
+    User --> ManajemenPermission
+    User --> ManajemenUserGroup
+    User --> ManajemenGroupPermission
+    User --> ManajemenUserPermission
+
+    ManajemenGroup -.->|"#lt;#lt;include#gt;#gt;"| Login
+    ManajemenPermission -.->|"#lt;#lt;include#gt;#gt;"| Login
+    ManajemenUserGroup -.->|"#lt;#lt;include#gt;#gt;"| Login
+    ManajemenGroupPermission -.->|"#lt;#lt;include#gt;#gt;"| Login
+    ManajemenUserPermission -.->|"#lt;#lt;include#gt;#gt;"| Login

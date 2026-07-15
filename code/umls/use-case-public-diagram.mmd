@@ -1,0 +1,30 @@
+flowchart LR
+    %% ========================================
+    %% Actor (Left)
+    %% ========================================
+    User(("User"))
+    style User fill:#e1f5ff,stroke:#0288d1,stroke-width:3px,color:#000
+
+    %% ========================================
+    %% Public Use Cases (No Login Required) - TOP
+    %% ========================================
+    LihatCompetition(("Lihat Competition"))
+    LihatCompetitionInstance(("Lihat Competition Instance"))
+    LihatCoreTeam(("Lihat Core Team"))
+    LihatCommunityGroup(("Lihat Community Group"))
+    LihatAchievement(("Lihat Achievement"))
+    LihatAchievementLeaderboard(("Lihat Achievement Leaderboard"))
+    LihatTestimonial(("Lihat Testimonial"))
+    LihatProjectGallery(("Lihat Project Gallery"))
+
+    %% ========================================
+    %% Actor Connections (User to all use cases)
+    %% ========================================
+    User --> LihatCompetition
+    User --> LihatCompetitionInstance
+    User --> LihatCoreTeam
+    User --> LihatCommunityGroup
+    User --> LihatAchievement
+    User --> LihatAchievementLeaderboard
+    User --> LihatTestimonial
+    User --> LihatProjectGallery

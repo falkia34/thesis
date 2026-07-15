@@ -1,0 +1,29 @@
+flowchart LR
+    User(("User"))
+    style User fill:#e1f5ff,stroke:#0288d1,stroke-width:3px,color:#000
+
+    ManajemenCoreTeam(("Manajemen Core Team"))
+    ManajemenCoreTeamDivision(("Manajemen Core Team Division"))
+    ManajemenCoreTeamMember(("Manajemen Core Team Member"))
+    ManajemenCommunityGroup(("Manajemen Community Group"))
+    ManajemenCommunityGroupAdmin(("Manajemen Community Group Admin"))
+    ManajemenCommunityGroupMember(("Manajemen Community Group Member"))
+    ManajemenCommunityGroupAdminMember(("Manajemen Community Group Admin Member"))
+
+    Login(("Login"))
+
+    User --> ManajemenCoreTeam
+    User --> ManajemenCoreTeamDivision
+    User --> ManajemenCoreTeamMember
+    User --> ManajemenCommunityGroup
+    User --> ManajemenCommunityGroupAdmin
+    User --> ManajemenCommunityGroupMember
+    User --> ManajemenCommunityGroupAdminMember
+
+    ManajemenCoreTeam -.->|"#lt;#lt;include#gt;#gt;"| Login
+    ManajemenCoreTeamDivision -.->|"#lt;#lt;include#gt;#gt;"| Login
+    ManajemenCoreTeamMember -.->|"#lt;#lt;include#gt;#gt;"| Login
+    ManajemenCommunityGroup -.->|"#lt;#lt;include#gt;#gt;"| Login
+    ManajemenCommunityGroupAdmin -.->|"#lt;#lt;include#gt;#gt;"| Login
+    ManajemenCommunityGroupMember -.->|"#lt;#lt;include#gt;#gt;"| Login
+    ManajemenCommunityGroupAdminMember -.->|"#lt;#lt;include#gt;#gt;"| Login

@@ -1,0 +1,54 @@
+sequenceDiagram
+    autonumber
+    actor User
+    participant Proxy as K8s Gateway (Istio)
+    participant Frontend as INFINITE Dashboard (Frontend)
+    participant Backend as INFINITE Dashboard API (Backend)
+    participant SSO as INFINITE SSO
+
+    User->>Proxy: Access the Dashboard
+    activate Proxy
+    Proxy->>Frontend: Forward request to Dashboard
+    activate Frontend
+    activate Frontend
+    Frontend->>Frontend: Validate session and access token
+    alt Session invalid/expired
+        Note over User,SSO: Engage the OIDC authentication sequence
+    else Session valid, access token expired, and no refresh token
+        Note over User,SSO: Engage the OIDC authentication sequence
+    else Session valid, access token expired, but has refresh token
+        Frontend->>SSO: Request new access token with refresh token
+        activate SSO
+        SSO->>SSO: Validate access token
+        alt Refresh token valid
+            SSO-->>Frontend: Response with access token and new refresh token
+            deactivate SSO
+        else Refresh token invalid/expired
+            Note over User,SSO: Engage the OIDC authentication sequence
+        end
+    end
+    Frontend->>Proxy: Get data from Dashboard API
+    activate Proxy
+    activate Proxy
+    Proxy->>SSO: Verify access token
+    activate SSO
+    activate SSO
+    SSO->>SSO: Validate access token
+    alt Access token valid
+        SSO-->>Proxy: Response with valid
+        deactivate SSO
+        Proxy->>Backend: Forward request to Dashboard API
+        Backend-->>Proxy: Response with data
+        Proxy-->>Frontend: Forward response to Dashboard
+        deactivate Proxy
+        Frontend-->>Proxy: Response with data display
+    else Access token invalid/expired
+        SSO-->>Proxy: Response with invalid/expired
+        deactivate SSO
+        Proxy-->>Frontend: Response with HTTP 401 failure
+        deactivate Proxy
+        Frontend-->>Proxy: Response with redirect to /login
+    end
+    deactivate Frontend
+    Proxy-->>User: Forward response/redirect to User
+    deactivate Proxy

@@ -1,0 +1,57 @@
+flowchart TD
+    subgraph Akses
+        A1((Mulai)) --> B1(Pengguna login ke web dasbor)
+        B1 --> C1{Pengguna memiliki\nhak akses yang sesuai?}
+        C1 -->|Ya| D1(Pengguna mengakses data anggota)
+        D1 --> E1{Tanggal saat ini lebih dari end_date?}
+        E1 -->|Ya| F1(is_active = false)
+        E1 -->|Tidak| G1(is_active = true)
+        F1 --> H1(Data ditampilkan)
+        G1 --> H1
+        H1 --> I1((Selesai))
+        C1 -->|Tidak| I1
+    end
+
+    subgraph Tambah
+        A2((Mulai)) --> B2(Pengguna login ke web dasbor)
+        B2 --> C2{Pengguna memiliki\nhak akses yang sesuai?}
+        C2 -->|Ya| D2(Pengguna menambahkan data)
+        D2 --> E2(Data ditambahkan)
+        E2 --> F2{Tanggal saat ini lebih dari end_date?}
+        F2 -->|Ya| G2(is_active = false)
+        F2 -->|Tidak| H2(is_active = true)
+        G2 --> I2(Sinkronisasi profil ke SSO INFINITE)
+        H2 --> I2
+        I2 --> J2((Selesai))
+        C2 -->|Tidak| J2
+    end
+
+    subgraph Ubah
+        A3((Mulai)) --> B3(Pengguna login ke web dasbor)
+        B3 --> C3{Pengguna memiliki\nhak akses yang sesuai?}
+        C3 -->|Ya| D3(Pengguna mengubah data)
+        D3 --> E3(Data diubah)
+        E3 --> F3{Tanggal saat ini lebih dari end_date?}
+        F3 -->|Ya| G3(is_active = false)
+        F3 -->|Tidak| H3(is_active = true)
+        G3 --> I3(Sinkronisasi profil ke SSO INFINITE)
+        H3 --> I3
+        I3 --> J3((Selesai))
+        C3 -->|Tidak| J3
+    end
+
+    subgraph Hapus
+        A4((Mulai)) --> B4(Pengguna login ke web dasbor)
+        B4 --> C4{Pengguna memiliki\nhak akses yang sesuai?}
+        C4 -->|Ya| D4(Pengguna menghapus data)
+        D4 --> E4(Data dihapus)
+        E4 --> F4(Sinkronisasi profil ke SSO INFINITE)
+        F4 --> G4((Selesai))
+        C4 -->|Tidak| G4
+    end
+
+    style Akses fill:none,stroke-width:0px
+    style Tambah fill:none,stroke-width:0px
+    style Ubah fill:none,stroke-width:0px
+    style Hapus fill:none,stroke-width:0px
+    Akses ~~~ Tambah ~~~ Ubah ~~~ Hapus

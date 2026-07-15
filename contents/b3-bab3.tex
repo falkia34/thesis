@@ -7,254 +7,315 @@
 
 \section{Jenis Penelitian}
 
-Penelitian ini menggunakan metode \textit{Research and Development} (R\&D). Menurut \citet{Sugiyono_2013_RnD}, metode R\&D adalah suatu metode penelitian yang digunakan untuk menghasilkan produk tertentu dan menguji keefektifan produk tersebut. Metode ini dipilih karena tujuan utama penelitian ini adalah mengembangkan sebuah produk berupa kerangka kerja perangkat lunak, yaitu \textit{Low-code Extensible Agentic Framework} (LEAF).
-Kerangka kerja ini memungkinkan pengguna mendefinisikan dan mengorkestrasi agen AI secara deklaratif melalui manifes YAML/JSON, dengan memanfaatkan protokol standar \textit{Model Context Protocol} (MCP) dan \textit{Agent-to-Agent} (A2A) untuk interoperabilitas.
+Penelitian ini menggunakan metode \textit{Research and Development} (R\&D). Menurut \citet{Sugiyono_2013_RnD}, metode R\&D adalah suatu metode penelitian yang digunakan untuk menghasilkan produk tertentu dan menguji keefektifan produk tersebut. Metode ini dipilih karena tujuan utama penelitian ini adalah mengembangkan sebuah produk berupa sistem informasi organisasi INFINITE dengan \textit{headless} Laravel, Next.js, dan kontainer.
+Sistem informasi ini memungkinkan pengelolaan data keanggotaan, kepengurusan, perlombaan, dan testimoni secara terintegrasi dengan arsitektur \textit{headless} yang memisahkan \textit{backend} API Laravel dari \textit{frontend} Next.js.
 
-Proses pengembangan produk dilaksanakan menggunakan model \textit{Waterfall} sebagai siklus hidup pengembangan perangkat lunak, yang diperkenalkan pertama kali oleh \citet{Royce_1970_Waterfall} dan dikembangkan lebih lanjut dalam literatur rekayasa perangkat lunak modern \citep{Pressman_2014_SE, Sommerville_2016_SE}. Model \textit{Waterfall} dipilih dibandingkan model pengembangan lainnya seperti \textit{Agile} karena memiliki alur kerja yang sistematis dah bertahap, serta cocok untuk proyek yang sudah didefinisikan dengan baik dan juga  stabil \citep{Haniva_2023_Waterfall}.
+Proses pengembangan produk dilaksanakan menggunakan model \textit{Waterfall} sebagai siklus hidup pengembangan perangkat lunak, yang diperkenalkan pertama kali oleh \citet{Royce_1970_Waterfall} dan dikembangkan lebih lanjut dalam literatur rekayasa perangkat lunak modern \citep{Pressman_2014_SE, Sommerville_2016_SE}. Model \textit{Waterfall} dipilih dibandingkan model pengembangan lainnya seperti \textit{Agile} karena memiliki alur kerja yang sistematis dah bertahap, serta cocok untuk proyek yang sudah didefinisikan dengan baik dan juga stabil \citep{Haniva_2023_Waterfall}.
 
-\begin{figure}[ht]
-    \centering
-    \usetikzlibrary{shapes.geometric, positioning}
-    \begin{tikzpicture}[
-            node distance=0.8cm and -0.5cm,
-            block/.style={
-                    rectangle,
-                    thick,
-                    rounded corners=1em,
-                    draw=black,
-                    fill=white,
-                    align=center,
-                    font=\fontsize{10.5}{12}\selectfont,
-                    minimum height=3em,
-                    minimum width=7em,
-                    text width=6em,
-                    inner sep=0.5em
-                },
-            line/.style={
-                    draw,
-                    thick,
-                    ->,
-                    >=stealth,
-                    shorten >=1pt,
-                    rounded corners=1pt
-                }
-        ]
+\begin{figure}[H]
+	\centering
+	\usetikzlibrary{shapes.geometric, positioning}
+	\caption{Diagram Model \textit{Waterfall}}
+	\label{fig:waterfall}
+	\begin{tikzpicture}[
+			node distance=0.8cm and -0.5cm,
+			block/.style={
+					rectangle,
+					thick,
+					rounded corners=1em,
+					draw=black,
+					fill=white,
+					align=center,
+					font=\fontsize{10.5}{12}\selectfont,
+					minimum height=3em,
+					minimum width=7em,
+					text width=6em,
+					inner sep=0.5em
+				},
+			line/.style={
+					draw,
+					thick,
+					->,
+					>=stealth,
+					shorten >=1pt,
+					rounded corners=1pt
+				}
+		]
 
-        % Nodes
-        \node [block] (req) {Requirement Definition};
-        \node [block, below right=of req] (sys) {System and Software Design};
-        \node [block, below right=of sys] (imp) {Implementation and Unit Testing};
-        \node [block, below right=of imp] (int) {Integration and System Testing};
-        \node [block, below right=of int] (ops) {Operation and Maintenance};
+		% Nodes
+		\node [block] (req) {Requirement Definition};
+		\node [block, below right=of req] (sys) {System and Software Design};
+		\node [block, below right=of sys] (imp) {Implementation and Unit Testing};
+		\node [block, below right=of imp] (int) {Integration and System Testing};
+		\node [block, below right=of int] (ops) {Operation and Maintenance};
 
-        % Sequential arrows
-        \path [line] (req.east) -| (sys.north);
-        \path [line] (sys.east) -| (imp.north);
-        \path [line] (imp.east) -| (int.north);
-        \path [line] (int.east) -| (ops.north);
+		% Sequential arrows
+		\path [line] (req.east) -| (sys.north);
+		\path [line] (sys.east) -| (imp.north);
+		\path [line] (imp.east) -| (int.north);
+		\path [line] (int.east) -| (ops.north);
 
-        % Back arrows
-        \path [line] (ops.west) -| (req.south);
-        \path [line] (ops.west) -| (sys.south);
-        \path [line] (ops.west) -| (imp.south);
-        \path [line] (ops.west) -| (int.south);
-    \end{tikzpicture}
-    \caption{Diagram model \textit{Waterfall}}
-    \label{fig:waterfall}
+		% Back arrows
+		\path [line] (ops.west) -| (req.south);
+		\path [line] (ops.west) -| (sys.south);
+		\path [line] (ops.west) -| (imp.south);
+		\path [line] (ops.west) -| (int.south);
+	\end{tikzpicture}
 \end{figure}
 
-Pada model ini, terdapat lima tahap yang dilaksanakan secara berurutan: ~(1) \textit{Requirements Definition}, ~(2) \textit{System and Software Design}, ~(3) \textit{Implementation and Unit Testing}, ~(4) \textit{Integration and System Testing}, dan ~(5) \textit{Operation and Maintenance}, sebagaimana yang diilustrasikan pada Gambar~\ref{fig:waterfall}. Masing-masing tahap menghasilkan artefak yang menjadi masukan bagi tahap berikutnya, sehingga tidak memungkinkan melewati salah satu tahap langsung ke tahap selanjutnya. Tahapan yang dilakukan pada penelitian ini terbatas hingga tahap keempat (\textit{Integration and System Testing}), sedangkan tahap kelima (\textit{Operation and Maintenance}) dilakukan ketika nantinya digunakan secara nyata dan terdapat peerkembangan kebutuhan dari pengguna.
+Pada model ini, terdapat lima tahap yang dilaksanakan secara berurutan: ~(1) \textit{Requirements Definition}, ~(2) \textit{System and Software Design}, ~(3) \textit{Implementation and Unit Testing}, ~(4) \textit{Integration and System Testing}, dan ~(5) \textit{Operation and Maintenance}, sebagaimana yang diilustrasikan pada \figref{fig:waterfall}. Masing-masing tahap menghasilkan artefak yang menjadi masukan bagi tahap berikutnya, sehingga tidak memungkinkan melewati salah satu tahap langsung ke tahap selanjutnya.
+
+Untuk penelitian ini, fokus utama adalah pada tahap pertama hingga tahap keempat, yaitu dari \textit{Requirements Definition} hingga \textit{Integration and System Testing}. Tahap \textit{Operation and Maintenance} tidak termasuk dalam ruang lingkup penelitian ini dan akan dilakukan secara berkelanjutan oleh pengurus INFINITE setelah produk sistem informasi organisasi INFINITE selesai dikembangkan dan diujikan.
 
 \section{Metode Penelitian}
 
 \subsection{\textit{Requirements Definition}}
 
-Tahap \textit{requirements definition} bertujuan untuk mengidentifikasi dan mendokumentasikan kebutuhan fungsional maupun non-fungsional dari LEAF. Pada tahap ini, digunakan metode kuesioner yang ditujukan kepada para ahli \textit{cloud computing}, SRE, \textit{system administrator}, dan peran serupa lainnya untuk mengumpulkan kebutuhan dari perspektif ahli bidang. Kuesioner dirancang untuk mengevaluasi kebutuhan terkait fitur inti kerangka kerja seperti definisi deklaratif, integrasi MCP/A2A, orkestrasi multi-agen, serta kebutuhan non-fungsional seperti interoperabilitas, ekstensibilitas, dan kemudahan penggunaan.
+Tahap \textit{requirements definition} bertujuan untuk mengidentifikasi dan mendokumentasikan kebutuhan fungsional maupun non-fungsional dari sistem informasi organisasi INFINITE. Pada tahap ini, digunakan dilakukan wawancara kepada pengurus dan anggota INFINITE untuk mengumpulkan kebutuhan dari perspektif pengguna. Selain itu, dilakukan juga observasi terhadap sistem informasi organisasi yang telah ada sebelumnya untuk memahami kondisi sistem dan tantangan yang dihadapi oleh pengurus dan anggota INFINITE dalam mengelola data organisasi. Hasil dari tahap ini ditujukan sebagai dasar untuk menentukan spesifikasi kebutuhan sistem informasi INFINITE yang akan dikembangkan, serta untuk memastikan bahwa produk yang dikembangkan sesuai dengan kebutuhan dan harapan pengguna.
 
 \subsection{\textit{System and Software Design}}
 
-Berdasarkan kebutuhan yang telah diidentifikasi pada tahap sebelumnya, dilakukan tahap \textit{System and Software Design} untuk menerjemahkan kebutuhan tersebut menjadi arsitektur dan spesifikasi teknis LEAF. Proses desain dilakukan dengan pendekatan \textit{top-down}, dimulai dari perancangan arsitektur sistem keseluruhan hingga spesifikasi antarmuka. Aktivitas desain mencakup 2 aspek utama:
+Berdasarkan informasi kebutuhan spesifikasi yang telah diidentifikasi pada tahap sebelumnya, dilakukan tahap \textit{System and Software Design} untuk menerjemahkan kebutuhan tersebut menjadi desain dan spesifikasi teknis sistem informasi INFINITE. Proses desain dilakukan dengan pendekatan \textit{top-down}, dimulai dari perancangan desain sistem keseluruhan hingga desain antarmuka. Aktivitas desain mencakup 3 aspek utama:
 \begin{enumerate}[label=\alph*.]
-    \item Desain sistem: Perancangan desain sistem yang mencakup arsitektur komponen-komponen utama kerangka kerja, seperti tipe dan hierarki agen, serta aturan kapabilitas masing-masing tipe agen. Desain sistem juga mencakup perancangan pola orkestrasi dan koordinasi multi-agen.
-    \item Desain antarmuka: Perancangan antarmuka mencakup antarmuka pengguna serta antarmuka sistem.
-          \begin{itemize}
-              \item Untuk antarmuka pengguna, meliputi desain format manifes deklaratif (YAML/JSON) untuk mendefinikan agen serta peralatan, dengan fokus pada kemudahan penggunaan dan kejelasan struktur.
-              \item Untuk antarmuka sistem meliputi desain komunikasi antar agen dengan protokol A2A, serta desain komunikasi ke server peralatan dengan protokol MCP.
-          \end{itemize}
+	\item Desain arsitektur sistem: Desain arsitektur sistem dilakukan dengan memanfaatkan \textit{Unified Modeling Language} (UML) yang meliputi \textit{use case diagram}, \textit{class diagram}, dan \textit{sequence diagram}. Desain ini mencakup \textit{backend} Laravel dan \textit{frontend} Next.js.
+	\item Desain basis data: Desain skema basis data PostgreSQL dilakukan untuk menentukan struktur dan hubungan antar tabel yang akan digunakan dalam menyimpan data keanggotaan, kepengurusan, perlombaan, dan testimoni. Desain ini meliputi entitas, atribut, dan relasi antar tabel untuk memastikan integritas data dan efisiensi penyimpanan.
+	\item Desain antarmuka: Desain antarmuka dilakukan untuk merancang interaksi pengguna dengan sistem informasi INFINITE. Desain ini mencakup desain halaman-halaman \textit{frontend} Next.js. Desain yang baik akan memastikan pengalaman pengguna yang intuitif dan efisien dalam mengelola data organisasi, serta memastikan konsistensi dan estetika dalam tampilan antarmuka pengguna.
 \end{enumerate}
 
 \subsection{\textit{Implementation and Unit Testing}}
 
-Pada tahap \textit{implementation and unit testing} ini, desain pada tahap sebelumnya direalisasikan menjadi kode program kerangka kerja yang fungsional. Implementasi kerangka kerja LEAF pada penelitian ini dilakukan menggunakan bahasa pemrograman Python dan \textit{library} Google ADK yang mendukung integrasi \textit{native} dengan MCP dan A2A. Sedangkan untuk implementasi manifest, dibuat standar format YAML/JSON menggunakan JSON Schema untuk memudahkan validasi struktur manifest bagi pengguna.
+Pada tahap \textit{implementation and unit testing} ini, desain pada tahap sebelumnya direalisasikan menjadi kode program sistem informasi yang fungsional. Implementasi \textit{backend} sistem informasi INFINITE pada penelitian ini dilakukan menggunakan kerangka kerja Laravel dengan bahasa pemrograman PHP dan basis data PostgreSQL. Untuk \textit{frontend}, digunakan kerangka kerja Next.js dengan bahasa pemrograman TypeScript. Implementasi mengikuti prinsip \textit{Clean Architecture} untuk memastikan modularitas dan kemudahan pemeliharaan kode. Aplikasi dikemas dalam bentuk kontainer untuk memudahkan \textit{deployment}.
 
 \subsection{\textit{Integration and System Testing}}
 
-Pengujian kerangka kerja LEAF pada tahap ini dilakukan dengan metode \textit{black-box}, yaitu dengan mengimplementasikan kerangka kerja LEAF dalam studi kasus pembuatan agen AI untuk bidang \textit{observability} Kubernetes dan operasi SRE. Berdasarkan implementasi tersebut, dilakukan validasi dan evaluasi untuk memastikan bahwa kerangka kerja memenuhi kebutuhan yang telah ditetapkan. Pengujian dilakukan berdasarkan standar kualitas ISO/IEC 25010:2023, dengan pemfokusan pada aspek \textit{Functional Suitability}, \textit{Compatibility}, \textit{Interaction Capability}, and \textit{Flexibility} yang relevan dengan karakteristik produk yang dikembangkan.
+Setelah tahap implementasi selesai, dilakukan pengujian sistem informasi INFINITE untuk memastikan bahwa produk yang dikembangkan memenuhi kebutuhan dan harapan pengguna. Pengujian dilakukan dengan beberapa jenis metode untuk menguji setiap aspek sistem untuk memastikan pemenuhan kebutuhan yang telah ditetapkan. Pengujian dilakukan berdasarkan standar kualitas ISO/IEC 25010:2023 untuk aspek \textit{Product Quality} dan ISO/IEC 25019:2023 untuk aspek \textit{Quality in Use}, dengan pemfokusan pada karakteristik \textit{Functional Suitability}, \textit{Interaction Capability}, \textit{Performance Efficiency}, dan \textit{Beneficialness} yang relevan dengan produk yang dikembangkan.
 
 \section{Tempat dan Waktu Penelitian}
 
-Penelitian dilakukan di Fakultas Teknik, Universitas Negeri Yogyakarta serta secara daring. Pengembangan kerangka kerja LEAF dan pengujian dilaksanakan menggunakan infrastruktur komputasi awan dan klaster Kubernetes yang dapat diakses secara jarak jauh. Tahapan penelitian secara keseluruhan dilaksanakan dalam jangka waktu bulan Maret--Mei tahun 2026, dengan jadwal yang dipetakan terhadap tahapan model \textit{Waterfall} sebagamana yang dapat diamati pada Tabel~\ref{tab:jadwal}.
+Penelitian dilakukan di Fakultas Teknik, Universitas Negeri Yogyakarta serta secara daring. Pengembangan sistem informasi INFINITE dan pengujian dilaksanakan menggunakan infrastruktur komputasi awan dan klaster Kubernetes yang dapat diakses secara jarak jauh. Tahapan penelitian secara keseluruhan dilaksanakan dalam jangka waktu bulan Maret--Mei tahun 2026, dengan jadwal yang dipetakan terhadap tahapan model \textit{Waterfall} sebagamana yang dapat diamati pada \tabref{tab:jadwal}.
 
-\begin{table}[ht]
-    \centering
-    \caption{Jadwal Pelaksanaan Penelitian}
-    \label{tab:jadwal}
-    \small
-    \begin{tabular}{|l|c|c|c|c|c|c|c|c|c|c|c|c|}
-        \hline
-        \multirow{2}{*}{\textbf{Kegiatan}}       & \multicolumn{4}{c|}{\textbf{Maret}} & \multicolumn{4}{c|}{\textbf{April}} & \multicolumn{4}{c|}{\textbf{Mei}}                                                                                                             \\
-        \cline{2-13}
-                                                 & 1                                   & 2                                   & 3                                 & 4         & 1         & 2         & 3         & 4         & 1         & 2         & 3         & 4         \\
-        \hline
-        \textit{Requirements Definition}         & $\bullet$                           & $\bullet$                           &                                   &           &           &           &           &           &           &           &           &           \\
-        \hline
-        \textit{System and Software Design}      &                                     & $\bullet$                           & $\bullet$                         & $\bullet$ &           &           &           &           &           &           &           &           \\
-        \hline
-        \textit{Implementation and Unit Testing} &                                     &                                     &                                   & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ &           &           &           &           \\
-        \hline
-        \textit{Integration and System Testing}  &                                     &                                     &                                   &           &           &           &           & $\bullet$ & $\bullet$ & $\bullet$ &           &           \\
-        \hline
-        Penyusunan Laporan                       & $\bullet$                           & $\bullet$                           & $\bullet$                         & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ \\
-        \hline
-    \end{tabular}
+\begin{table}[H]
+	\centering
+	\caption{Jadwal Pelaksanaan Penelitian}
+	\label{tab:jadwal}
+	\small
+	\begin{tabular}{|l|c|c|c|c|c|c|c|c|c|c|c|c|}
+		\hline
+		\multirow{2}{*}{\textbf{Kegiatan}}       & \multicolumn{4}{c|}{\textbf{Maret}} & \multicolumn{4}{c|}{\textbf{April}} & \multicolumn{4}{c|}{\textbf{Mei}}                                                                                                             \\
+		\cline{2-13}
+		                                         & 1                                   & 2                                   & 3                                 & 4         & 1         & 2         & 3         & 4         & 1         & 2         & 3         & 4         \\
+		\hline
+		\textit{Requirements Definition}         & $\bullet$                           & $\bullet$                           &                                   &           &           &           &           &           &           &           &           &           \\
+		\hline
+		\textit{System and Software Design}      &                                     & $\bullet$                           & $\bullet$                         & $\bullet$ &           &           &           &           &           &           &           &           \\
+		\hline
+		\textit{Implementation and Unit Testing} &                                     &                                     &                                   & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ &           &           &           &           \\
+		\hline
+		\textit{Integration and System Testing}  &                                     &                                     &                                   &           &           &           &           & $\bullet$ & $\bullet$ & $\bullet$ &           &           \\
+		\hline
+		Penyusunan Laporan Tugas Akhir           & $\bullet$                           & $\bullet$                           & $\bullet$                         & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ \\
+		\hline
+	\end{tabular}
 \end{table}
 
 \section{Subjek Penelitian}
 
-Subjek penelitian ini terdiri dari para ahli yang berperan sebagai validator dan evaluator untuk hasil pengembangan kerangka kerja LEAF serta implementasinya dalam studi kasus \textit{observability} Kubernetes dan operasi SRE. Pengujian dilakukan terhadap aspek \textit{Functional Suitability}, \textit{Compatibility}, \textit{Interaction Capability}, dan \textit{Flexibility} yang telah ditetapkan kepada 5 responden ahli terpilih. Pemilihan responden ahli didasarkan pada latar belakang profesional dan pengalaman mereka dalam bidang terkait, yaitu praktisi \textit{cloud computing}, SRE, \textit{system administrator}, dan peran serupa lainnya.
+Subjek penelitian ini terdiri dari tenaga ahli yang berperan sebagai validator dan evaluator untuk memastikan kualitas sistem informasi organisasi INFINITE. Selain itu, subjek penelitian juga mencakup pengguna sistem, yaitu pengurus dan anggota INFINITE. Pengujian aspek \textit{Functional Suitability} dan \textit{Interaction Capability} yang termasuk dalam \textit{Product Quality} dilakukan kepada lima tenaga ahli dalam bidang sistem informasi. Sedangkan pengujian aspek \textit{Beneficialness} yang termasuk dalam \textit{Quality in Use} dilakukan terhadap pengguna sistem, yaitu berupa sembilan pengurus dan sembilan anggota INFINITE. Untuk aspek \textit{Performance Efficiency}, akan dilakukan pengujian menggunakan alat pengujian khusus untuk mengukur performa sistem informasi INFINITE dalam berbagai skenario penggunaan.
 
-\section{Metode Pengumpulan Data}
+\section{Teknik Pengumpulan Data}
 
-Data yang dikumpulkan dalam penelitian pengembangan kerangka kerja LEAF ini terdiri dari data primer dan data sekunder. Metode pengumpulan data yang digunakan adalah sebagai berikut.
-
-\subsection{Studi Pustaka}
-
-Studi pustaka dilakukan untuk mengumpulkan data sekunder berupa teori, konsep, dan temuan dari penelitian-penelitian terdahulu yang relevan. Sumber pustaka meliputi jurnal ilmiah internasional, buku teks, dokumentasi teknis standar (seperti protokol A2A dan MCP), dan publikasi dari organisasi seperti CNCF dan Linux Foundation. Hasil studi pustaka menjadi dasar untuk menetapkan kebutuhan kerangka kerja pada tahap \textit{Requirement Analysis}.
-
-\subsection{Kuesioner}
-
-Kuesioner digunakan untuk mengumpulkan data primer dari para ahli terkait kebutuhan dan fitur yang diharapkan dari kerangka kerja LEAF pada tahap  \textit{Requirement Analysis}, serta untuk mengumpulkan data validasi dan evaluasi dari para ahli setelah pengembangan produk pada tahap \textit{Integration and System Testing}. Kuesioner dirancang dengan menggunakan skala Likert untuk menilai tingkat kebutuhan dan kepuasan terhadap fitur-fitur yang dikembangkan, serta untuk mengidentifikasi potensi peningkatan berdasarkan masukan dari para ahli.
+Teknik pengumpulan data yang digunakan dalam penelitian pengembangan sistem informasi organisasi INFINITE ini adalah sebagai berikut:
 
 \subsection{Wawancara}
 
-Wawancara dilakukan secara mendalam dengan beberapa responden ahli untuk mendapatkan pemahaman yang lebih komprehensif tentang kebutuhan, tantangan, dan harapan mereka terkait pengembangan kerangka kerja LEAF. Wawancara dilakukan secara daring menggunakan platform komunikasi pertemuan video, dengan panduan wawancara yang telah disiapkan sebelumnya untuk memastikan konsistensi dalam pengumpulan data. Wawancara ini juga digunakan untuk menggali lebih dalam tentang masukan yang diberikan dan mendapatkan wawasan tambahan yang mungkin tidak terungkap melalui kuesioner.
+Wawancara dilakukan secara mendalam dengan beberapa pengurus INFINITE untuk mendapatkan pemahaman yang lebih komprehensif tentang kebutuhan, tantangan, dan harapan mereka terkait pengembangan sistem informasi INFINITE. Proses wawancara dilakukan secara daring menggunakan platform komunikasi pertemuan video. Wawancara dilakukan terutama dengan Presiden INFINITE serta Ketua Divisi \textit{Research and Development} yang memiliki pengetahuan mendalam tentang kebutuhan organisasi dan bertanggung jawab atas pengembangan dan pengelolaan sistem informasi organisasi.
+
+\subsection{Observasi}
+
+Observasi dilakukan untuk memahami sistem informasi organisasi yang telah ada sebelumnya, serta untuk mengidentifikasi kebutuhan dan tantangan yang dihadapi oleh pengurus dan anggota INFINITE dalam mengelola data organisasi. Selain itu observasi juga dilakukan dalam pengambilan data untuk pengujian aspek \textit{performance efficiency} dengan menggunakan alat pengujian khusus.
+
+\subsection{Kuesioner}
+
+Kuesioner digunakan untuk mengumpulkan data dari para ahli terkait validasi dan evaluasi setelah pengembangan produk pada aspek \textit{functional suitability}, \textit{interaction capability}, dan \textit{beneficialness}. Kuesioner dirancang dengan menggunakan skala Likert untuk menilai tingkat kesesuaian.
 
 \section{Instrumen Penelitian}
 
-Instrumen penelitian disusun berdasarkan tujuan penelitian dan kebutuhan pengumpulan data, yang digunakan untuk memvalidasi dan mengevaluasi kerangka kerja LEAF. Instrumen yang digunakan dalam penelitian ini dikembangkan berdasarkan aspek \textit{Functional Suitability}, \textit{Compatibility}, \textit{Interaction Capability}, dan \textit{Flexibility} dari standar ISO/IEC 25010:2023 yang relevan dengan karakteristik produk yang dikembangkan. Dalam praktik pengujiannya, instrumen disusun dalam bentuk kuesioner/lembar penilaian yang dikembangkan mengikuti pendekatan \citet{Arikunto_2013_Prosedur}. Lembar penilaian menggunakan skala Likert lima tingkat untuk menilai setiap indikator. Skala penilaian yang digunakan disajikan pada Tabel~\ref{tab:skala}.
+Instrumen penelitian yang digunakan dalam penelitian ini dirancang untuk mengukur aspek-aspek kualitas sistem informasi organisasi INFINITE berdasarkan standar ISO/IEC 25010:2023 untuk \textit{Product Quality} dan ISO/IEC 25019:2023 untuk \textit{Quality in Use}. Instrumen ini mencakup:
 
-\begin{table}[ht]
-    \centering
-    \caption{Skala Penilaian Instrumen Kuesioner}
-    \label{tab:skala}
-    \begin{tabular}{|c|l|l|}
-        \hline
-        \textbf{Skor} & \textbf{Kategori} & \textbf{Keterangan}                               \\
-        \hline
-        5             & Sangat Baik       & Sepenuhnya sesuai dan tanpa kekurangan            \\
-        \hline
-        4             & Baik              & Sebagian besar sesuai dengan sedikit kekurangan   \\
-        \hline
-        3             & Cukup             & Cukup sesuai namun memerlukan perbaikan           \\
-        \hline
-        2             & Kurang            & Kurang sesuai dan memerlukan perbaikan signifikan \\
-        \hline
-        1             & Sangat Kurang     & Tidak sesuai dan perlu perancangan ulang          \\
-        \hline
-    \end{tabular}
-\end{table}
+\subsection{Instrumen Pengujian \textit{Functional Suitability}}
 
+Pengujian aspek \textit{Functional Suitability} bertujuan untuk mengukur sejauh mana sistem informasi INFINITE memenuhi kebutuhan fungsional yang telah ditetapkan. Pengujian ini dilakukan dengan menggunakan skala Guttman yang memiliki dua pilihan jawaban, yaitu ``Ya'' dan ``Tidak''. Skala Guttman dipilih karena pengujian fungsional bersifat deterministik, yaitu setiap fungsi dapat dinilai apakah berjalan sesuai spesifikasi atau tidak \citep{Lamada_2020_ISO25010}.
 
-% \subsection{\textbf{Fungsionalitas (\textit{Functionality})}}
+Instrumen pengujian \textit{Functional Suitability} disusun berdasarkan spesifikasi kebutuhan fungsional yang telah didefinisikan pada tahap \textit{Requirements Definition}. Setiap butir instrumen merepresentasikan satu fungsi atau fitur sistem yang akan diuji oleh ahli. Instrumen ini akan divalidasi terlebih dahulu oleh ahli sebelum digunakan untuk pengujian. Kisi-kisi instrumen pengujian \textit{Functional Suitability} disajikan pada \annexref{annex:kisi-kisi-instrumen}.
 
-% Kesesuaian fitur dengan kebutuhan, kelengkapan fitur inti (definisi agen deklaratif, integrasi MCP/A2A, orkestrasi multi-agen), dan kebenaran fungsional.
+\subsection{Instrumen Pengujian \textit{Interaction Capability}}
 
-% \subsection{\textbf{Kegunaan (\textit{Usability})}}
+Pengujian aspek \textit{Interaction Capability} dilakukan untuk mengukur kemudahan penggunaan sistem informasi INFINITE oleh pengguna. Instrumen yang digunakan adalah \textit{USE Questionnaire} yang dikembangkan oleh \citet{Lund_2001_USE}. \textit{USE Questionnaire} dipilih karena merupakan instrumen yang telah tervalidasi dan banyak digunakan dalam penelitian pengembangan sistem informasi untuk mengukur aspek kegunaan, kemudahan penggunaan, kemudahan pembelajaran, dan kepuasan pengguna \citep{Ghaffur_2017_USEQuestionnaire, Jayanto_2017_ISO25010Mobile}.
 
-% Kemudahan penggunaan manifes deklaratif, kejelasan dokumentasi, kurva pembelajaran, dan pengalaman pengguna dalam mendefinisikan agen tanpa pemrograman.
+\textit{USE Questionnaire} terdiri dari empat dimensi utama, yaitu:
+\begin{enumerate}[label=\alph*.]
+	\item \textit{Usefulness}: Mengukur sejauh mana sistem membantu pengguna dalam menyelesaikan tugas dan mencapai tujuan.
+	\item \textit{Ease of Use}: Mengukur kemudahan pengguna dalam mengoperasikan sistem.
+	\item \textit{Ease of Learning}: Mengukur kemudahan pengguna dalam mempelajari cara menggunakan sistem.
+	\item \textit{Satisfaction}: Mengukur tingkat kepuasan pengguna terhadap pengalaman menggunakan sistem.
+\end{enumerate}
 
-% \subsection{\textbf{Keandalan (\textit{Reliability})}}
+Instrumen ini menggunakan skala Likert 5 poin dengan rentang 1 (Sangat Tidak Setuju) hingga 5 (Sangat Setuju). Kisi-kisi instrumen pengujian \textit{Interaction Capability} disajikan pada \annexref{annex:kisi-kisi-instrumen}.
 
-% Konsistensi perilaku \textit{framework}, penanganan kesalahan, dan stabilitas pada berbagai skenario penggunaan.
+\subsection{Instrumen Pengujian \textit{Performance Efficiency}}
 
-% \subsection{\textbf{Pemeliharaan (\textit{Maintainability})}}
+Pengujian aspek \textit{Performance Efficiency} bertujuan untuk mengukur performa sistem informasi INFINITE dalam merespons permintaan pengguna dan memproses data. Pengujian ini dilakukan dengan menggunakan dua alat yang berbeda untuk mengukur performa \textit{frontend} dan \textit{backend}.
 
-% Kualitas kode, modularitas arsitektur, kemudahan perluasan (\textit{extensibility}), dan kesesuaian dengan standar.
+\subsubsection{Pengujian Performa \textit{Frontend}}
 
-\subsection{Instrumen \textit{Functional Suitability}}
+Pengujian performa \textit{frontend} Next.js dilakukan menggunakan Lighthouse, yaitu alat pengujian otomatis yang dikembangkan oleh Google untuk mengukur kualitas halaman web \citep{Google_2026_Lighthouse}. Lighthouse mengukur metrik \textit{Core Web Vitals} yang merupakan standar industri untuk mengukur pengalaman pengguna pada halaman web \citep{Google_2026_WebVitals}. Metrik yang diukur meliputi:
 
-Instrumen untuk mengukur \textit{Functional Suitability} dirancang untuk mengevaluasi sejauh mana fitur-fitur yang dikembangkan memenuhi kebutuhan fungsional yang telah ditetapkan. Indikator yang digunakan meliputi kesesuaian fitur dengan kebutuhan, kelengkapan fitur inti (definisi agen deklaratif, integrasi MCP/A2A, orkestrasi multi-agen), dan kebenaran fungsional.
+\begin{enumerate}[label=\alph*.]
+	\item \textit{First Contentful Paint} (FCP): Waktu yang dibutuhkan untuk menampilkan konten pertama pada halaman.
+	\item \textit{Speed Index} (SI): Kecepatan visual halaman dalam menampilkan konten.
+	\item \textit{Largest Contentful Paint} (LCP): Waktu yang dibutuhkan untuk menampilkan elemen konten terbesar pada halaman.
+	\item \textit{Total Blocking Time} (TBT): Total waktu di mana \textit{main thread} terblokir dan tidak dapat merespons input pengguna.
+	\item \textit{Cumulative Layout Shift} (CLS): Stabilitas visual halaman selama proses pemuatan.
+\end{enumerate}
 
-\subsection{Instrumen \textit{Compatibility}}
+\subsubsection{Pengujian Performa \textit{Backend}}
 
-Instrumen untuk mengukur \textit{Compatibility} dirancang untuk mengevaluasi sejauh mana kerangka kerja LEAF dapat beroperasi dengan baik dalam lingkungan yang berbeda, serta kemampuannya untuk berinteraksi dengan sistem dan perangkat lunak lain. Indikator yang digunakan meliputi interoperabilitas dengan protokol standar, kemampuan integrasi dengan berbagai platform, dan kompatibilitas dengan berbagai jenis agen dan peralatan.
+Pengujian performa \textit{backend} API Laravel dilakukan menggunakan Grafana k6, yaitu alat pengujian beban (\textit{load testing}) yang dirancang untuk menguji performa API \citep{Grafana_2026_k6}. Pengujian dilakukan dengan tipe \textit{breakpoint test} untuk menemukan titik maksimum performa API, yaitu jumlah \textit{concurrent users} dan \textit{requests per second} maksimal yang dapat ditangani oleh sistem sebelum terjadi degradasi performa atau kegagalan. Metrik yang diukur meliputi:
 
-\subsection{Instrumen \textit{Interaction Capability}}
+\begin{enumerate}[label=\alph*.]
+	\item \textit{Response Time}: Waktu respons API untuk setiap permintaan.
+	\item \textit{Throughput}: Jumlah permintaan yang dapat diproses per satuan waktu.
+	\item \textit{Error Rate}: Persentase permintaan yang gagal.
+	\item \textit{Virtual Users}: Jumlah pengguna virtual simultan yang disimulasikan.
+\end{enumerate}
 
-Instrumen untuk mengukur \textit{Interaction Capability} dirancang untuk mengevaluasi sejauh mana kerangka kerja LEAF dapat mendukung interaksi yang efektif antara agen, serta antara agen dengan pengguna. Indikator yang digunakan meliputi kemampuan komunikasi antar agen, kemampuan beradaptasi dengan konteks interaksi, dan kemudahan penggunaan antarmuka untuk mendefinisikan interaksi.
+\subsection{Instrumen Pengujian \textit{Beneficialness}}
 
-\subsection{Instrumen \textit{Flexibility}}
+Pengujian aspek \textit{Beneficialness} bertujuan untuk mengukur sejauh mana sistem informasi INFINITE memberikan kemanfaatan bagi pengguna akhir, yang dinilai dari tingkat kepuasan pengguna terhadap sistem. Instrumen yang digunakan adalah \textit{End-User Computing Satisfaction} (EUCS) yang dikembangkan oleh \citet{Doll_Torkzadeh_1988_EUCS}. EUCS dipilih karena merupakan instrumen yang telah tervalidasi secara luas dan dirancang khusus untuk mengukur kepuasan pengguna terhadap sistem informasi berbasis komputer \citep{Hidayah_2020_EUCS}.
 
-Instrumen untuk mengukur \textit{Flexibility} dirancang untuk mengevaluasi sejauh mana kerangka kerja LEAF dapat dengan mudah disesuaikan dan diperluas untuk memenuhi kebutuhan yang berubah. Indikator yang digunakan meliputi kemudahan dalam menambahkan fitur baru, kemampuan untuk menyesuaikan perilaku agen, dan kemampuan untuk beradaptasi dengan berbagai skenario penggunaan.
+EUCS terdiri dari lima dimensi utama, yaitu:
+\begin{enumerate}[label=\alph*.]
+	\item \textit{Content}: Mengukur kepuasan pengguna terhadap isi informasi yang disajikan oleh sistem, termasuk kelengkapan, relevansi, dan keakuratan informasi.
+	\item \textit{Accuracy}: Mengukur kepuasan pengguna terhadap ketepatan dan kebenaran data yang diproses oleh sistem.
+	\item \textit{Format}: Mengukur kepuasan pengguna terhadap tampilan dan penyajian informasi, termasuk tata letak dan desain antarmuka.
+	\item \textit{Ease of Use}: Mengukur kepuasan pengguna terhadap kemudahan dalam menggunakan sistem untuk menyelesaikan tugas.
+	\item \textit{Timeliness}: Mengukur kepuasan pengguna terhadap kecepatan sistem dalam menyajikan informasi yang dibutuhkan.
+\end{enumerate}
+
+Instrumen ini menggunakan skala Likert 5 poin dengan rentang 1 (Sangat Tidak Puas) hingga 5 (Sangat Puas). Kisi-kisi instrumen pengujian \textit{Beneficialness} disajikan pada \annexref{annex:kisi-kisi-instrumen}.
 
 \section{Teknik Analisis Data}
 
-Teknik analisis data yang digunakan dalam penelitian ini disesuaikan dengan jenis data yang dikumpulkan, yaitu data kuantitatif dari instrumen validasi dan pengujian, serta data kualitatif dari masukan para ahli.
+\subsection{Analisis Pengujian \textit{Functional Suitability}}
 
-\subsection{Analisis Deskriptif untuk Validasi Ahli}
+Analisis data pengujian aspek \textit{Functional Suitability} dilakukan dengan menghitung persentase keberhasilan fungsi sistem berdasarkan hasil pengujian menggunakan skala Guttman. Setiap fungsi yang diuji akan dinilai dengan dua kemungkinan jawaban, yaitu ``Ya'' (bernilai 1) jika fungsi berjalan sesuai spesifikasi dan ``Tidak'' (bernilai 0) jika fungsi tidak berjalan sesuai spesifikasi \citep{Lamada_2020_ISO25010}.
 
-Data kuantitatif dari lembar validasi ahli dianalisis secara deskriptif menggunakan perhitungan persentase kelayakan. Persentase kelayakan dihitung dengan rumus:
+Perhitungan persentase kelayakan aspek \textit{Functional Suitability} dilakukan dengan menggunakan rumus berikut \citep{Lamada_2020_ISO25010}:
 
 \begin{equation}
-    \text{Persentase Kelayakan} = \frac{\text{Skor yang diperoleh}}{\text{Skor maksimal}} \times 100\%
-    \label{eq:kelayakan}
+	\text{Persentase Kelayakan} = \frac{\text{Skor yang diperoleh}}{\text{Skor maksimal}} \times 100\%
+	\label{eq:functional_suitability}
 \end{equation}
 
-Hasil perhitungan persentase kelayakan kemudian diinterpretasikan berdasarkan klasifikasi kelayakan yang disajikan pada Tabel~\ref{tab:kelayakan}.
+Hasil perhitungan persentase kelayakan kemudian diinterpretasikan berdasarkan kriteria kelayakan yang disajikan pada \tabref{tab:kriteria_functional}.
 
-\begin{table}[ht]
-    \centering
-    \caption{Klasifikasi Kelayakan Produk}
-    \label{tab:kelayakan}
-    \begin{tabular}{|c|l|}
-        \hline
-        \textbf{Persentase} & \textbf{Kategori Kelayakan} \\
-        \hline
-        81\% -- 100\%       & Sangat Layak                \\
-        \hline
-        61\% -- 80\%        & Layak                       \\
-        \hline
-        41\% -- 60\%        & Cukup Layak                 \\
-        \hline
-        21\% -- 40\%        & Kurang Layak                \\
-        \hline
-        0\% -- 20\%         & Tidak Layak                 \\
-        \hline
-    \end{tabular}
+\begin{table}[H]
+	\centering
+	\caption{Kriteria Interpretasi Kelayakan \textit{Functional Suitability}}
+	\label{tab:kriteria_functional}
+	\begin{tabular}{|c|l|}
+		\hline
+		\textbf{Persentase} & \textbf{Kriteria} \\
+		\hline
+		81\% -- 100\%       & Sangat Layak      \\
+		\hline
+		61\% -- 80\%        & Layak             \\
+		\hline
+		41\% -- 60\%        & Cukup Layak       \\
+		\hline
+		21\% -- 40\%        & Kurang Layak      \\
+		\hline
+		0\% -- 20\%         & Tidak Layak       \\
+		\hline
+	\end{tabular}
 \end{table}
 
-Produk dinyatakan layak untuk digunakan apabila persentase kelayakan dari seluruh aspek penilaian mencapai kategori minimal ``Layak'' (61\%). Jika terdapat aspek yang memperoleh kategori di bawah ``Layak'', maka dilakukan revisi pada aspek tersebut dan validasi ulang hingga kriteria kelayakan terpenuhi.
+\subsection{Analisis Pengujian \textit{Interaction Capability} dan \textit{Beneficialness}}
 
-\subsection{Analisis Pengujian Fungsional}
+Analisis data pengujian aspek \textit{Interaction Capability} dan \textit{Beneficialness} dilakukan dengan menghitung skor dari hasil kuesioner yang keduanya menggunakan skala Likert 5 poin. Aspek \textit{Interaction Capability} diukur menggunakan \textit{USE Questionnaire}, sedangkan aspek \textit{Beneficialness} diukur menggunakan \textit{End-User Computing Satisfaction} (EUCS) yang mengukur kepuasan pengguna melalui lima dimensi: \textit{Content}, \textit{Accuracy}, \textit{Format}, \textit{Ease of Use}, dan \textit{Timeliness} \citep{Doll_Torkzadeh_1988_EUCS, Hidayah_2020_EUCS}.
 
-Data dari pengujian fungsional dianalisis berdasarkan persentase keberhasilan kasus uji. Setiap kasus uji menghasilkan dua kemungkinan hasil: berhasil (\textit{pass}) atau gagal (\textit{fail}). Persentase keberhasilan dihitung dengan rumus:
+Perhitungan persentase kelayakan untuk kedua aspek dilakukan dengan menggunakan rumus berikut \citep{Ghaffur_2017_USEQuestionnaire}:
 
 \begin{equation}
-    \text{Persentase Keberhasilan} = \frac{\text{Jumlah kasus uji berhasil}}{\text{Total kasus uji}} \times 100\%
-    \label{eq:keberhasilan}
+	\text{Persentase Kelayakan} = \frac{\text{Skor yang diperoleh}}{\text{Skor maksimal}} \times 100\%
+	\label{eq:interaction_capability_satisfaction}
 \end{equation}
 
-\textit{Framework} dinyatakan memenuhi kebutuhan fungsional apabila seluruh kasus uji (100\%) berhasil dieksekusi sesuai keluaran yang diharapkan. Jika terdapat kasus uji yang gagal, dilakukan identifikasi penyebab kegagalan, perbaikan kode, dan pengujian ulang hingga seluruh kasus uji berhasil.
+Hasil perhitungan persentase kelayakan kemudian diinterpretasikan berdasarkan kriteria yang disajikan pada \tabref{tab:kriteria_interaction_capability_satisfaction}.
 
-\subsection{Analisis Kualitatif}
+\begin{table}[H]
+	\centering
+	\caption{Kriteria Interpretasi Kelayakan \textit{Interaction Capability} dan \textit{Beneficialness}}
+	\label{tab:kriteria_interaction_capability_satisfaction}
+	\begin{tabular}{|c|l|}
+		\hline
+		\textbf{Persentase} & \textbf{Kriteria} \\
+		\hline
+		81\% -- 100\%       & Sangat Layak      \\
+		\hline
+		61\% -- 80\%        & Layak             \\
+		\hline
+		41\% -- 60\%        & Cukup Layak       \\
+		\hline
+		21\% -- 40\%        & Kurang Layak      \\
+		\hline
+		0\% -- 20\%         & Tidak Layak       \\
+		\hline
+	\end{tabular}
+\end{table}
 
-Data kualitatif berupa komentar, saran, dan masukan dari para ahli validator dianalisis melalui proses berikut:
-\begin{enumerate}
-    \item \textbf{Pengumpulan dan pencatatan}: Seluruh komentar dan saran dari para ahli dikumpulkan dan dicatat secara sistematis.
-    \item \textbf{Kategorisasi}: Masukan dikategorikan berdasarkan aspek yang dibahas (fungsionalitas, kegunaan, keandalan, atau pemeliharaan) dan tingkat urgensi (kritis, penting, atau saran).
-    \item \textbf{Prioritisasi}: Masukan diprioritaskan berdasarkan dampaknya terhadap kualitas \textit{framework}. Masukan kritis dan penting diprioritaskan untuk ditindaklanjuti segera.
-    \item \textbf{Implementasi revisi}: Perbaikan dilakukan pada \textit{framework} berdasarkan masukan yang telah diprioritaskan.
-    \item \textbf{Dokumentasi perubahan}: Setiap perubahan yang dilakukan berdasarkan masukan ahli didokumentasikan untuk pelacakan dan akuntabilitas.
+\subsection{Analisis Pengujian \textit{Performance Efficiency}}
+
+Analisis data pengujian aspek \textit{Performance Efficiency} dilakukan secara terpisah untuk \textit{frontend} dan \textit{backend} menggunakan metrik dan kriteria yang sesuai dengan masing-masing komponen sistem.
+
+\subsubsection{Analisis Performa \textit{Frontend}}
+
+Analisis performa \textit{frontend} Next.js dilakukan berdasarkan hasil pengujian menggunakan Lighthouse. Lighthouse menghasilkan skor performa dengan rentang 0--100 yang dihitung berdasarkan rata-rata tertimbang dari metrik \textit{Core Web Vitals} \citep{Google_2026_Lighthouse}. Bobot masing-masing metrik pada Lighthouse versi 10 adalah sebagai berikut:
+\begin{enumerate}[label=\alph*.]
+	\item \textit{First Contentful Paint} (FCP): 10\%
+	\item \textit{Speed Index} (SI): 10\%
+	\item \textit{Largest Contentful Paint} (LCP): 25\%
+	\item \textit{Total Blocking Time} (TBT): 30\%
+	\item \textit{Cumulative Layout Shift} (CLS): 25\%
 \end{enumerate}
 
-Kombinasi analisis kuantitatif dan kualitatif memberikan evaluasi yang komprehensif terhadap kualitas produk, memungkinkan penilaian numerik yang objektif sekaligus pemahaman mendalam tentang aspek-aspek yang memerlukan perbaikan.
+Hasil skor performa Lighthouse diinterpretasikan berdasarkan kriteria yang disajikan pada \tabref{tab:kriteria_lighthouse}.
+
+\begin{table}[H]
+	\centering
+	\caption{Kriteria Interpretasi Skor Lighthouse}
+	\label{tab:kriteria_lighthouse}
+	\begin{tabular}{|c|l|}
+		\hline
+		\textbf{Skor} & \textbf{Kriteria}                            \\
+		\hline
+		90 -- 100     & Baik (\textit{Good})                         \\
+		\hline
+		50 -- 89      & Perlu Perbaikan (\textit{Needs Improvement}) \\
+		\hline
+		0 -- 49       & Buruk (\textit{Poor})                        \\
+		\hline
+	\end{tabular}
+\end{table}
+
+\subsubsection{Analisis Performa \textit{Backend}}
+
+Analisis performa \textit{backend} API Laravel dilakukan berdasarkan hasil pengujian menggunakan Grafana k6 dengan tipe \textit{breakpoint test}. \textit{Breakpoint test} bertujuan untuk menemukan batas kapasitas sistem dengan meningkatkan beban secara bertahap hingga sistem mengalami degradasi performa atau kegagalan \citep{Grafana_2026_k6}. Metrik yang dianalisis meliputi:
+\begin{enumerate}[label=\alph*.]
+	\item \textit{Response Time}: Waktu respons rata-rata API untuk setiap permintaan.
+	\item \textit{Throughput}: Jumlah permintaan yang dapat diproses per detik (\textit{requests per second}).
+	\item \textit{Error Rate}: Persentase permintaan yang gagal.
+	\item \textit{Virtual Users}: Jumlah pengguna virtual maksimum yang dapat ditangani sistem secara simultan sebelum terjadi degradasi.
+\end{enumerate}
+
+

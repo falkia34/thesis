@@ -5,6 +5,8 @@
 %% DILARANG EDIT BAGIAN INI
 \newpage
 
+\tikz[remember picture, overlay] \node[opacity=0.6, inner sep=0pt] at (current page.center){\includegraphics[width=0.9\textwidth, keepaspectratio]{images/logo-uny-kuning.png}};
+
 % Macro to resize both name and NIP if name would wrap to two lines
 \newcommand{\smartsignature}[2]{%
     % Test if name fits in one line at normal size
@@ -18,15 +20,11 @@
     \fi
 }
 
-\addcontentsline{toc}{chapter}{LEMBAR PERSETUJUAN UJIAN}
+\addcontentsline{toc}{chapter}{LEMBAR PERSETUJUAN}
 \begin{center}
     \begin{doublespace}
         \textbf{\large \MakeUppercase{lembar persetujuan}}
     \end{doublespace}
-\end{center}
-
-\begin{center}
-    {\tipe} dengan Judul
 \end{center}
 
 \begin{center}
@@ -36,29 +34,32 @@
 \end{center}
 
 \begin{center}
-    Disusun oleh:\\
-    \textbf{\penulis}\\
-    \textbf{NIM \nim}\\[1.5cm]
+    \begin{doublespace}
+        \textbf{\large \MakeUppercase {\tipe}}
+    \end{doublespace}
+\end{center}
 
-    telah memenuhi syarat dan disetujui oleh Dosen Pembimbing untuk dilaksanakan Ujian {\tipe} bagi yang bersangkutan.\\[0.75cm]
+\begin{center}
+    \textbf{\large \MakeUppercase {\penulis}}\\
+    \textbf{\large \MakeUppercase {NIM \nim}}\\[1.5cm]
+
+    Telah disetujui untuk dipertahankan di depan Tim Penguji Tugas Akhir Fakultas Teknik Universitas Negeri Yogyakarta.\\
+    Tanggal: \tglpersetujuan\\[1em]
 \end{center}
 
 \vspace{0.75cm}
 \noindent\begin{minipage}[t]{0.47\textwidth}
     \centering
-    \vspace{1.5em}
-    Mengetahui,\\
     Koordinator Program Studi,\\[2.5cm]
-    
+
     \smartsignature{\koorprodi}{NIP. \NIPkoorprodi}
 \end{minipage}%
 \hfill%
 \begin{minipage}[t]{0.47\textwidth}
     \centering
-    Yogyakarta, \tglpersetujuan\\[1em]
-    Disetujui,\\
-    Dosen Pembimbing TA,\\[2.5cm]
-    
+    Dosen Pembimbing,\\[2.5cm]
+
     \smartsignature{\pembimbing}{NIP. \NIPpembimbing}
 \end{minipage}%
+
 %% DILARANG EDIT BAGIAN INI

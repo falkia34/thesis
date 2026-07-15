@@ -1,0 +1,10 @@
+flowchart LR
+    User(("User"))
+    style User fill:#e1f5ff,stroke:#0288d1,stroke-width:3px,color:#000
+
+    Login(("Login"))
+    Logout(("Logout"))
+
+    User --> Login
+    User --> Logout
+    Logout -.->|"#lt;#lt;include#gt;#gt;"| Login
